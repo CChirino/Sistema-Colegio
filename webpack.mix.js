@@ -31,7 +31,8 @@ mix.styles([
       'public/asset/css/form/all-type-forms.css',
       'public/asset/css/style.css',
       'public/asset/css/meanmenu.min.css',
-      'public/asset/css/responsive.css'
+      'public/asset/css/responsive.css',
+      'public/asset/css/data-table/bootstrap-table.css'
   ], 'public/css/all.css');
 
   mix.scripts([

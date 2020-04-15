@@ -37,6 +37,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('profesor', 'ProfesorController');
+
 Route::get('/test', function () {
     //return    Role::create([
     //     'name' => 'Admin',

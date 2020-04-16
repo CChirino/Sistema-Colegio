@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/favicon.ico')}}">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="{{asset('asset/css/font-awesome.min.css')}}"> --}}
+    <script src="https://kit.fontawesome.com/9afc1391aa.js" crossorigin="anonymous"></script>    
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     
 

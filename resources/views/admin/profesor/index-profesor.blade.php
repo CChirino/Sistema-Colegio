@@ -11,10 +11,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcome-heading">
-                                <form role="search" class="sr-input-func">
-                                    <input type="text" placeholder="Search..." class="search-int form-control">
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </form>
+                                <td><a class="btn btn-success" href="{{ route('profesor.create') }}"> <i class="fas fa-plus-circle"></i> Crear Profesor</a></td>    
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -43,21 +40,31 @@
                 <th>Direccion</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Email</th>
-                <th>Creado</th>
-                <th>Actualizado</th>
+                <th colspan="3">Transacciones</th>
 
             </tr>
         </thead>
         <tbody>
+            @foreach($profesores as $prf)
             <tr>
-                <td>Donna Snider</td>
-                <td>Customer Support</td>
-                <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
+                <td>{{$prf->dni}}</td>
+                <td>{{$prf->nombre}}</td>
+                <td>{{$prf->apellido}}</td>
+                <td>{{$prf->direccion}}</td>
+                <td>{{$prf->fecha_nacimiento}}</td>
+                <td>{{$prf->email}}</td>
+                <td><a class="btn btn-info" href="{{ route('profesor.show',$prf->id) }}"" > <i class="far fa-eye"></i> Ver</a></td>
+                <td><a class="btn btn-warning" href="{{ route('profesor.edit',$prf->id) }}""> <i class="far fa-edit"></i> Editar</a></td>
+                <td><a 
+                    class="btn btn-danger"
+                    data-toggle="modal"
+                    data-target="#modal_eliminar"> <i class="fas fa-trash"></i> Eliminar</a></td>
+                @endforeach
             </tr>
         </tbody>
     </table>
+    <div>
+        {{$profesores->links()}} 
+    </div>
 </div>
 @endsection

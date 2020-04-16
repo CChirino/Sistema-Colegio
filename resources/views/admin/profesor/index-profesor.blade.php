@@ -55,10 +55,16 @@
                 <td>{{$prf->email}}</td>
                 <td><a class="btn btn-info" href="{{ route('profesor.show',$prf->id) }}"" > <i class="far fa-eye"></i> Ver</a></td>
                 <td><a class="btn btn-warning" href="{{ route('profesor.edit',$prf->id) }}""> <i class="far fa-edit"></i> Editar</a></td>
-                <td><a 
-                    class="btn btn-danger"
-                    data-toggle="modal"
-                    data-target="#modal_eliminar"> <i class="fas fa-trash"></i> Eliminar</a></td>
+                <td>
+                <form action="{{ route('profesor.destroy',$prf->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
+                        <i class="fas fa-trash"></i> 
+                        Eliminar
+                    </button>
+                </form>
+                </td>
                 @endforeach
             </tr>
         </tbody>

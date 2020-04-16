@@ -65,7 +65,8 @@ class ProfesorController extends Controller
             'password'          => Hash::make($request->password),
 
         ]);
-        return back()->with('success', '¡Usuario creado con éxito!');
+        // return back()->with('success', '¡Usuario creado con éxito!');
+        return redirect()->route('profesor.index');        
     }
 
     /**
@@ -102,25 +103,10 @@ class ProfesorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $profesores = User::findOrFail($id);
-        // $profesores = User::findOrFail(3);
-        // $profesores->dni                    = $request->dni;
-        // $profesores->nombre                 = $request->nombre;
-        // $profesores->apellido               = $request->apellido;
-        // $profesores->fecha_nacimiento       = $request->fecha_nacimiento;
-        // $profesores->email                  = $request->email;
-        // $profesores->save();
+        
+        $profesores = request()->except(['_token','_method']);
+        User::where('id', '=', $id)->update($profesores);
         $profesores = User::find($id);
-        $profesores = Role::find(3); //Rol Profesor
-        $profesores->users('id')->update([
-            // 'dni'               => $request->dni,
-            'nombre'            => $request->nombre,
-            'apellido'          => $request->apellido,
-            'direccion'         => $request->direccion,
-            'fecha_nacimiento'  => $request->fecha_nacimiento,
-            // 'email'             => $request->email,
-
-        ]);
         return redirect()->route('profesor.index')->with('datos','Registro actualizado correctamente!');;
     }
 
@@ -134,7 +120,7 @@ class ProfesorController extends Controller
     {
         $profesores = User::find($id);
         $profesores ->delete();
-        return redirect()->route('admin.category.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('profesor.index')->with('datos','Registro eliminado correctamente!');
 
     }
 }

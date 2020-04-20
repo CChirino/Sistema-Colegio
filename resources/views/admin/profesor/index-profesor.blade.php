@@ -34,6 +34,7 @@
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+                <th>Foto</th>
                 <th>DNI</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
@@ -47,6 +48,9 @@
         <tbody>
             @foreach($profesores as $prf)
             <tr>
+                <td>
+                    <img src="{{ Storage::url($prf->foto) }}" alt="" srcset="" width="150" >
+                </td>
                 <td>{{$prf->dni}}</td>
                 <td>{{$prf->nombre}}</td>
                 <td>{{$prf->apellido}}</td>

@@ -37,10 +37,16 @@
 <div class="content-error">
     <div class="hpanel">
         <div class="panel-body">
-        <form action="{{route('profesor.update',$profesores->id)}}" method="POST" >
+        <form action="{{route('profesor.update',$profesores->id)}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 @method('put')
                 <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label>Foto de Perfil</label> <br>
+                    <img src="{{Storage::url($profesores->foto)}}" alt="" width="300px" class="mb-2" >
+                    <input id="foto" type="file" class="form-control" name="foto" value="{{$profesores->foto}}"> <br>
+    
+                    </div>
                     <div class="form-group col-lg-12">
                         <label>DNI</label>
                         <input type="number" id="dni"  class="form-control" name="dni" value="{{$profesores->dni}}" disabled >

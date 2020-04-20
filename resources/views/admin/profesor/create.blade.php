@@ -35,7 +35,7 @@
 <div class="content-error">
     <div class="hpanel">
         <div class="panel-body">
-            <form method="POST" action="{{ route('profesor.store') }}" id="loginForm">
+            <form method="POST" action="{{ route('profesor.store') }}" id="loginForm" enctype="multipart/form-data" >
                 @csrf
                 <div class="row">
                     <div class="form-group col-lg-12">
@@ -114,6 +114,15 @@
                         <label>Repetir Correo Electronico</label>
                         <input id="email_verified_at" type="email" class="form-control @error('email_verified_at') is-invalid @enderror" name="email_verified_at" value="{{ old('email_verified_at') }}" required autocomplete="email">
                         @error('email_verified_at')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Foto de Perfil</label>
+                        <input id="foto" type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') }}">
+                        @error('foto')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

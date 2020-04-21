@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class ProfesorController extends Controller
+class ColegioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,12 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesores = DB::table('users')
+        $colegio = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
-                    ->where('role_id','=',3)
+                    ->where('role_id','=',2)
                     ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.foto')
                     ->paginate(7);
-        return view('admin.profesor.index-profesor', compact('profesores'));
+        return view('admin.colegio.index', compact('colegio'));
     }
 
     /**
@@ -33,8 +33,8 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        return view('admin.profesor.create');
-
+        return view('admin.colegio.create');
+        
     }
 
     /**
@@ -56,7 +56,7 @@ class ProfesorController extends Controller
             'foto'              => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
         ]);
 
-        $role = Role::find(3); //Rol Profesor
+        $role = Role::find(2); //Rol colegio
         $role->users()->create([
             'dni'               => $request->dni,
             'nombre'            => $request->nombre,
@@ -71,7 +71,7 @@ class ProfesorController extends Controller
             $request->file('foto')->store('public');
         }
         // return back()->with('success', '¡Usuario creado con éxito!');
-        return redirect()->route('profesor.index');        
+        return redirect()->route('colegio.index');      
     }
 
     /**
@@ -82,8 +82,8 @@ class ProfesorController extends Controller
      */
     public function show($id)
     {
-        $profesores = User::find($id);
-        return view('admin.profesor.show', compact('profesores'));
+        $colegio = User::find($id);
+        return view('admin.colegio.show', compact('colegio'));
     }
 
     /**
@@ -94,9 +94,8 @@ class ProfesorController extends Controller
      */
     public function edit($id)
     {
-        $profesores = User::find($id);
-        return view('admin.profesor.edit', compact('profesores'));
-    
+        $colegio = User::find($id);
+        return view('admin.colegio.edit', compact('colegio'));
     }
 
     /**
@@ -107,14 +106,14 @@ class ProfesorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
-        $profesores = request()->except(['_token','_method','foto']);
-        User::where('id', '=', $id)->update($profesores);
+    {
+        $colegio = request()->except(['_token','_method','foto']);
+        User::where('id', '=', $id)->update($colegio);
         if($request->hasFile('foto')){
             $request->file('foto')->store('public');
         }
-        // $profesores = User::find($id);
-        return redirect()->route('profesor.index')->with('datos','Registro actualizado correctamente!');
+        // $colegio = User::find($id);
+        return redirect()->route('colegio.index')->with('datos','Registro actualizado correctamente!');
     }
 
     /**
@@ -125,9 +124,8 @@ class ProfesorController extends Controller
      */
     public function destroy($id)
     {
-        $profesores = User::find($id);
-        $profesores ->delete();
-        return redirect()->route('profesor.index')->with('datos','Registro eliminado correctamente!');
-
+        $colegio = User::find($id);
+        $colegio ->delete();
+        return redirect()->route('colegio.index')->with('datos','Registro eliminado correctamente!');
     }
 }

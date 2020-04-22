@@ -41,6 +41,10 @@
                 @csrf
                 @method('put')
                 <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label>Foto de Perfil</label> <br>
+                    <img src="{{ asset('storage/'.$profesores->image) }}" alt="" width="300px" class="mb-2" >    
+                    </div>
                     <div class="form-group col-lg-12">
                         <label>DNI</label>
                         <input type="number" id="dni"  class="form-control" name="dni" value="{{$profesores->dni}}" disabled>
@@ -68,7 +72,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit"  class="btn btn-success loginbtn"> <a href="{{ route('profesor.index')}}"> Regresar</a> </button>
+                    <a href="{{ route('profesor.index')}}" class="btn btn-success loginbtn"> Regresar</a>
                 </div>
             </form>
         </div>

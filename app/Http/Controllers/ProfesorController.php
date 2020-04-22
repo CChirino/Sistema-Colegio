@@ -8,6 +8,7 @@ use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Image;
 
 class ProfesorController extends Controller
 {
@@ -21,7 +22,7 @@ class ProfesorController extends Controller
         $profesores = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
                     ->where('role_id','=',3)
-                    ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.foto')
+                    ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(7);
         return view('admin.profesor.index-profesor', compact('profesores'));
     }
@@ -53,24 +54,36 @@ class ProfesorController extends Controller
             'fecha_nacimiento'  => ['required', 'date'],
             'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'          => ['required', 'string', 'min:8', 'confirmed'],
-            'foto'              => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
+            'image'              => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
         ]);
 
         $role = Role::find(3); //Rol Profesor
-        $role->users()->create([
-            'dni'               => $request->dni,
-            'nombre'            => $request->nombre,
-            'apellido'          => $request->apellido,
-            'direccion'         => $request->direccion,
-            'fecha_nacimiento'  => $request->fecha_nacimiento,
-            'email'             => $request->email,
-            'password'          => Hash::make($request->password),
-            'foto'             => $request->foto,
-        ]);
-        if($request->hasFile('foto')){
-            $request->file('foto')->store('public');
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $role->users()->create([
+                'dni'               => $request->dni,
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                'email'             => $request->email,
+                'password'          => Hash::make($request->password),
+                'image'             => $request->image->storeAs('images',$filename,'public'),
+            ]);
+            
         }
-        // return back()->with('success', '¡Usuario creado con éxito!');
+
+        // if ($request->hasfile('image')) {
+        //     $image = $request->file('image');
+        //     $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $location = storage_path('app/public/images/') . $filename;
+                
+        //     Image::make($image)->save($location);
+    
+        //     $role->image = $filename;
+        //     $role->save();
+        //   }
+        // // return back()->with('success', '¡Usuario creado con éxito!');
         return redirect()->route('profesor.index');        
     }
 
@@ -108,12 +121,22 @@ class ProfesorController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $profesores = request()->except(['_token','_method','foto']);
-        User::where('id', '=', $id)->update($profesores);
-        if($request->hasFile('foto')){
-            $request->file('foto')->store('public');
+        $profesores = User::find($id);
+        // $profesores = request()->except(['_token','_method']);
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $profesores->update([
+                // 'dni'               => $request->dni,
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                // 'email'             => $request->email,
+                'password'          => Hash::make($request->password),
+                'image'             => $request->image->storeAs('images',$filename,'public'),
+                ]);
         }
-        // $profesores = User::find($id);
+        // User::where('id', '=', $id)->update($profesores);
         return redirect()->route('profesor.index')->with('datos','Registro actualizado correctamente!');
     }
 

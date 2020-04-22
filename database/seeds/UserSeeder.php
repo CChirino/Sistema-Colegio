@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'fecha_nacimiento'  => '1997-03-14',
             'email'             => 'Critijo@gmail.com',
             'password'          => Hash::make('123456'),
-            'foto'              => 'EJemplo'
+            'image'              => 'default.jpg'
         ]);
     }
 }

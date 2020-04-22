@@ -121,8 +121,8 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label>Foto de Perfil</label>
-                        <input id="foto" type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') }}">
-                        @error('foto')
+                        <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
+                        @error('image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

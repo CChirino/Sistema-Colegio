@@ -49,7 +49,7 @@
             @foreach($profesores as $prf)
             <tr>
                 <td>
-                    <img src="{{ Storage::url($prf->foto) }}" alt="" srcset="" width="150" >
+                    <img src="{{ asset('storage/'.$prf->image) }}" alt="" srcset="" width="150" >
                 </td>
                 <td>{{$prf->dni}}</td>
                 <td>{{$prf->nombre}}</td>

@@ -30,6 +30,10 @@ class RolSeeder extends Seeder
         'full-access' => 'no'
     ]);
     Role::create([
+        'name' => 'Coordinador',
+        'full-access' => 'no'
+    ]);
+    Role::create([
         'name' => 'Guest',
         'full-access' => 'no'
     ]);

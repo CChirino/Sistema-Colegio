@@ -42,9 +42,9 @@
                 @method('put')
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <label>Foto de Perfil</label> <br>
-                    <img src="{{Storage::url($colegio->foto)}}" alt="" width="300px" class="mb-2" >
-                    <input id="foto" type="file" class="form-control" name="foto" value="{{$colegio->foto}}"> <br>
+                            <label>Foto de Perfil</label> <br>
+                        <img src="{{ asset('storage/'.$colegio->image) }}" alt="" width="300px" class="mb-2" >
+                        <input id="image" type="file" class="form-control" name="image" value="{{$colegio->image}}"> <br>
     
                     </div>
                     <div class="form-group col-lg-12">

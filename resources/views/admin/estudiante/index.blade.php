@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcome-heading">
-                                <td><a class="btn btn-success" href="{{ route('estudiante.create') }}"> <i class="fas fa-plus-circle"></i> Crear Profesor</a></td>    
+                                <td><a class="btn btn-success" href="{{ route('estudiante.create') }}"> <i class="fas fa-plus-circle"></i> Crear Estudiante</a></td>    
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -49,7 +49,7 @@
             @foreach($estudiantes as $est)
             <tr>
                 <td>
-                    <img src="{{ Storage::url($est->foto) }}" alt="" srcset="" width="150" >
+                    <img src="{{ asset('storage/'.$est->image) }}" alt="" srcset="" width="150" >
                 </td>
                 <td>{{$est->dni}}</td>
                 <td>{{$est->nombre}}</td>

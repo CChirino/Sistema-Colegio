@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Crear Estudiante')
+@section('titulo', 'Crear Coordinador')
 
 @section('content')
 <div class="breadcome-area">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Estudiante</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Colegio</a> <span class="bread-slash">/</span>
                                 </li>
                                 <li><span class="bread-blod">@yield('titulo')</span>
                                 </li>
@@ -35,7 +35,7 @@
 <div class="content-error">
     <div class="hpanel">
         <div class="panel-body">
-            <form method="POST" action="{{ route('estudiante.store') }}" id="loginForm" enctype="multipart/form-data" >
+            <form method="POST" action="{{ route('coordinador.store') }}" id="loginForm" enctype="multipart/form-data" >
                 @csrf
                 <div class="row">
                     <div class="form-group col-lg-12">

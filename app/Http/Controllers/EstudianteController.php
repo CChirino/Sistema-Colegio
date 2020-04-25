@@ -8,6 +8,7 @@ use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Image;
 
 class EstudianteController extends Controller
 {
@@ -21,7 +22,7 @@ class EstudianteController extends Controller
         $estudiantes = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
                     ->where('role_id','=',4)
-                    ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.foto')
+                    ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(7);
         return view('admin.estudiante.index', compact('estudiantes'));
     }
@@ -52,23 +53,24 @@ class EstudianteController extends Controller
             'fecha_nacimiento'  => ['required', 'date'],
             'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'          => ['required', 'string', 'min:8', 'confirmed'],
-            'foto'              => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
+            'image'             => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
         ]);
 
-        $role = Role::find(4); //Rol Profesor
-        $role->users()->create([
-            'dni'               => $request->dni,
-            'nombre'            => $request->nombre,
-            'apellido'          => $request->apellido,
-            'direccion'         => $request->direccion,
-            'fecha_nacimiento'  => $request->fecha_nacimiento,
-            'email'             => $request->email,
-            'password'          => Hash::make($request->password),
-            'foto'             => $request->foto,
-        ]);
-        if($request->hasFile('foto')){
-            $request->file('foto')->store('public');
+        $role = Role::find(4); //Rol Estudiante
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $role->users()->create([
+                'dni'               => $request->dni,
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                'email'             => $request->email,
+                'password'          => Hash::make($request->password),
+                'image'             => $request->image->storeAs('images',$filename,'public'),
+            ]);
         }
+            
         // return back()->with('success', '¡Usuario creado con éxito!');
         return redirect()->route('estudiante.index');        
     }
@@ -106,12 +108,20 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $estudiantes = request()->except(['_token','_method','foto']);
-        User::where('id', '=', $id)->update($estudiantes);
-        if($request->hasFile('foto')){
-            $request->file('foto')->store('public');
+        $estudiantes = User::find($id);
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $estudiantes->update([
+                // 'dni'               => $request->dni,
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                // 'email'             => $request->email,
+                'password'          => Hash::make($request->password),
+                'image'             => $request->image->storeAs('images',$filename,'public'),
+                ]);
         }
-        // $profesores = User::find($id);
         return redirect()->route('estudiante.index')->with('datos','Registro actualizado correctamente!');;
     }
 

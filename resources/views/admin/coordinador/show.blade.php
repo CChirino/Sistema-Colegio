@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Ver Estudiante')
+@section('titulo', 'Ver Coordinador')
 
 @section('content')
 <div class="breadcome-area">
@@ -19,11 +19,11 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Estudiantes</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Coordinador</a> <span class="bread-slash">/</span>
                                 </li>
                                 <li><a href="#">@yield('titulo')</a> <span class="bread-slash">/</span>
                                 </li>
-                            <li><span class="bread-blod">{{$estudiantes->nombre}}</span>
+                            <li><span class="bread-blod">{{$coordinador->nombre}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -43,36 +43,36 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label>Foto de Perfil</label> <br>
-                    <img src="{{ asset('storage/'.$estudiantes->image) }}" alt="" width="300px" class="mb-2" >    
+                    <img src="{{ asset('storage/'.$coordinador->image) }}" alt="" width="300px" class="mb-2" >    
                     </div>
                     <div class="form-group col-lg-12">
                         <label>DNI</label>
-                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$estudiantes->dni}}" disabled>
+                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$coordinador->dni}}" disabled>
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$estudiantes->nombre}}" disabled>
+                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$coordinador->nombre}}" disabled>
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Apellido</label>
-                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$estudiantes->apellido}}" disabled>
+                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$coordinador->apellido}}" disabled>
 
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Direccion</label>
-                        <input type="text" id="direccion" class="form-control"  name="direccion" value="{{$estudiantes->direccion}}" disabled>
+                        <input type="text" id="direccion" class="form-control"  name="direccion" value="{{$coordinador->direccion}}" disabled>
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Fecha de Nacimiento </label>
-                        <input  id="fecha_nacimiento" class="form-control" name="fecha_nacimiento" value="{{$estudiantes->fecha_nacimiento}} " disabled>
+                        <input  id="fecha_nacimiento" class="form-control" name="fecha_nacimiento" value="{{$coordinador->fecha_nacimiento}} " disabled>
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Correo Electronico</label>
-                        <input id="email" type="email" class="form-control" name="email" value="{{$estudiantes->email}}" disabled>
+                        <input id="email" type="email" class="form-control" name="email" value="{{$coordinador->email}}" disabled>
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="{{ route('estudiante.index')}}" class="btn btn-success loginbtn"> Regresar</a>
+                    <a href="{{ route('coordinador.index')}}" class="btn btn-success loginbtn"> Regresar</a>
                 </div>
             </form>
         </div>

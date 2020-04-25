@@ -8,9 +8,8 @@ use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Image;
 
-class ColegioController extends Controller
+class CoordinacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +18,12 @@ class ColegioController extends Controller
      */
     public function index()
     {
-        $colegio = DB::table('users')
-                    ->join('role_user','users.id', '=','role_user.user_id')
-                    ->where('role_id','=',2)
-                    ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
-                    ->paginate(7);
-        return view('admin.colegio.index', compact('colegio'));
+        $coordinador = DB::table('users')
+                ->join('role_user','users.id', '=','role_user.user_id')
+                ->where('role_id','=',5)
+                ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
+                ->paginate(7);
+        return view('admin.coordinador.index', compact('coordinador'));
     }
 
     /**
@@ -34,8 +33,7 @@ class ColegioController extends Controller
      */
     public function create()
     {
-        return view('admin.colegio.create');
-        
+        return view('admin.coordinador.create');
     }
 
     /**
@@ -56,7 +54,7 @@ class ColegioController extends Controller
             'password'          => ['required', 'string', 'min:8', 'confirmed'],
             'image'             => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
         ]);
-        $role = Role::find(2); //Rol Profesor
+        $role = Role::find(5); //Rol Profesor
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
             $role->users()->create([
@@ -72,7 +70,7 @@ class ColegioController extends Controller
             
         }
 
-        return redirect()->route('colegio.index');      
+        return redirect()->route('coordinador.index');      
     }
 
     /**
@@ -83,8 +81,8 @@ class ColegioController extends Controller
      */
     public function show($id)
     {
-        $colegio = User::find($id);
-        return view('admin.colegio.show', compact('colegio'));
+        $coordinador = User::find($id);
+        return view('admin.coordinador.show', compact('coordinador'));
     }
 
     /**
@@ -95,8 +93,8 @@ class ColegioController extends Controller
      */
     public function edit($id)
     {
-        $colegio = User::find($id);
-        return view('admin.colegio.edit', compact('colegio'));
+        $coordinador = User::find($id);
+        return view('admin.coordinador.edit', compact('coordinador'));
     }
 
     /**
@@ -108,11 +106,11 @@ class ColegioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $colegio = User::find($id);
+        $coordinador = User::find($id);
         // $profesores = request()->except(['_token','_method']);
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
-            $colegio->update([
+            $coordinador->update([
                 // 'dni'               => $request->dni,
                 'nombre'            => $request->nombre,
                 'apellido'          => $request->apellido,
@@ -123,7 +121,7 @@ class ColegioController extends Controller
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
-        return redirect()->route('colegio.index')->with('datos','Registro actualizado correctamente!');
+        return redirect()->route('coordinador.index')->with('datos','Registro actualizado correctamente!');
     }
 
     /**
@@ -134,8 +132,8 @@ class ColegioController extends Controller
      */
     public function destroy($id)
     {
-        $colegio = User::find($id);
-        $colegio ->delete();
-        return redirect()->route('colegio.index')->with('datos','Registro eliminado correctamente!');
+        $coordinador = User::find($id);
+        $coordinador ->delete();
+        return redirect()->route('coordinador.index')->with('datos','Registro eliminado correctamente!');
     }
 }

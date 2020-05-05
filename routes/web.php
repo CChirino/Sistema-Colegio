@@ -33,6 +33,8 @@ Route::get('/admin/profesor', function () {
 });
 
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -41,6 +43,7 @@ Route::resource('profesor', 'ProfesorController');
 Route::resource('estudiante', 'EstudianteController');
 Route::resource('colegio', 'ColegioController');
 Route::resource('coordinador', 'CoordinacionController');
+Route::resource('materia', 'MateriaController');
 
 
 

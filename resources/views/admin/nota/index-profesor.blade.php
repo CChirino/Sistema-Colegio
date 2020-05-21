@@ -57,8 +57,8 @@
                 <td>{{$prf->direccion}}</td>
                 <td>{{$prf->fecha_nacimiento}}</td>
                 <td>{{$prf->email}}</td>
-                <td><a class="btn btn-info" href="{{ route('profesor.show',$prf->id) }}" > <i class="far fa-eye"></i> Ver</a></td>
-                <td><a class="btn btn-warning" href="{{ route('profesor.edit',$prf->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
+                <td><a class="btn btn-info" href="{{ route('profesor.show',$prf->id) }}"" > <i class="far fa-eye"></i> Ver</a></td>
+                <td><a class="btn btn-warning" href="{{ route('profesor.edit',$prf->id) }}""> <i class="far fa-edit"></i> Editar</a></td>
                 <td>
                 <form action="{{ route('profesor.destroy',$prf->id) }}" method="post">
                     @csrf

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Lista de Profesores')
+@section('titulo', 'Lista de Periodos')
 
 @section('content')
 <div class="breadcome-area">
@@ -11,12 +11,12 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcome-heading">
-                                <td><a class="btn btn-success" href="{{ route('profesor.create') }}"> <i class="fas fa-plus-circle"></i> Crear Profesor</a></td>    
+                                <td><a class="btn btn-success" href="{{ route('periodos.create') }}"> <i class="fas fa-plus-circle"></i> Crear Periodo</a></td>    
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Profesores</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Periodos</a> <span class="bread-slash">/</span>
                                 </li>
                                 <li><span class="bread-blod">@yield('titulo')</span>
                                 </li>
@@ -34,33 +34,23 @@
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Foto</th>
-                <th>DNI</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Direccion</th>
-                <th>Fecha de Nacimiento</th>
-                <th>Email</th>
+                <th>Nombre de Periodo</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
                 <th colspan="3">Transacciones</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach($profesores as $prf)
+            @foreach($periodo as $per)
             <tr>
+                <td>{{$per->nombre_periodo}}</td>
+                <td>{{$per->fecha_inicio}}</td>
+                <td>{{$per->fecha_fin}}</td>
+                <td><a class="btn btn-info" href="{{ route('periodos.show',$per->id) }}" > <i class="far fa-eye"></i> Ver</a></td>
+                <td><a class="btn btn-warning" href="{{ route('periodos.edit',$per->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                 <td>
-                    <img src="{{ asset('storage/'.$prf->image) }}" alt="" srcset="" width="150" >
-                </td>
-                <td>{{$prf->dni}}</td>
-                <td>{{$prf->nombre}}</td>
-                <td>{{$prf->apellido}}</td>
-                <td>{{$prf->direccion}}</td>
-                <td>{{$prf->fecha_nacimiento}}</td>
-                <td>{{$prf->email}}</td>
-                <td><a class="btn btn-info" href="{{ route('profesor.show',$prf->id) }}" > <i class="far fa-eye"></i> Ver</a></td>
-                <td><a class="btn btn-warning" href="{{ route('profesor.edit',$prf->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
-                <td>
-                <form action="{{ route('profesor.destroy',$prf->id) }}" method="post">
+                <form action="{{ route('periodos.destroy',$per->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
@@ -74,7 +64,7 @@
         </tbody>
     </table>
     <div>
-        {{$profesores->links()}} 
+        {{$periodo->links()}} 
     </div>
 </div>
 @endsection

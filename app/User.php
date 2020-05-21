@@ -51,4 +51,7 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany('App\Role')->withTimesTamps();
     }
+    public function materias(){
+        return $this->hasMany('App\Materia','user_id')->withTimesTamps();
+    }
 }

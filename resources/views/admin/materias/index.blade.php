@@ -49,6 +49,7 @@
                 <td>{{$mat->descripcion_materia}}</td>
                 <td>{{$mat->pensum_nombre}}</td>
                 <td>{{$mat->nombre_periodo}}</td>
+            
                 <td><a class="btn btn-info" href="{{ route('materias.show',$mat->id) }}" > <i class="far fa-eye"></i> Ver</a></td>
                 <td><a class="btn btn-warning" href="{{ route('materias.edit',$mat->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                 <td>

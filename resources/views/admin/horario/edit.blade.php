@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Ver Profesor')
+@section('titulo', 'Ver Horario')
 
 @section('content')
 <div class="breadcome-area">
@@ -19,11 +19,11 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Profesores</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Horarios</a> <span class="bread-slash">/</span>
                                 </li>
                                 <li><a href="#">@yield('titulo')</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">{{$profesores->nombre}}</span>
+                                <li><span class="bread-blod">{{$horarios->nombre}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -37,40 +37,54 @@
 <div class="content-error">
     <div class="hpanel">
         <div class="panel-body">
-        <form action="{{route('profesor.update',$profesores->id)}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('horarios.update',$horarios->id)}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 @method('put')
                 <div class="row">
-                    <div class="form-group col-lg-6">
-                        <label>Foto de Perfil</label> <br>
-                    <img src="{{ asset('storage/'.$profesores->image) }}" alt="" width="300px" class="mb-2" >
-                    <input id="image" type="file" class="form-control" name="image" value="{{$profesores->image}}"> <br>
-    
+                    <div class="form-group col-lg-12">
+                        <label for="">Selecciona una Dia </label>
+                        <select class="form-control" id="dia" name="dia"  >
+                            <option>{{$horarios->dia}}</option> 
+                            <option>Martes</option>  
+                            <option>Miercoles</option>  
+                            <option>Jueves</option>  
+                            <option>Viernes</option>   
+                        </select>
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>DNI</label>
-                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$profesores->dni}}" disabled >
+                        <label for="">Seleccione un Horario </label>
+                        <select class="form-control" id="horario" name="horario" >
+                            <option>{{$horarios->horario}}</option>  
+                            <option>8:30 AM A 10:00 AM</option>  
+                            <option>11:00 AM A 12:00 AM</option>  
+                            <option>12:00 AM A 1:30 PM</option>  
+                        </select>
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$profesores->nombre}}"">
+                        <label for="">Seleccione un Aula </label>
+                        <select class="form-control" id="aula" name="aula" >
+                            <option>{{$horarios->aula}}</option>  
+                            <option>2</option>  
+                            <option>3</option>  
+                            <option>4</option>  
+                        </select>
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Apellido</label>
-                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$profesores->apellido}}"">
+                        <label>Cupos</label>
+                        <input type="number" id="cupos" class="form-control"  name="cupos" value="{{$horarios->cupos}}" >
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label for="">Seleccione una materia </label>
+                        <select class="form-control" id="horario_id" name="horario_id" >
+                            <option>Selecciona una Materia</option>
+                            @foreach ($materias as $mat)
 
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Direccion</label>
-                        <input type="text" id="direccion" class="form-control"  name="direccion" value="{{$profesores->direccion}}" >
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Fecha de Nacimiento </label>
-                        <input  id="fecha_nacimiento" class="form-control" name="fecha_nacimiento" value="{{$profesores->fecha_nacimiento}}">
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Correo Electronico</label>
-                        <input id="email" type="email" class="form-control" name="email" value="{{$profesores->email}}" disabled>
+                            <option value="{{ $mat->id }}"> 
+                                {{ $mat ->nombre_materia}}                        
+                            </option>
+                        
+                          @endforeach  
+                        </select>
                     </div>
                 </div>
                 <div class="text-center">

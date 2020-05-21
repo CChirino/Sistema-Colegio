@@ -43,7 +43,7 @@ Route::resource('colegio', 'ColegioController');
 Route::resource('coordinador', 'CoordinacionController');
 Route::resource('materias', 'MateriaController');
 Route::resource('periodos', 'PeriodoController');
-Route::resource('asignar-materia', 'PeriodoController');
+Route::resource('horarios', 'HorarioController');
 
 
 

@@ -74,6 +74,20 @@
                           @endforeach    
                         </select>
                     </div>
+                    <div class="col-lg-6"></div>
+                    <div class="form-group col-lg-6">
+                        <label for="">Selecciona un Profesor</label>
+                        <select class="form-control" id="role_user_id" name="role_user_id" disabled>
+                            
+                            @foreach ($profesores as $prof)
+
+                            <option value="{{ $prof->id }}"> 
+                                {{ $prof->nombre}}                        
+                            </option>
+                        
+                          @endforeach    
+                        </select>
+                    </div>
                 </div>
                 <div class="text-center">
                     <a href="{{ route('materias.index')}}" class="btn btn-success loginbtn"> Regresar</a>

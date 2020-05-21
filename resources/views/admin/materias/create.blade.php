@@ -84,34 +84,6 @@
                           @endforeach    
                         </select>
                     </div>
-                    {{-- <div class="form-group col-lg-6">
-                        <label for="">Selecciona un usuario</label>
-                        <select class="form-control" id="user_id" name="user_id">
-                            <option>Selecciona un usuario</option>
-                            
-                            @foreach ($user as $u)
-
-                            <option value="{{ $u->id }}"> 
-                                {{ $u->nombre}}                        
-                            </option>
-                        
-                          @endforeach    
-                        </select>
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label for="">Selecciona un rol</label>
-                        <select class="form-control" id="role_id" name="role_id">
-                            <option>Selecciona un rol</option>
-                            
-                            @foreach ($role as $rol)
-
-                            <option value="{{ $rol->id }}"> 
-                                {{ $rol->name}}                        
-                            </option>
-                        
-                          @endforeach    
-                        </select>
-                    </div> --}}
                     <div class="form-group col-lg-6">
                         <label for="">Selecciona un Profesor</label>
                         <select class="form-control" id="role_user_id" name="role_user_id" >

@@ -57,10 +57,11 @@ class MateriaController extends Controller
             'descripcion_materia'               => $request->get('descripcion_materia'),
             'pensum_id'                         => $request->get('pensum_id'),
             'periodo_id'                        => $request->get('periodo_id'),
-            'role_user_id'                        => $request->get('role_user_id'),
-
+            'role_user_id'                      => $request->get('role_user_id'),
         ]);
         $materias->save();
+        return redirect()->route('materias.index');
+
     }
 
     /**
@@ -74,7 +75,8 @@ class MateriaController extends Controller
         $materias = Materia::find($id);
         $pensum = Pensum::get();
         $periodo = Periodo::get();
-        return view('admin.materias.show', compact('materias','pensum','periodo'));
+        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 3');
+        return view('admin.materias.show', compact('materias','pensum','periodo','profesores'));
     }
 
     /**
@@ -88,7 +90,8 @@ class MateriaController extends Controller
         $materias = Materia::find($id);
         $pensum = Pensum::get();
         $periodo = Periodo::get();
-        return view('admin.materias.edit',compact('materias', 'pensum','periodo'));
+        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 3');
+        return view('admin.materias.edit',compact('materias', 'pensum','periodo','profesores'));
     }
 
     /**
@@ -100,7 +103,7 @@ class MateriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $materias = Materia::find($id);
+        $materias = Materia::find($id);
         $request->validate([
             'nombre_materia'=>'required',
             'descripcion_materia'=>'required'
@@ -110,9 +113,12 @@ class MateriaController extends Controller
             'descripcion_materia'               => $request->get('descripcion_materia'),
             'pensum_id'                         => $request->get('pensum_id'),
             'periodo_id'                         => $request->get('periodo_id'),
+            'role_user_id'                        => $request->get('role_user_id'),
+
             ]);
         $materias->save();
-
+        
+        return redirect()->route('materias.index');
     }
 
     /**

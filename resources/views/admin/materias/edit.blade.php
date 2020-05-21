@@ -79,6 +79,21 @@
                         </select>
                     </div>
                     <div class="form-group col-lg-6" ></div>
+                    <div class="form-group col-lg-6">
+                        <label for="">Selecciona un profesor</label>
+                        <select class="form-control" id="role_user_id" name="role_user_id">
+                            {{-- <option>Selecciona un periodo</option> --}}
+                            
+                            @foreach ($profesores as $prof)
+
+                            <option value="{{ $prof->id }}"> 
+                                {{ $prof ->nombre}}                        
+                            </option>
+                        
+                          @endforeach    
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6" ></div>
                 <div class="text-center pt-3 pb-3">
                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>
                     <button class="btn btn-default">Cancelar</button>

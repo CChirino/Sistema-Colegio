@@ -35,4 +35,7 @@ class Materia extends Model
     {
         return $this->belongsTo('App\Role');
     }
+    public function horarios(){
+        return $this->hasMany('App\Horario','horario_id')->withTimesTamps();
+    }
 }

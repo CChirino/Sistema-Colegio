@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Materia;
 use App\Periodo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+
 
 class PeriodoController extends Controller
 {
@@ -16,6 +18,7 @@ class PeriodoController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','periodos.index');
         $periodo = Periodo::all();        
         $periodo = Periodo::paginate(7);
         return view('admin.periodo.index', compact('periodo'));
@@ -28,6 +31,7 @@ class PeriodoController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','periodos.index');
         return view('admin.periodo.create');
 
     }
@@ -62,6 +66,7 @@ class PeriodoController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','periodos.show');
         $periodo = Periodo::find($id);
         return view('admin.periodo.show', compact('periodo'));
     }
@@ -74,6 +79,7 @@ class PeriodoController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','periodos.edit');
         $periodo = Periodo::find($id);
         return view('admin.periodo.edit',compact('periodo'));
     }
@@ -108,6 +114,7 @@ class PeriodoController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess','periodos.destroy');
         $periodo = Periodo::find($id);
         $periodo ->delete();
         return redirect()->route('periodos.index')->with('datos','Registro eliminado correctamente!');

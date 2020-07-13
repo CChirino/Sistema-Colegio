@@ -39,7 +39,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Direccion</th>
-                <th>Fecha de Nacimiento</th>
+                {{-- <th>Fecha de Nacimiento</th> --}}
                 <th>Email</th>
                 <th colspan="3">Transacciones</th>
 
@@ -49,16 +49,16 @@
             @foreach($estudiantes as $est)
             <tr>
                 <td>
-                    <img src="{{ asset('storage/'.$est->image) }}" alt="" srcset="" width="150" >
+                    <img src="{{ asset('storage/'.$est->image) }}" alt="" srcset="" width="150" height="150" >
                 </td>
                 <td>{{$est->dni}}</td>
                 <td>{{$est->nombre}}</td>
                 <td>{{$est->apellido}}</td>
                 <td>{{$est->direccion}}</td>
-                <td>{{$est->fecha_nacimiento}}</td>
+                {{-- <td>{{$est->fecha_nacimiento}}</td> --}}
                 <td>{{$est->email}}</td>
-                <td><a class="btn btn-info" href="{{ route('estudiante.show',$est->id) }}"" > <i class="far fa-eye"></i> Ver</a></td>
-                <td><a class="btn btn-warning" href="{{ route('estudiante.edit',$est->id) }}""> <i class="far fa-edit"></i> Editar</a></td>
+                <td><a class="btn btn-info" href="{{ route('estudiante.show',$est->id) }}" > <i class="far fa-eye"></i> Ver</a></td>
+                <td><a class="btn btn-warning" href="{{ route('estudiante.edit',$est->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                 <td>
                 <form action="{{ route('estudiante.destroy',$est->id) }}" method="post">
                     @csrf

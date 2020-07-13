@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Materia;
 use App\Horarios;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 
 class HorarioController extends Controller
@@ -17,6 +18,7 @@ class HorarioController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','horarios.index');
         $horarios = DB::table('horarios')
                 ->join('materias','materias.id', '=','horarios.horario_id')
                 ->join('periodos','periodo_id', '=','materias.periodo_id')
@@ -32,6 +34,7 @@ class HorarioController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','horarios.create');
         $materias = Materia::get();
         return view('admin.horario.create',compact('materias'));
     }
@@ -68,6 +71,7 @@ class HorarioController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','horarios.show');
         $horarios = Horarios::find($id);
         $materias = Materia::get();
         return view('admin.horario.show',compact('horarios','materias'));
@@ -81,6 +85,7 @@ class HorarioController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','horarios.edit');
         $horarios = Horarios::find($id);
         $materias = Materia::get();
         return view('admin.horario.edit',compact('horarios','materias'));

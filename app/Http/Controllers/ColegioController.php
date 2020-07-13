@@ -7,8 +7,8 @@ use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Image;
+use Illuminate\Support\Facades\Gate;
+
 
 class ColegioController extends Controller
 {
@@ -19,6 +19,7 @@ class ColegioController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','colegio.index');
         $colegio = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
                     ->where('role_id','=',2)
@@ -34,6 +35,7 @@ class ColegioController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','colegio.create');
         return view('admin.colegio.create');
         
     }
@@ -83,6 +85,7 @@ class ColegioController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','colegio.show');
         $colegio = User::find($id);
         return view('admin.colegio.show', compact('colegio'));
     }
@@ -95,6 +98,7 @@ class ColegioController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','colegio.edit');
         $colegio = User::find($id);
         return view('admin.colegio.edit', compact('colegio'));
     }
@@ -134,6 +138,7 @@ class ColegioController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess','colegio.destroy');
         $colegio = User::find($id);
         $colegio ->delete();
         return redirect()->route('colegio.index')->with('datos','Registro eliminado correctamente!');

@@ -4,7 +4,7 @@
 
 
 @section('content')
-        <div class="breadcome-area">
+        {{-- <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -369,17 +369,121 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+    <div class="container pt-4 pb-4">
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="card-img-user pb-1 pt-1" src="{{asset('storage/'.Auth::user()->image)}}">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h6>{{ auth()->user()->nombre }} {{ auth()->user()->apellido }} </h6>
+                        <p class="card-text">{{ auth()->user()->email }}</p>
+                        <p class="card-text">{{ auth()->user()->direccion }}</p>
+                        <p class="card-text">{{ auth()->user()->fecha_nacimiento }}</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-8">
+                <table class="table pb-1 pt-1">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miercoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">7:00 a 8:30</th>
+                            <td>Matematica</td>
+                            <td>Matematica</td>
+                            <td>Lenguaje</td>
+                            <td>Lenguaje</td>
+                            <td>Historia Universal</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8:30 a 9:30</th>
+                            <td>Matematica</td>
+                            <td>Historia de Venezuela</td>
+                            <td>Lenguaje</td>
+                            <td>Biologia</td>
+                            <td>Historia Universal</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9:30 a 10:30</th>
+                            <td>R</td>
+                            <td>E </td>
+                            <td>C</td>
+                            <td>R</td>
+                            <td>E           O</td>                        
+                        </tr>
+                        <tr>
+                            <th scope="row">10:30 a 11:30</th>
+                            <td>Biologia</td>
+                            <td>Geografia General</td>
+                            <td>Educacion Artistica</td>
+                            <td>Educacion Fisica</td>
+                            <td>Ingles</td>                        
+                        </tr>
+                        <tr>
+                            <th scope="row">11:30 a 12:30</th>
+                            <td>Biologia</td>
+                            <td>Geografia General</td>
+                            <td>Educacion Artistica</td>
+                            <td>Educacion Fisica</td>
+                            <td>Ingles</td>   
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class="footer-copyright-area">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 pt-4 pb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Materias</h5>
+                        <ul>
+                            <li>Matematica</li>
+                            <li>Biologia</li>
+                            <li>Historia de Venezuela</li>
+                            <li>Lenguaje</li>
+                            <li>Educacion Artistica</li>
+                            <li>Educacion Fisica</li>
+                            <li>Ingles</li>
+                            <li>Geografia General</li>
+                        </ul>
+                      </div>
+                </div>
+            </div>
+            <div class="col-sm-4 pt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Notificaciones</h5>
+                        <p class="card-text">Proximamente tendras notificaciones</p>
+                      </div>
+                </div>
+            </div>
+            <div class="col-sm-4 pt-4">
+                <img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="300">
+            </div>
+        </div>
+    </div>
+    {{-- <div class="footer-copyright-area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-copy-right">
-                        <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                        <p>Copyright © 2020. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection

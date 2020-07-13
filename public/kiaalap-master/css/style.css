@@ -304,7 +304,7 @@ body {}
 	margin-left:4px;
 }
 .header-top-menu .navbar-nav>li>a:hover{
-	color: #03a9f4;
+	color: black;
 }
 .header-top-menu .navbar-nav>li .dropdown-menu a{
 	padding: 10px 20px;
@@ -2614,7 +2614,7 @@ li.multipleInput-email {
     border-radius: 2px;
 }
 li.multipleInput-email a{
-    background: #none;
+    background: none;
     color: #fff;
     margin-left: 4px;
     display: inline-block;
@@ -3336,7 +3336,7 @@ td.text-right.mail-date {
     color: #fff;
     padding: 10px 30px;
     border-radius: 3px;
-    background: #006DF0;
+    background: #FDCD33;
     transition: all .4s ease 0s;
 }
 .login-footer a{
@@ -3650,7 +3650,8 @@ div#sparklinehome canvas {
     width: 100% !important;
 }
 .header-top-area {
-    background: #006DF0;
+    background: #373737;
+    color: white;
 }
 .sidebar-nav .metismenu{
 	background: #fff;

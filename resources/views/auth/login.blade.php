@@ -6,21 +6,23 @@
 <div class="error-pagewrap">
     <div class="error-page-int">
         <div class="text-center m-b-md custom-login">
+            <img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="300">
             <h3>Por favor Ingrese a la aplicacion</h3>
         </div>
         <div class="content-error">
             <div class="hpanel">
                 <div class="panel-body">
                     <form  id="loginForm"  method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div class="form-group">
-                            <label class="control-label" for="username">DNI</label>
+                            <label class="control-label" for="username">Cedula</label>
                             <input type="number" id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="00.000.000" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
                                 @error('dni')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror                           
-                             <span class="help-block small">Por favor ingrese el DNI respectivo</span>
+                             <span class="help-block small">Por favor ingrese la respectiva cedula</span>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="password">Contraseña</label>
@@ -38,12 +40,12 @@
                             </span>
                             <p class="help-block small">(Si es una computadora segura)</p>
                         </div>
-                        <button type="submit" class="btn btn-success btn-block loginbtn">Ingresar</button>
-                    <a class="btn btn-default btn-block" href="{{route('register')}}">Registrar</a>
+                        <button type="submit" class="btn btn-warning btn-block loginbtn">Ingresar</button>
+                        <a class="btn btn-warning btn-block" href="{{route('register')}}">Registrar</a>
                     </form>
                     
                 </div>
-                <p class="help-block small"><a href="#"">Olvidaste la contrasena?</a></p>
+            {{-- <p class="help-block small "><a href="{{route('password.request')}}">Olvidaste la contrasena?</a></p> --}}
             </div>
         </div>
     </div>

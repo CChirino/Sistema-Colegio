@@ -38,4 +38,10 @@ class Materia extends Model
     public function horarios(){
         return $this->hasMany('App\Horario','horario_id')->withTimesTamps();
     }
+    public function notas(){
+        return $this->hasMany('App\Notas','notas_id')->withTimesTamps();
+    }
+    public function inscripcions(){
+        return $this->belongsToMany('App\Inscripcion')->withTimesTamps();
+    }
 }

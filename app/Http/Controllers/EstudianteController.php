@@ -7,8 +7,8 @@ use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Image;
+use Illuminate\Support\Facades\Gate;
+
 
 class EstudianteController extends Controller
 {
@@ -19,9 +19,10 @@ class EstudianteController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','estudiantes.index');
         $estudiantes = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
-                    ->where('role_id','=',4)
+                    ->where('role_id','=',3)
                     ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(7);
         return view('admin.estudiante.index', compact('estudiantes'));
@@ -34,6 +35,7 @@ class EstudianteController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','estudiantes.create');
         return view('admin.estudiante.create');
     }
 
@@ -56,7 +58,7 @@ class EstudianteController extends Controller
             'image'             => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
         ]);
 
-        $role = Role::find(4); //Rol Estudiante
+        $role = Role::find(3); //Rol Estudiante
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
             $role->users()->create([
@@ -83,6 +85,7 @@ class EstudianteController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','estudiantes.show');
         $estudiantes = User::find($id);
         return view('admin.estudiante.show', compact('estudiantes'));
     }
@@ -95,6 +98,7 @@ class EstudianteController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','estudiantes.edit');
         $estudiantes = User::find($id);
         return view('admin.estudiante.edit', compact('estudiantes'));
     }
@@ -133,6 +137,7 @@ class EstudianteController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess','estudiantes.destroy');
         $estudiantes = User::find($id);
         $estudiantes ->delete();
         return redirect()->route('estudiante.index')->with('datos','Registro eliminado correctamente!');

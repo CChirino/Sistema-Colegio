@@ -178,7 +178,7 @@ body {}
 .bar-button-pro {
     margin: 13px 0px;
 	font-size:16px;
-	color:#fff;
+	color:black;
 }
 #sidebar .sidebar-header strong {
     display: none;
@@ -297,14 +297,14 @@ body {}
 /*----------------------------------------*/
 .header-top-menu .navbar-nav>li>a{
 	padding: 20px 20px;
-	color: #fff;
+	color: black;
 	font-size:14px;
 }
 .header-top-menu .navbar-nav>li a .angle-down-topmenu{
 	margin-left:4px;
 }
 .header-top-menu .navbar-nav>li>a:hover{
-	color: #03a9f4;
+	color: white;
 }
 .header-top-menu .navbar-nav>li .dropdown-menu a{
 	padding: 10px 20px;
@@ -467,7 +467,7 @@ body {}
 }
 .header-right-info ul.header-right-menu > li > a{
 	display:inline-block;
-	color:#fff;
+	color:black;
 	padding: 0px 0px 0px 20px;
 	font-size:20px;
 	text-decoration:none;
@@ -3336,7 +3336,7 @@ td.text-right.mail-date {
     color: #fff;
     padding: 10px 30px;
     border-radius: 3px;
-    background: #006DF0;
+    background: #FDCD33;
     transition: all .4s ease 0s;
 }
 .login-footer a{
@@ -3606,8 +3606,9 @@ td.text-right.mail-date {
     padding-left: 0px;
 }
 .btn-success.loginbtn {
-    background-color: #006DF0;
-    border-color: #006DF0;
+    background-color: #FDCD33;
+    border-color: #FDCD33;
+    color: black;
 }
 .lock-inner i {
     font-size: 60px;
@@ -3650,7 +3651,7 @@ div#sparklinehome canvas {
     width: 100% !important;
 }
 .header-top-area {
-    background: #006DF0;
+    background: #f6d12c;
 }
 .sidebar-nav .metismenu{
 	background: #fff;
@@ -4718,4 +4719,20 @@ div#sparklinehome canvas {
 .footer-copy-right a{
 	color:#fff;
 	text-decoration:none;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.card-img-user{
+    height: 285px;
+    border-radius: 150px;
 }

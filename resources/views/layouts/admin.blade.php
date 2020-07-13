@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Escuela Virtual - @yield('titulo')</title>
+    <title>Eskuela Virtual - @yield('titulo')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/favicon.ico')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/logo-k-ekuela.png')}}" width="48" height="48 ">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/9afc1391aa.js" crossorigin="anonymous"></script>    
@@ -23,13 +23,13 @@
   <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="index.html"><img class="main-logo" src="{{ asset('asset/img/logo/logo.png')}}" alt="" /></a>
-            <strong><a href="index.html"><img src="{{ asset('asset/img/logo/logosn.png')}}"" alt="" /></a></strong>
+            <a href="index.html"><img class="main-logo" src="{{ asset('asset/img/logo/LogoEscuela.png')}}" alt="" width='200' height="60"    /></a>
+            {{-- <strong><a href="index.html"><img src="{{ asset('asset/img/logo/logosn.png')}}" alt="" /></a></strong> --}}
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
-                    <li class="active">
+                    {{-- <li class="active">
                         <a class="has-arrow" href="index.html">
                                <span class="educate-icon educate-home icon-wrap"></span>
                                <span class="mini-click-non">Education</span>
@@ -44,60 +44,99 @@
                     </li>
                     <li>
                         <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Professors</span></a>
+                        <a class="has-arrow" href="#" aria-expanded="false"><span class="icon-wrap" ><i class="fa fa-user"></i></span> <span class="mini-click-non">Perfil</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="All Professors" href="all-professors.html"><span class="mini-sub-pro">All Professors</span></a></li>
-                            <li><a title="Add Professor" href="add-professor.html"><span class="mini-sub-pro">Add Professor</span></a></li>
-                            <li><a title="Edit Professor" href="edit-professor.html"><span class="mini-sub-pro">Edit Professor</span></a></li>
-                            <li><a title="Professor Profile" href="professor-profile.html"><span class="mini-sub-pro">Professor Profile</span></a></li>
+                            <li><a title="Perfil" href="{{ route('perfil.index')}}"><span class="mini-sub-pro">Mi perfil</span></a></li>
+                            
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
+                        @can('haveaccess', 'estudiante.index')
+                        <a class="has-arrow" href="{{ route('estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Usuarios</span></a>
+                        @endcan
+
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="All Students" href="all-students.html"><span class="mini-sub-pro">All Students</span></a></li>
-                            <li><a title="Add Students" href="add-student.html"><span class="mini-sub-pro">Add Student</span></a></li>
-                            <li><a title="Edit Students" href="edit-student.html"><span class="mini-sub-pro">Edit Student</span></a></li>
-                            <li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li>
+                            @can('haveaccess', 'estudiante.index')
+                            <li><a title="Estudiantes" href="{{ route('estudiante.index')}}"><span class="mini-sub-pro">Estudiantes</span></a></li>
+                            @endcan
+                            @can('haveaccess', 'profesor.index')
+                            <li><a title="Profesores" href="{{ route('profesor.index')}}"><span class="mini-sub-pro">Profesores</span></a></li>
+                            @endcan
+                            @can('haveaccess', 'coordinador.index')
+                            <li><a title="Coordinador" href="{{ route('coordinador.index')}}"><span class="mini-sub-pro">Coodinador </span></a></li>
+                            @endcan
+                            @can('haveaccess', 'colegio.index')
+                            <li><a title="Colegio" href="{{ route('colegio.index')}}"><span class="mini-sub-pro">Colegio</span></a></li>
+                            @endcan
+
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
+                    @can('haveaccess', 'roles.index')
+
+                        <a class="has-arrow" href="{{ route('roles.index')}}" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Roles</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="All Courses" href="all-courses.html"><span class="mini-sub-pro">All Courses</span></a></li>
-                            <li><a title="Add Courses" href="add-course.html"><span class="mini-sub-pro">Add Course</span></a></li>
-                            <li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
+                            <li><a title="Todos los roles" href="{{ route('roles.index')}}"><span class="mini-sub-pro">Todos los Roles</span></a></li>
+                    @endcan
+                    @can('haveaccess', 'roles.create')
+
+                            <li><a title="Crear Rol" href="{{ route('roles.create')}}"><span class="mini-sub-pro">Crear Role</span></a></li>
+                            {{-- <li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li> --}}
+                    @endcan
+                        </ul>
+                    </li>
+                    @can('haveaccess', 'materias.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('materias.index')}}" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Materias</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Todas las materias" href="{{ route('materias.index')}}"><span class="mini-sub-pro">Todas las materias</span></a></li>
+                    @endcan
+                    @can('haveaccess', 'materias.create')
+                            <li><a title="Crear Materia" href="{{ route('materias.create')}}"><span class="mini-sub-pro">Crear Materia</span></a></li>
+                            {{-- <li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
                             <li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
-                            <li><a title="Product Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li>
+                            <li><a title="Product Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li> --}}
+                    @endcan
                         </ul>
                     </li>
+                    
+                    @can('haveaccess', 'notas.index')
                     <li>
-                        <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
+                        <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="All Library" href="library-assets.html"><span class="mini-sub-pro">Library Assets</span></a></li>
-                            <li><a title="Add Library" href="add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li>
-                            <li><a title="Edit Library" href="edit-library-assets.html"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
+                    @endcan
+                    @can('haveaccess', 'notas.index')
+                            <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li> --}}
+                    @endcan
+                    @can('haveaccess', 'notas.create')
+                            <li><a title="Agregar Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li>
+                    @endcan
+                            {{-- {{-- <li><a title="Add Library" href="add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li> --}}
                         </ul>
-                    </li>
+                    </li> 
+                    @can('haveaccess', 'horarios.index')
                     <li>
-                        <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
+                        <a class="has-arrow" href="{{ route('horarios.index')}}" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Horarios</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Departments List</span></a></li>
-                            <li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
-                            <li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li>
+                            <li><a title="Todos los horarios" href="{{ route('horarios.index')}}"><span class="mini-sub-pro">Todos los horarios</span></a></li>\
+                    @endcan
+                    @can('haveaccess', 'horarios.create')
+                            <li><a title="Crear Horario" href="{{ route('horarios.create')}}"><span class="mini-sub-pro">Crear Horario</span></a></li>
+                            {{-- <li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li> --}}
+                    @endcan
                         </ul>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Mailbox</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Inbox" href="mailbox.html"><span class="mini-sub-pro">Inbox</span></a></li>
                             <li><a title="View Mail" href="mailbox-view.html"><span class="mini-sub-pro">View Mail</span></a></li>
                             <li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Compose Mail</span></a></li>
                         </ul>
-                    </li>
-                    <li>
+                    </li> --}}
+                    {{-- <li>
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Interface</span></a>
                         <ul class="submenu-angle interface-mini-nb-dp" aria-expanded="false">
                             <li><a title="Google Map" href="google-map.html"><span class="mini-sub-pro">Google Map</span></a></li>
@@ -109,8 +148,8 @@
                             <li><a title="Preloader" href="preloader.html"><span class="mini-sub-pro">Preloader</span></a></li>
                             <li><a title="Images Cropper" href="images-cropper.html"><span class="mini-sub-pro">Images Cropper</span></a></li>
                         </ul>
-                    </li>
-                    <li>
+                    </li> --}}
+                    {{-- <li>
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap"></span> <span class="mini-click-non">Charts</span></a>
                         <ul class="submenu-angle chart-mini-nb-dp" aria-expanded="false">
                             <li><a title="Bar Charts" href="bar-charts.html"><span class="mini-sub-pro">Bar Charts</span></a></li>
@@ -121,26 +160,29 @@
                             <li><a title="Sparkline Charts" href="sparkline.html"><span class="mini-sub-pro">Sparkline Charts</span></a></li>
                             <li><a title="Peity Charts" href="peity.html"><span class="mini-sub-pro">Peity Charts</span></a></li>
                         </ul>
-                    </li>
+                    </li> --}}
+                    @can('haveaccess', 'inscripciones.create')
                     <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Data Tables</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" href="{{ route('inscripciones.create')}}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Inscripcion </span></a>
+                        {{-- <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Peity Charts" href="static-table.html"><span class="mini-sub-pro">Static Table</span></a></li>
                             <li><a title="Data Table" href="data-table.html"><span class="mini-sub-pro">Data Table</span></a></li>
-                        </ul>
-                    </li>
+                        </ul> --}}
+                    </li>                         
+                    @endcan
+
+                    @can('haveaccess', 'periodos.index')
                     <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Forms Elements</span></a>
+                        <a class="has-arrow" href="{{ route('periodos.index')}}" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Periodo</span></a>
                         <ul class="submenu-angle form-mini-nb-dp" aria-expanded="false">
-                            <li><a title="Basic Form Elements" href="basic-form-element.html"><span class="mini-sub-pro">Bc Form Elements</span></a></li>
-                            <li><a title="Advance Form Elements" href="advance-form-element.html"><span class="mini-sub-pro">Ad Form Elements</span></a></li>
-                            <li><a title="Password Meter" href="password-meter.html"><span class="mini-sub-pro">Password Meter</span></a></li>
-                            <li><a title="Multi Upload" href="multi-upload.html"><span class="mini-sub-pro">Multi Upload</span></a></li>
-                            <li><a title="Text Editor" href="tinymc.html"><span class="mini-sub-pro">Text Editor</span></a></li>
-                            <li><a title="Dual List Box" href="dual-list-box.html"><span class="mini-sub-pro">Dual List Box</span></a></li>
+                            <li><a title="Todos los periodos" href="{{ route('periodos.index')}}"><span class="mini-sub-pro">Todos los periodos</span></a></li>
+                    @endcan
+                    @can('haveaccess', 'periodos.create')
+                            <li><a title="Crear Periodo" href="{{ route('periodos.create')}}"><span class="mini-sub-pro">Crear Periodo</span></a></li>
+                    @endcan
                         </ul>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap"></span> <span class="mini-click-non">App views</span></a>
                         <ul class="submenu-angle app-mini-nb-dp" aria-expanded="false">
                             <li><a title="Notifications" href="notifications.html"><span class="mini-sub-pro">Notifications</span></a></li>
@@ -150,8 +192,8 @@
                             <li><a title="Tabs" href="tabs.html"><span class="mini-sub-pro">Tabs</span></a></li>
                             <li><a title="Accordion" href="accordion.html"><span class="mini-sub-pro">Accordion</span></a></li>
                         </ul>
-                    </li>
-                    <li id="removable">
+                    </li> --}}
+                    {{-- <li id="removable">
                         <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Pages</span></a>
                         <ul class="submenu-angle page-mini-nb-dp" aria-expanded="false">
                             <li><a title="Login" href="login.html"><span class="mini-sub-pro">Login</span></a></li>
@@ -161,7 +203,7 @@
                             <li><a title="404 Page" href="404.html"><span class="mini-sub-pro">404 Page</span></a></li>
                             <li><a title="500 Page" href="500.html"><span class="mini-sub-pro">500 Page</span></a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
         </div>
@@ -173,8 +215,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="logo-pro">
-                    <a href="index.html"><img class="main-logo" src="{{ asset('asset/img/logo/logo.png')}}" alt="" /></a>
+                <div class="logo-pro pt-4 pb-4">
+                    {{-- <a href="index.html"><img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="300"></a> --}}
                 </div>
             </div>
         </div>
@@ -196,13 +238,13 @@
                                 <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                     <div class="header-top-menu tabl-d-n">
                                         <ul class="nav navbar-expand-lg navbar-nav mai-top-nav">
-                                            <li class="nav-item"><a href="#" class="nav-link">Home</a>
+                                            <li class="nav-item"><a href="{{ route('home')}}" class="nav-link">Inicio</a>
                                             </li>
-                                            <li class="nav-item"><a href="#" class="nav-link">About</a>
+                                            {{-- <li class="nav-item"><a href="#" class="nav-link">About</a>
                                             </li>
                                             <li class="nav-item"><a href="#" class="nav-link">Services</a>
-                                            </li>
-                                            <li class="nav-item dropdown res-dis-nn">
+                                            </li> --}}
+                                            {{-- <li class="nav-item dropdown res-dis-nn">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">Project <span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
                                                 <div role="menu" class="dropdown-menu animated zoomIn">
                                                     <a href="#" class="dropdown-item">Documentation</a>
@@ -210,8 +252,8 @@
                                                     <a href="#" class="dropdown-item">Expert FrontEnd</a>
                                                     <a href="#" class="dropdown-item">Contact Support</a>
                                                 </div>
-                                            </li>
-                                            <li class="nav-item"><a href="#" class="nav-link">Support</a>
+                                            </li> --}}
+                                            <li class="nav-item"><a href="#" class="nav-link">Soporte</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -219,7 +261,7 @@
                                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                     <div class="header-right-info">
                                         <ul class="nav navbar-nav mai-top-nav header-right-menu navbar-expand-lg">
-                                            <li class="nav-item dropdown">
+                                            {{-- <li class="nav-item dropdown">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="indicator-ms"></span></a>
                                                 <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
                                                     <div class="message-single-top">
@@ -279,8 +321,8 @@
                                                         <a href="#">View All Messages</a>
                                                     </div>
                                                 </div>
-                                            </li>
-                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
+                                            </li> --}}
+                                            {{-- <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
                                                 <div role="menu" class="notification-author dropdown-menu animated zoomIn">
                                                     <div class="notification-single-top">
                                                         <h1>Notifications</h1>
@@ -339,39 +381,54 @@
                                                         <a href="#">View All Notification</a>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> --}}
+                                            <li class="nav-item" >U.E.P. El Araguaney</li>
                                             <li class="nav-item">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                        <img src="{{ asset('asset/img/product/pro4.jpg')}}" alt="" />
-                                                        {{-- <span class="admin-name">{{ auth()->user()->nombre }} {{ auth()->user()->apellido }}</span> --}}
-                                                        <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
-                                                    </a>
-                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                    <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
-                                                    </li>
-                                                    <li><a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
-                                                    </li>
-                                                    <li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
-                                                    </li>
-                                                    <li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
-                                                    </li>
-                                                    <li><a href="#"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
-                                                    </li>
-                                                </ul>
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link">
+                                                        <img src="{{asset('storage/'.Auth::user()->image)}} " alt="" />
+                                                        <span class="admin-name">{{ auth()->user()->nombre }} </span>
                                             </li>
-                                            <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-menu"></i></a>
+                                            <li class="nav-item"> 
+                                                    <a href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                    {{-- {{ __('') }} --}}
+                                                    <i class="fas fa-sign-out-alt"></i>
+                                                    </a>
+                        
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                        @csrf
+                                                    </form>
+                                            </li>
+                                            {{-- <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-menu"></i></a>
+                                                <div>
 
-                                                <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
-                                                    <ul class="nav nav-tabs custon-set-tab">
+                                                </div> --}}
+                                                {{-- <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn"> --}}
+                                                    {{-- <ul class="nav nav-tabs custon-set-tab">
                                                         <li class="active"><a data-toggle="tab" href="#Notes">Notes</a>
                                                         </li>
                                                         <li><a data-toggle="tab" href="#Projects">Projects</a>
                                                         </li>
                                                         <li><a data-toggle="tab" href="#Settings">Settings</a>
                                                         </li>
-                                                    </ul>
+                                                        <li data-toggle="tab" >
+                                                            {{-- <a class="nav-link">
+                                                                <span class="no-icon">Cerrar Sesion</span>
+                                                            </a> --}}
+                                                            {{-- <a href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
+                                                                {{ __('Cerrar sesión') }}
+                                                            </a>
+                                
+                                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                @csrf
+                                                            </form>
+                                                        </li>
+                                                    </ul> --}} 
 
-                                                    <div class="tab-content custom-bdr-nt">
+                                                    {{-- <div class="tab-content custom-bdr-nt">
                                                         <div id="Notes" class="tab-pane fade in active">
                                                             <div class="notes-area-wrap">
                                                                 <div class="note-heading-indicate">
@@ -793,8 +850,8 @@
 
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                    </div> --}}
+                                                {{-- </div> --}}
                                             </li>
                                         </ul>
                                     </div>

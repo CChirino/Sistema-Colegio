@@ -1,0 +1,25 @@
+SELECT * FROM	notas
+JOIN materias ON notas.notas_id = materias.id
+JOIN inscripcion_materia ON notas.estudiante_id = inscripcion_materia.id
+JOIN role_user ON materias.role_user_id = role_user.id
+JOIN users ON role_user.user_id = users.id
+WHERE users.id = 2;
+
+SELECT * FROM `users`
+JOIN role_user ON users.id = role_user.id
+
+SELECT * FROM `users`
+JOIN role_user ON users.id = role_user.id
+JOIN materias  ON role_user.id = materias.role_user_id
+
+// Profesor
+SELECT * FROM `users`
+JOIN role_user ON users.id = role_user.id
+JOIN materias  ON role_user.id = materias.role_user_id
+JOIN inscripcion_materia ON materias.id =inscripcion_materia.materia_id
+JOIN inscripcions ON inscripcion_materia.inscripcion_id = inscripcions.id
+
+// Estudiantes
+SELECT * FROM `inscripcion_materia` 
+JOIN inscripcions ON inscripcion_materia.inscripcion_id = inscripcions.id
+

@@ -13,22 +13,22 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-    Role::create([
-        'name' => 'Admin',
-        'full-access' => 'yes'
-     ]);
+    // Role::create([
+    //     'name' => 'Admin',
+    //     'full-access' => 'yes'
+    //  ]);
     Role::create([
         'name' => 'Colegio',
         'full-access' => 'no'
     ]);
-    Role::create([
-        'name' => 'Profesor',
-        'full-access' => 'no'
-    ]);
-    Role::create([
-        'name' => 'Estudiante',
-        'full-access' => 'no'
-    ]);
+    // Role::create([
+    //     'name' => 'Profesor',
+    //     'full-access' => 'no'
+    // ]);
+    // Role::create([
+    //     'name' => 'Estudiante',
+    //     'full-access' => 'no'
+    // ]);
     Role::create([
         'name' => 'Coordinador',
         'full-access' => 'no'

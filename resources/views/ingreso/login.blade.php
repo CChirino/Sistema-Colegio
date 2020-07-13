@@ -13,14 +13,14 @@
                 <div class="panel-body">
                     <form  id="loginForm"  method="POST" action="{{ route('login') }}">
                         <div class="form-group">
-                            <label class="control-label" for="username">DNI</label>
+                            <label class="control-label" for="username">Cedula</label>
                             <input type="number" id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="00.000.000" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
                                 @error('dni')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror                           
-                             <span class="help-block small">Por favor ingrese el DNI respectivo</span>
+                             <span class="help-block small">Por favor ingrese la cedula respectiva</span>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="password">Contraseña</label>

@@ -12,6 +12,9 @@ class Periodo extends Model
         'fecha_fin'
     ];
     public function materias(){
-        return $this->hasMany('App\Pensum','periodo_id')->withTimesTamps();
+        return $this->hasMany('App\Periodo','periodo_id')->withTimesTamps();
+    }
+    public function inscripcions(){
+        return $this->hasMany('App\Periodo','periodo_id')->withTimesTamps();
     }
 }

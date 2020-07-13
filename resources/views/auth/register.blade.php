@@ -6,16 +6,17 @@
 <div class="error-pagewrap">
     <div class="error-page-int">
         <div class="text-center custom-login">
+            <img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="200">
             <h3>Registro</h3>
         </div>
         <div class="content-error">
             <div class="hpanel">
                 <div class="panel-body">
-                    <form method="POST" action="{{ route('register') }}" id="loginForm">
+                    <form method="POST" action="{{ route('register') }}" id="loginForm"  enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="form-group col-lg-12">
-                                <label>DNI</label>
+                                <label>Cedula</label>
                                 <input type="number" id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="00.000.000" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
                                 @error('dni')
                                 <span class="invalid-feedback" role="alert">
@@ -95,17 +96,26 @@
                                 </span>
                                 @enderror
                             </div>
+                            {{-- <div class="form-group col-lg-12">
+                                <label>Foto de Perfil</label>
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div> --}}
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-success loginbtn">Registrar</button>
-                            <button class="btn btn-default">Cancelar</button>
+                        <button class="btn btn-default"><a href="{{route('login')}}"></a> Cancelar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
         <div class="text-center login-footer">
-            <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+            <p>Todos los derechos reservados, Eskuela Virtual </p>
         </div>
     </div>   
 </div>

@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- favicon ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/favicon.ico')}}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/logo-k-ekuela.png')}}" width="48" height="48 ">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('asset/css/font-awesome.min.css')}}">
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">

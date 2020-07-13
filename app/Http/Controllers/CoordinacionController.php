@@ -7,7 +7,7 @@ use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class CoordinacionController extends Controller
 {
@@ -18,6 +18,7 @@ class CoordinacionController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','horarios.index');
         $coordinador = DB::table('users')
                 ->join('role_user','users.id', '=','role_user.user_id')
                 ->where('role_id','=',5)
@@ -33,6 +34,7 @@ class CoordinacionController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','horarios.create');
         return view('admin.coordinador.create');
     }
 
@@ -81,6 +83,7 @@ class CoordinacionController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','horarios.show');
         $coordinador = User::find($id);
         return view('admin.coordinador.show', compact('coordinador'));
     }
@@ -93,6 +96,7 @@ class CoordinacionController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','horarios.edit');
         $coordinador = User::find($id);
         return view('admin.coordinador.edit', compact('coordinador'));
     }
@@ -132,6 +136,7 @@ class CoordinacionController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess','horarios.destroy');
         $coordinador = User::find($id);
         $coordinador ->delete();
         return redirect()->route('coordinador.index')->with('datos','Registro eliminado correctamente!');

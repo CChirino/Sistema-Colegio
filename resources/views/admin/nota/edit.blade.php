@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Ver Profesor')
+@section('titulo', 'Calificaciones')
 
 @section('content')
 <div class="breadcome-area">
@@ -37,42 +37,66 @@
 <div class="content-error">
     <div class="hpanel">
         <div class="panel-body">
-        <form action="{{route('profesor.update',$profesores->id)}}" method="POST" enctype="multipart/form-data" >
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="">Selecciona un periodo</label>
+                        <select class="form-control" id="periodo_id" name="periodo_id">
+                            {{-- <option>Selecciona un periodo</option> --}}
+                            
+                            @foreach ($periodo as $per)
+
+                            <option value="{{ $per->id }}"> 
+                                {{ $per ->nombre_periodo}}                        
+                            </option>
+                        
+                          @endforeach    
+                        </select>
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+        <form action="{{route('notas.update',$profesores->id)}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 @method('put')
-                <div class="row">
-                    <div class="form-group col-lg-6">
-                        <label>Foto de Perfil</label> <br>
-                    <img src="{{ asset('storage/'.$profesores->image) }}" alt="" width="300px" class="mb-2" >
-                    <input id="image" type="file" class="form-control" name="image" value="{{$profesores->image}}"> <br>
-    
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>DNI</label>
-                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$profesores->dni}}" disabled >
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$profesores->nombre}}"">
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Apellido</label>
-                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$profesores->apellido}}"">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Estudiantes</th>
+                            <th>IL-I</th>
+                            <th>IL-G</th>
+                            <th>IL-F</th>
+                            <th>IIL-I</th>
+                            <th>IIL-G</th>
+                            <th>IIL-F</th>
+                            <th>IIIL-I</th>
+                            <th>IIIL-G</th>
+                            <th>IIIL-F</th>                      
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                @foreach ($estudiante as $est)
+                                <td  value="{{ $est->id }}">
+                                    {{ $est->nombre}}                        
+                                </td>
+                            @endforeach      
+                                <td><input type="number" id="IL-I"                  name="IL-I" size="1"></td>
+                                <td><input type="number" id="IL-G"                  name="IL-G" size="1"></td>
+                                <td><input type="number" id="IL-F"                  name="IL-F" size="1"></td>
+                                <td><input type="number" id="IIL-I"                 name="IIL-I" size="1"></td>
+                                <td><input type="number" id="IIL-G"                 name="IIL-G" size="1"></td>
+                                <td><input type="number" id="IIL-F"                 name="IIL-F" size="1"></td>
+                                <td><input type="number" id="IIIL-I"                name="IIIL-I" size="1"></td>
+                                <td><input type="number" id="IIIL-G"                name="IIIL-G" size="1"></td>
+                                <td><input type="number" id="IIIL-F"                name="IIIL-F" size="1"></td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Direccion</label>
-                        <input type="text" id="direccion" class="form-control"  name="direccion" value="{{$profesores->direccion}}" >
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Fecha de Nacimiento </label>
-                        <input  id="fecha_nacimiento" class="form-control" name="fecha_nacimiento" value="{{$profesores->fecha_nacimiento}}">
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label>Correo Electronico</label>
-                        <input id="email" type="email" class="form-control" name="email" value="{{$profesores->email}}" disabled>
-                    </div>
-                </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>
                     <button class="btn btn-default">Cancelar</button>

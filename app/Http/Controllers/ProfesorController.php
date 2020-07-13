@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use Illuminate\Support\Facades\Gate;
+
 
 class ProfesorController extends Controller
 {
@@ -18,10 +20,13 @@ class ProfesorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    
     {
+        Gate::authorize('haveaccess','profesor.index');
+
         $profesores = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
-                    ->where('role_id','=',3)
+                    ->where('role_id','=',2)
                     ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(7);
         return view('admin.profesor.index-profesor', compact('profesores'));
@@ -34,6 +39,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','profesor.create');
         return view('admin.profesor.create');
 
     }
@@ -57,7 +63,7 @@ class ProfesorController extends Controller
             'image'              => ['image', 'mimes:jpg,jpeg,png', 'max:5000' ]
         ]);
 
-        $role = Role::find(3); //Rol Profesor
+        $role = Role::find(2); //Rol Profesor
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
             $role->users()->create([
@@ -95,6 +101,7 @@ class ProfesorController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','profesor.show');
         $profesores = User::find($id);
         return view('admin.profesor.show', compact('profesores'));
     }
@@ -107,6 +114,7 @@ class ProfesorController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','profesor.edit');
         $profesores = User::find($id);
         return view('admin.profesor.edit', compact('profesores'));
     
@@ -148,6 +156,7 @@ class ProfesorController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess','profesor.destroy');
         $profesores = User::find($id);
         $profesores ->delete();
         return redirect()->route('profesor.index')->with('datos','Registro eliminado correctamente!');

@@ -5,15 +5,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-// use Spatie\MediaLibrary\HasMedia\HasMedia;
-// use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use App\Notifications\ResetPassword;
+use App\Traits\UserTrait;
+
 
 class User extends Authenticatable
 {   
     // use hasMedia;
     // use HasMediaTrait;
-    use Notifiable;
-
+    use Notifiable, UserTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -53,5 +53,15 @@ class User extends Authenticatable
     }
     public function materias(){
         return $this->hasMany('App\Materia','user_id')->withTimesTamps();
+    }
+        /**
+     * Send the password reset notification.
+     *
+     * @param string $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 }

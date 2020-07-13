@@ -9,4 +9,7 @@ class Pensum extends Model
     public function materias(){
         return $this->hasMany('App\Pensum','pensum_id')->withTimesTamps();
     }
+    public function inscripcions(){
+        return $this->hasMany('App\Pensum','pensum_id')->withTimesTamps();
+    }
 }

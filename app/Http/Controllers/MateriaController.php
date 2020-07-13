@@ -9,6 +9,8 @@ use App\Periodo;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+
 
 class MateriaController extends Controller
 {
@@ -19,6 +21,7 @@ class MateriaController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','materias.index');
         $materias = DB::table('materias')
                     ->join('pensums','pensums.id', '=','materias.pensum_id')
                     ->join('periodos','periodo_id', '=','materias.periodo_id')
@@ -34,9 +37,10 @@ class MateriaController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','materias.create');
         $pensum = Pensum::get();
         $periodo = Periodo::get();
-        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 3');
+        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 2');
         return view('admin.materias.create',compact('pensum','periodo','profesores'));
     }
 
@@ -72,10 +76,11 @@ class MateriaController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','materias.show');
         $materias = Materia::find($id);
         $pensum = Pensum::get();
         $periodo = Periodo::get();
-        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 3');
+        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 2');
         return view('admin.materias.show', compact('materias','pensum','periodo','profesores'));
     }
 
@@ -87,10 +92,11 @@ class MateriaController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','materias.edit');
         $materias = Materia::find($id);
         $pensum = Pensum::get();
         $periodo = Periodo::get();
-        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 3');
+        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 2');
         return view('admin.materias.edit',compact('materias', 'pensum','periodo','profesores'));
     }
 
@@ -129,6 +135,7 @@ class MateriaController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess','materias.destroy');
         $materias = Materia::find($id);
         $materias ->delete();
         return redirect()->route('materias.index')->with('datos','Registro eliminado correctamente!');

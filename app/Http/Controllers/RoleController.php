@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Role;
 use App\Permission;
+use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
@@ -16,6 +17,8 @@ class RoleController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','roles.index');
+        
         $role = Role::orderBy('id')->paginate(4);
         return view('admin.roles.index', compact('role'));
     }
@@ -27,6 +30,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','roles.create');
         $permiso = Permission::get();
         return view ('admin.roles.create', compact('permiso'));
     }
@@ -58,6 +62,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        Gate::authorize('haveaccess','roles.show');
         $permission_role=[];
 
         foreach($role->permissions as $permission) {
@@ -77,6 +82,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        Gate::authorize('haveaccess','roles.edit');
+
         $permission_role=[];
 
         foreach($role->permissions as $permission) {
@@ -114,6 +121,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        Gate::authorize('haveaccess','roles.destroy');
+
         $role->delete();
 
         return redirect()->route('roles.index');

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\User;
 use App\Role;
 use App\Permission;
+use Illuminate\Support\Facades\Gate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +17,10 @@ use App\Permission;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+// Route::redirect('/', '/login');
 
 Route::get('/registro', function () {
     return view('ingreso.registro');
@@ -32,11 +35,9 @@ Route::get('/admin/profesor', function () {
     return view('admin.profesor.index-profesor');
 });
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('roles', 'RoleController');
 Route::resource('profesor', 'ProfesorController');
 Route::resource('estudiante', 'EstudianteController');
@@ -45,78 +46,10 @@ Route::resource('coordinador', 'CoordinacionController');
 Route::resource('materias', 'MateriaController');
 Route::resource('periodos', 'PeriodoController');
 Route::resource('horarios', 'HorarioController');
+Route::resource('perfil', 'PerfilController');
+Route::resource('notas', 'NotasController');
+Route::resource('inscripciones', 'InscripcionController');
+Route::resource('inscripciones-estudiante', 'InscripcionEstudianteController');
 
 
 
-
-
-
-Route::get('/test', function () {
-    //return    Role::create([
-    //     'name' => 'Admin',
-    //     'full-access' => 'yes'
-    // ]);
-    // return   Role::create([
-    //     'name' => 'Colegio',
-    //     'full-access' => 'no'
-    // ]);
-    // return   Role::create([
-    //     'name' => 'Profesor',
-    //     'full-access' => 'no'
-    // ]);
-    // return   Role::create([
-    //     'name' => 'Estudiante',
-    //     'full-access' => 'no'
-    // ]);
-    // return   Role::create([
-    //     'name' => 'Guest',
-    //     'full-access' => 'no'
-    // ]);
-    // return   Role::create([
-    //     'name' => 'test',
-    //     'full-access' => 'no'
-    // ]);
-    
-    // $user = User::find(1);
-
-    /*
-        en: create new record
-        es: crea un nuevo registro
-    */ 
-    //$user->roles()->attach([1,2,3]);  
-    
-    /*
-        en: delete new record
-        es: delete un nuevo registro
-    */ 
-    
-    //$user->roles()->detach([3]);
-    /*
-        en: removes from the database the roles that are not in the array as well as creates those records that are not in the database.
-        es: elimina de la base de datos los roles que no estén en el array asi como tambien crea aquellos registros que no estén en la base de datos.
-    */ 
-    //$user->roles()->sync([1,2]);
-
-    //return $user->roles;
-
-
-//    return   Permission::create([
-//         'name' => 'Ver estudiantes',
-//         'slug' => 'estudiantes.index',
-//         'description' => 'Este usuario puede ver la lista de estudiantes',
-        
-//     ]);
-    // return   Permission::create([
-    //     'name' => 'Crear estudiantes',
-    //     'slug' => 'estudiantes.create',
-    //     'description' => 'Este usuario puede crear nuevos estudiantes',
-        
-    // ]);
-
-    // $role = Role::find(1);
-
-    // $role->permissions()->sync([1,2]);
-
-    // return $role->permissions;
-
-});

@@ -106,9 +106,7 @@
                     <li>
                         <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                    @endcan
-                    @can('haveaccess', 'notas.index')
-                            <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li> --}}
+                        <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li> --}}
                     @endcan
                     @can('haveaccess', 'notas.create')
                             <li><a title="Agregar Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li>

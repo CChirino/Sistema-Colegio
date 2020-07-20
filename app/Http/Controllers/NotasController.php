@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notas;
 use App\User;
 use App\Materia;
 use App\Periodo;
@@ -54,10 +55,16 @@ class NotasController extends Controller
                     ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
                     ->join('users', 'role_user.user_id', '=', 'users.id')
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-                    ->select('users.*')
+                    ->select('users.*','inscripcion_materia.*')
                     ->where('materias.role_user_id', '=', $profesor )
                     ->get();
-        return view('admin.nota.create',compact('estudiante'));
+        $materias = DB::table('users')
+            ->join('role_user', 'users.id', '=', 'role_user.id')
+            ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
+            ->select('users.*', 'role_user.*', 'materias.*')
+            ->where('materias.role_user_id', '=', $profesor )
+            ->get();
+        return view('admin.nota.create',compact('estudiante','materias'));
     }
 
     /**
@@ -98,10 +105,19 @@ class NotasController extends Controller
      */
     public function edit($id)
     {
+        $profesor = Auth::user()->id;
         Gate::authorize('haveaccess','notas.edit');
         $materias = Materia::find($id);
         $periodo = Periodo::get();
-        return view('admin.nota.edit',compact('materias', 'pensum','periodo'));
+        $estudiante =DB::table('inscripcion_materia')
+            ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
+            ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
+            ->join('users', 'role_user.user_id', '=', 'users.id')
+            ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
+            ->select('users.*')
+            ->where('materias.role_user_id', '=', $profesor )
+            ->get();
+        return view('admin.nota.edit',compact('materias','periodo','estudiante'));
 
     }
 

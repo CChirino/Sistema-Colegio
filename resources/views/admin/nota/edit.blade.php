@@ -23,7 +23,7 @@
                                 </li>
                                 <li><a href="#">@yield('titulo')</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">{{$profesores->nombre}}</span>
+                                <li><span class="bread-blod"></span>
                                 </li>
                             </ul>
                         </div>
@@ -58,7 +58,7 @@
                 <div class="col-sm-4"></div>
             </div>
         </div>
-        <form action="{{route('notas.update',$profesores->id)}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('notas.update',$materias->id)}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 @method('put')
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -77,21 +77,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($estudiante as $est)
+                        <td  value="{{ $est->id }}">
+                            {{ $est->nombre}}                        
+                        </td>
+                        <td><input type="number" id="IL-I"                  name="IL-I" size="1"></td>
+                        <td><input type="number" id="IL-G"                  name="IL-G" size="1"></td>
+                        <td><input type="number" id="IL-F"                  name="IL-F" size="1"></td>
+                        <td><input type="number" id="IIL-I"                 name="IIL-I" size="1"></td>
+                        <td><input type="number" id="IIL-G"                 name="IIL-G" size="1"></td>
+                        <td><input type="number" id="IIL-F"                 name="IIL-F" size="1"></td>
+                        <td><input type="number" id="IIIL-I"                name="IIIL-I" size="1"></td>
+                        <td><input type="number" id="IIIL-G"                name="IIIL-G" size="1"></td>
+                        <td><input type="number" id="IIIL-F"                name="IIIL-F" size="1"></td>
                             <tr>
-                                @foreach ($estudiante as $est)
-                                <td  value="{{ $est->id }}">
-                                    {{ $est->nombre}}                        
-                                </td>
                             @endforeach      
-                                <td><input type="number" id="IL-I"                  name="IL-I" size="1"></td>
-                                <td><input type="number" id="IL-G"                  name="IL-G" size="1"></td>
-                                <td><input type="number" id="IL-F"                  name="IL-F" size="1"></td>
-                                <td><input type="number" id="IIL-I"                 name="IIL-I" size="1"></td>
-                                <td><input type="number" id="IIL-G"                 name="IIL-G" size="1"></td>
-                                <td><input type="number" id="IIL-F"                 name="IIL-F" size="1"></td>
-                                <td><input type="number" id="IIIL-I"                name="IIIL-I" size="1"></td>
-                                <td><input type="number" id="IIIL-G"                name="IIIL-G" size="1"></td>
-                                <td><input type="number" id="IIIL-F"                name="IIIL-F" size="1"></td>
                             </tr>
                     </tbody>
                 </table>

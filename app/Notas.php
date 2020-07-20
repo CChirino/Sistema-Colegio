@@ -20,7 +20,9 @@ class Notas extends Model
         'IIL-F',
         'IIIL-I',
         'IIIL-G',
-        'IIIL-F'
+        'IIIL-F',
+        'estudiante_id',
+        'notas_id',
     ];
     public function materias()
     {

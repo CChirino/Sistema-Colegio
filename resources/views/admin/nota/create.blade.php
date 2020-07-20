@@ -33,62 +33,83 @@
     </div>
 </div>
 <!-- Static Table Start -->
+{{-- <div class="container">
+    <div class="row">
+        <div class="col-sm -3">
+            <label for="">Selecciona un Materia</label>
+            <select class="form-control" id="periodo_id" name="periodo_id">
+                <option>Selecciona un materia</option>
+                
+                @foreach ($materias as $mat)
+    
+                <option value="{{ $mat->id }}"> 
+                    {{ $mat ->nombre_materia}}                        
+                </option>
+            
+              @endforeach 
+        </div>
+    </div>
+</div>  --}}
 <div class="container">
-    <form action="" method="post">
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr>
-                    <th> Estudiantes</th>
-                    <th> IL-I </th>
-                    <th> IL-G </th>
-                    <th> IL-F </th>
-                    <th> IIL-I </th>
-                    <th> IIL-G </th>
-                    <th> IIL-F </th>
-                    <th> IIIL-I </th>
-                    <th> IIIL-G </th>
-                    <th> IIIL-F </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($estudiante as $est)
-                    <td>
-                        {{$est->nombre}}
-                    </td>                   
-                @endforeach
-                <td>
-                    <input type="number" name="IL-I" id="IL-I" size="2" >
-                </td>
-                <td>
-                    <input type="number" name="IL-G" id="IL-G" size="2" >
-                </td>
-                <td>
-                    <input type="number" name="IL-F" id="IL-F" size="2" >
-                </td>
-                <td>
-                    <input type="number" name="IIL-I" id="IIL-I" size="2" >
-                </td>
-                <td>
-                    <input type="number" name="IIL-G" id="IIL-G" size="2" >
-                </td>
-                <td>
-                    <input type="number" name="IIL-F" id="IIL-F" size="2" >
-                </td>            
-                <td>
-                    <input type="number" name="IIIL-I" id="IIIL-I" size="2" >
-                </td>
-                <td>
-                    <input type="number" name="IIIL-G" id="IIIL-G" size="2" >
-                </td>
-                <td>
-                    <input type="number" name="IIIL-F" id="IIIL-F" size="2" >
-                </td>
-            </tbody>
-        </table>
-        {{-- <div class="text-center">
-            <button type="submit" class="btn btn-success loginbtn">Guardar</button>
-            <button class="btn btn-default">Cancelar</button>
-        </div> --}}
-    </form>
+    <div class="row">
+        <div class="col-sm-12">
+            <form action="{{ route('notas.store') }}" method="POST">
+                @csrf
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th> Estudiantes</th>
+                            <th> IL-I </th>
+                            <th> IL-G </th>
+                            <th> IL-F </th>
+                            <th> IIL-I </th>
+                            <th> IIL-G </th>
+                            <th> IIL-F </th>
+                            <th> IIIL-I </th>
+                            <th> IIIL-G </th>
+                            <th> IIIL-F </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div class="pb-4">
+                            <div class="form-group col-lg-6">
+                                <label for="">Materia</label>
+                                <select class="form-control" name="notas_id" id="notas_id" >        
+                                    @foreach ($materias as $mat)
+        
+                                    <option value="{{ $mat->role_user_id }}"> 
+                                        {{ $mat ->nombre_materia}}                        
+                                    </option>
+                                
+                                  @endforeach    
+                                </select>
+                            </div>
+                        </div>
+                        @foreach ($estudiante as $est)
+                        <td  value="{{ $est->id }}" id="estudiante_id" name="estudiante_id" >
+                            <input style="display:none;" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"  >
+                            {{ $est->nombre}}                        
+                        </td>
+                        <td><input type="number" id="IL-I"                  name="IL-I" size="1"></td>
+                        <td><input type="number" id="IL-G"                  name="IL-G" size="1"></td>
+                        <td><input type="number" id="IL-F"                  name="IL-F" size="1"></td>
+                        <td><input type="number" id="IIL-I"                 name="IIL-I" size="1"></td>
+                        <td><input type="number" id="IIL-G"                 name="IIL-G" size="1"></td>
+                        <td><input type="number" id="IIL-F"                 name="IIL-F" size="1"></td>
+                        <td><input type="number" id="IIIL-I"                name="IIIL-I" size="1"></td>
+                        <td><input type="number" id="IIIL-G"                name="IIIL-G" size="1"></td>
+                        <td><input type="number" id="IIIL-F"                name="IIIL-F" size="1"></td>
+                        <tr>
+                            @endforeach      
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success loginbtn">Guardar</button>
+                    <button class="btn btn-default">Cancelar</button>
+                </div> 
+            </form>
+        </div>
+    </div>
 </div>
 @endsection

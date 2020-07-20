@@ -24,8 +24,8 @@ class CreateNotasTable extends Migration
             $table->decimal('IIIL-I');
             $table->decimal('IIIL-G');
             $table->decimal('IIIL-F');
-            $table->foreignId('notas_id')->references('role_user_id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
             $table->foreignId('estudiante_id')->references('id')->on('inscripcion_materia')->onDelete('cascade')->unsigned()->nullable();
+            $table->foreignId('notas_id')->references('role_user_id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
             $table->timestamps();
         });
     }

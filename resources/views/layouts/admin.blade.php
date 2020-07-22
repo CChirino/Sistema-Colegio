@@ -53,6 +53,15 @@
                         </ul>
                     </li>
                     <li>
+                        @can('haveaccess', 'notas.index')
+                        <a class="has-arrow" href="{{ route('notas.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>                        
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li>
+                            {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
+                        </ul>
+                        @endcan
+                    </li>
+                    <li>
                         @can('haveaccess', 'estudiante.index')
                         <a class="has-arrow" href="{{ route('estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Usuarios</span></a>
                         @endcan
@@ -102,18 +111,6 @@
                         </ul>
                     </li>
                     
-                    @can('haveaccess', 'notas.index')
-                    <li>
-                        <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                        <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li> --}}
-                    @endcan
-                    @can('haveaccess', 'notas.create')
-                            <li><a title="Agregar Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li>
-                    @endcan
-                            {{-- {{-- <li><a title="Add Library" href="add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li> --}}
-                        </ul>
-                    </li> 
                     @can('haveaccess', 'horarios.index')
                     <li>
                         <a class="has-arrow" href="{{ route('horarios.index')}}" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Horarios</span></a>

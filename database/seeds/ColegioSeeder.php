@@ -210,16 +210,6 @@ class ColegioSeeder extends Seeder
      //permission
      $permission_all = [];
 
-        
-     //permission role
-     $permission = Permission::create([
-         'name' => 'Notas index',
-         'slug' => 'notas.index',
-         'description' => 'A user can list notas',
-     ]);
-
-     $permission_all[] = $permission->id;
-             
      $permission = Permission::create([
          'name' => 'Notas show',
          'slug' => 'notas.show',

@@ -81,7 +81,7 @@ class NotasController extends Controller
         //     'periodo_id'=>'required',
 
         // ]);        
-        $notas = Notas::create($request->all());
+        $notas = Notas::create($request->except('_method', '_token'));
         $notas->save();
         return redirect()->route('inscripciones.index');
     }

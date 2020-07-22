@@ -376,7 +376,7 @@
                                                     </div>
                                                 </div>
                                             </li> --}}
-                                            <li class="nav-item" >U.E.P. El Araguaney</li>
+                                            <li class="nav-item" >Colegio Calicantina</li>
                                             <li class="nav-item">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link">
                                                         <img src="{{asset('storage/'.Auth::user()->image)}} " alt="" />

@@ -111,6 +111,24 @@
                         </ul>
                     </li>
                     
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                    @can('haveaccess', 'notas.index')
+                    <li>
+                        <a class="has-arrow" href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                        <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li> --}}
+                    @endcan
+                    @can('haveaccess', 'notas.create')
+                            <li><a title="Agregar Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li>
+                    @endcan
+                            {{-- {{-- <li><a title="Add Library" href="add-library-assets.html"><span class="mini-sub-pro">Add Library Asset</span></a></li> --}}
+                        </ul>
+                    </li> 
+>>>>>>> c27fd5ae9b928031dac2a208ad3e8d6137ffd0aa
+>>>>>>> c54cfc58304095742d54863f5078425a25295163
                     @can('haveaccess', 'horarios.index')
                     <li>
                         <a class="has-arrow" href="{{ route('horarios.index')}}" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Horarios</span></a>

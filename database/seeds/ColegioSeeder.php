@@ -209,7 +209,8 @@ class ColegioSeeder extends Seeder
 
      //permission
      $permission_all = [];
-
+        
+     //permission role
      $permission = Permission::create([
          'name' => 'Notas show',
          'slug' => 'notas.show',
@@ -226,3 +227,4 @@ class ColegioSeeder extends Seeder
     
     
 }
+

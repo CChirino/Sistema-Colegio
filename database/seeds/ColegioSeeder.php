@@ -37,6 +37,19 @@ class ColegioSeeder extends Seeder
         'email'             => 'critijo@gmail.com',
         'password'          => Hash::make('chacao14397'),
      ]);
+     $useradminmuestra= User::where('email','admin@gmail.com');
+     if ($useradminmuestra) {
+         $useradminmuestra->delete();
+     }
+     $useradminmuestra= User::create([
+        'dni'               => 27159380,
+        'nombre'            => 'admin',
+        'apellido'          => 'admin',
+        'direccion'         => 'admin',
+        'fecha_nacimiento'  => '1997-03-14',
+        'email'             => 'admin@gmail.com',
+        'password'          => Hash::make('colegioadmin'),
+     ]);
 
      //rol admin
      $roladmin=Role::create([
@@ -47,6 +60,8 @@ class ColegioSeeder extends Seeder
      
      //table role_user
      $useradmin->roles()->sync([ $roladmin->id ]);
+
+     $useradminmuestra->roles()->sync([ $roladmin->id ]);
 
      //permission
      $permission_all = [];
@@ -128,6 +143,14 @@ class ColegioSeeder extends Seeder
             
          //permission role
          $permission = Permission::create([
+            'name' => 'Index notas',
+            'slug' => 'notas.index',
+            'description' => 'A user can create notas',
+        ]);
+   
+        $permission_all[] = $permission->id;
+
+         $permission = Permission::create([
              'name' => 'Create notas',
              'slug' => 'notas.create',
              'description' => 'A user can create notas',
@@ -190,14 +213,6 @@ class ColegioSeeder extends Seeder
         
      //permission role
      $permission = Permission::create([
-         'name' => 'Notas index',
-         'slug' => 'notas.index',
-         'description' => 'A user can list notas',
-     ]);
-
-     $permission_all[] = $permission->id;
-             
-     $permission = Permission::create([
          'name' => 'Notas show',
          'slug' => 'notas.show',
          'description' => 'A user can see notas',
@@ -213,3 +228,4 @@ class ColegioSeeder extends Seeder
     
     
 }
+

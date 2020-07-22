@@ -83,7 +83,7 @@ class NotasController extends Controller
         // ]);        
         $notas = Notas::create($request->all());
         $notas->save();
-        return redirect()->route('inscripciones.index');
+        return redirect()->route('notas.index');
     }
 
     /**

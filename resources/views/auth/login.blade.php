@@ -13,7 +13,7 @@
             <div class="hpanel">
                 <div class="panel-body">
                     <form  id="loginForm"  method="POST" action="{{ route('login') }}">
-                        {{-- @csrf --}}
+                        @csrf
                         <div class="form-group">
                             <label class="control-label" for="username">Cedula</label>
                             <input type="number" id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="00.000.000" value="{{ old('dni') }}" required autocomplete="dni" autofocus>

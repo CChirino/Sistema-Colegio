@@ -30,9 +30,9 @@ class HomeController extends Controller
     {
         // $pensum = Pensum::get();
         // $periodo = Periodo::get();
-        $role =  DB::table('permission_role')
-                        ->where('id')
-                        ->get();
-        return view('admin.index', compact('role'));
+        // $role =  DB::table('permission_role')
+        //                 ->where('id')
+        //                 ->get();
+        return view('admin.index');
     }
 }

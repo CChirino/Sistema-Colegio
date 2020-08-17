@@ -107,7 +107,7 @@
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                    <a  class="btn btn-success loginbtn"href="{{route('roles.index')}}" style="height: 38px;">Atras</a>               
                 </div>
             </form>
         </div>

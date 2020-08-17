@@ -127,7 +127,7 @@ class ColegioSeeder extends Seeder
             'password'          => Hash::make('chacao14397'),
          ]);
     
-         //rol admin
+         //rol Profesor
          $rolprf=Role::create([
              'name' => 'Profesor',
              'full-access' => 'no'
@@ -157,6 +157,14 @@ class ColegioSeeder extends Seeder
          ]);
     
          $permission_all[] = $permission->id;
+
+         $permission = Permission::create([
+            'name' => 'Notas show',
+            'slug' => 'notas.show',
+            'description' => 'A user can see notas',
+        ]);
+   
+        $permission_all[] = $permission->id;
                  
          $permission = Permission::create([
              'name' => 'Edit notas',
@@ -173,6 +181,70 @@ class ColegioSeeder extends Seeder
          ]);
     
          $permission_all[] = $permission->id;
+         
+         $permission = Permission::create([
+            'name' => 'Evaluaciones index',
+            'slug' => 'evaluaciones.index',
+            'description' => 'Inicio Evaluaciones',
+        ]);
+   
+        $permission_all[] = $permission->id;
+        $permission = Permission::create([
+            'name' => 'Evaluaciones create',
+            'slug' => 'evaluaciones.create',
+            'description' => 'Crear Evaluaciones',
+        ]);
+   
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Evaluaciones store',
+            'slug' => 'evaluaciones.store',
+            'description' => 'Store Evaluaciones',
+        ]);
+   
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Listar Evaluaciones Index',
+            'slug' => 'listar-evaluaciones.index',
+            'description' => 'Listar Evaluaciones',
+        ]);
+    
+        $permission_all[] = $permission->id;
+    
+        $permission = Permission::create([
+            'name' => 'Show Evaluaciones ',
+            'slug' => 'listar-evaluaciones.show',
+            'description' => 'Show Evaluaciones',
+        ]);
+    
+        $permission_all[] = $permission->id;
+    
+        $permission = Permission::create([
+            'name' => 'update Evaluaciones ',
+            'slug' => 'listar-evaluaciones.update',
+            'description' => 'update Evaluaciones',
+        ]);
+    
+        $permission_all[] = $permission->id;
+    
+        $permission = Permission::create([
+            'name' => 'edit Evaluaciones ',
+            'slug' => 'listar-evaluaciones.edit',
+            'description' => 'edit Evaluaciones',
+        ]);
+    
+        $permission_all[] = $permission->id;
+    
+        $permission = Permission::create([
+            'name' => 'destroy Evaluaciones ',
+            'slug' => 'listar-evaluaciones.destroy',
+            'description' => 'destroy Evaluaciones',
+        ]);
+    
+        $permission_all[] = $permission->id;
+
      
         //table permission_role
         $rolprf->permissions()->sync( $permission_all);
@@ -212,13 +284,114 @@ class ColegioSeeder extends Seeder
         
      //permission role
      $permission = Permission::create([
-         'name' => 'Notas show',
-         'slug' => 'notas.show',
-         'description' => 'A user can see notas',
+         'name' => 'inscripciones-estudiante ',
+         'slug' => 'inscripciones-estudiante.store',
+         'description' => 'inscripciones-estudiante store',
      ]);
 
      $permission_all[] = $permission->id;
- 
+
+     $permission = Permission::create([
+        'name' => 'inscripciones-estudiante create',
+        'slug' => 'inscripciones-estudiante.create',
+        'description' => 'inscripciones-estudiante create',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'notas-estudiante show',
+        'slug' => 'notas-estudiante.show',
+        'description' => 'notas-estudiante show',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'notas-estudiante index',
+        'slug' => 'notas-estudiante.index',
+        'description' => 'notas-estudiante index',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'subir-evaluacion-estudiante index',
+        'slug' => 'subir-evaluacion-estudiante.index',
+        'description' => 'subir-evaluacion-estudiante index',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'subir-evaluacion-estudiante show',
+        'slug' => 'subir-evaluacion-estudiante.show',
+        'description' => 'subir-evaluacion-estudiante show',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'subir-evaluacion-estudiante create',
+        'slug' => 'subir-evaluacion-estudiante.create',
+        'description' => 'subir-evaluacion-estudiante create',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'subir-evaluacion-estudiante store',
+        'slug' => 'subir-evaluacion-estudiante.store',
+        'description' => 'subir-evaluacion-estudiante store',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+
+    $permission = Permission::create([
+        'name' => 'evaluacion-estudiante index',
+        'slug' => 'evaluacion-estudiante.index',
+        'description' => 'evaluacion-estudiante index',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'evaluacion-estudiante show',
+        'slug' => 'evaluacion-estudiante.show',
+        'description' => 'evaluacion-estudiante show',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'evaluacion-estudiante update',
+        'slug' => 'evaluacion-estudiante.update',
+        'description' => 'evaluacion-estudiante update',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'evaluacion-estudiante edit',
+        'slug' => 'evaluacion-estudiante.edit',
+        'description' => 'evaluacion-estudiante edit',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'evaluacion-estudiante destroy',
+        'slug' => 'evaluacion-estudiante.destroy',
+        'description' => 'evaluacion-estudiante destroy',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+
+
+
+
     //table permission_role
     $rolest->permissions()->sync( $permission_all);
     

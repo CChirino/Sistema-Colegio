@@ -131,7 +131,8 @@
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Registrar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                    <button type="submit" class="btn btn-success loginbtn"><a  class="btn btn-success loginbtn"href="{{route('estudiante.index')}}" style="height: 38px;">Atras</a>               
+                    </button>
                 </div>
             </form>
         </div>

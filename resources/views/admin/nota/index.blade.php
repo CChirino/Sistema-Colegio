@@ -30,7 +30,7 @@
 </div>
 <!-- Static Table Start -->
 <div class="container">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>
                 <th>Materias</th>
@@ -44,18 +44,8 @@
                 <td>{{$mat->nombre_materia}}</td>
                 <td><a class="btn btn-success" href="{{ route('notas.create') }}"> <i class="fas fa-plus-circle"></i> Agregar nota</a></td>    
                 <td><a class="btn btn-info" href="{{ route('notas.show',$mat->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
-                <td><a class="btn btn-warning" href="{{ route('notas.edit',$mat->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
+                <td><a class="btn btn-warning" href="{{ route('notas.edit',$mat->id) }}"> <i class="far fa-edit"></i> Editar</a></td> 
 
-                {{-- <td>
-                <form action="{{ route('profesor.destroy',$prf->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
-                        <i class="fas fa-trash"></i> 
-                        Eliminar
-                    </button>
-                </form>
-                </td> --}}
                 @endforeach
             </tr>
         </tbody>

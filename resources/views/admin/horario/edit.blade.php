@@ -69,6 +69,20 @@
                             <option>4</option>  
                         </select>
                     </div>
+                    <div class="form-group col-lg-6">
+                        <label for="">Seleccione una Seccion </label>
+                        <select class="form-control" id="seccion" name="seccion">
+                            <option>A</option>  
+                            <option>B</option>  
+                            <option>C</option>  
+                            <option>D</option>  
+                        </select>
+                        @error('seccion')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                     <div class="form-group col-lg-12">
                         <label>Cupos</label>
                         <input type="number" id="cupos" class="form-control"  name="cupos" value="{{$horarios->cupos}}" >
@@ -89,7 +103,7 @@
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                    <a  class="btn btn-success loginbtn"href="{{route('horarios.index')}}" style="height: 38px;">Atras</a>               
                 </div>
             </form>
         </div>

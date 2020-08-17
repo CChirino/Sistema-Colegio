@@ -29,6 +29,7 @@ class InscripcionMateria extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('inscripcion_materia');
+
     }
 }

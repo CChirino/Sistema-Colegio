@@ -52,7 +52,7 @@ mix.styles([
    'public/asset/js/icheck/icheck-active.js',
    'public/asset/js/plugins.js',
    'public/asset/js/main.js',
-   'asset/js/tawk-chat.js'   
+   'public/asset/js/tawk-chat.js'   
 ], 'public/js/all.js');
 
 

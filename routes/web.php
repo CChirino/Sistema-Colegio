@@ -39,6 +39,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('roles', 'RoleController');
+Route::resource('usuarios', 'UserController');
+Route::resource('admin', 'AdminController');
 Route::resource('profesor', 'ProfesorController');
 Route::resource('estudiante', 'EstudianteController');
 Route::resource('colegio', 'ColegioController');
@@ -49,7 +51,25 @@ Route::resource('horarios', 'HorarioController');
 Route::resource('perfil', 'PerfilController');
 Route::resource('notas', 'NotasController');
 Route::resource('inscripciones', 'InscripcionController');
-Route::resource('inscripciones-estudiante', 'InscripcionEstudianteController');
+Route::resource('evaluaciones', 'EvaluacionesController')->only([
+    'index', 'create', 'store'
+]);
+Route::resource('listar-evaluaciones', 'ListarEvaluacionesController')->only([
+    'index', 'show', 'update','edit','destroy'
+]);
+Route::resource('evaluacion-estudiante', 'EvaluacionesEstudianteController')->only([
+    'index', 'show', 'update','edit','destroy'
+]);
+Route::resource('subir-evaluacion-estudiante', 'SubirEvaluacionEstudianteController')->only([
+    'index', 'show', 'create','store'
+]);
+Route::resource('inscripciones-estudiante', 'InscripcionEstudianteController')->only([
+    'store', 'create'
+]);
+Route::resource('notas-estudiante', 'NotaEstudianteController')->only([
+    'index', 'show'
+]);
+
 
 
 

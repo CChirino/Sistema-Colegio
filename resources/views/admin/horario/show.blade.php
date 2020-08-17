@@ -60,6 +60,12 @@
                         </select>
                     </div>
                     <div class="form-group col-lg-12">
+                        <label for="">Seccion </label>
+                        <select class="form-control" id="seccion" name="seccion" disabled>
+                            <option>{{$horarios->seccion}}</option>  
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-12">
                         <label>Cupos</label>
                         <input type="number" id="cupos" class="form-control"  name="cupos" value="{{$horarios->cupos}}" disabled>
                     </div>

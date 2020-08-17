@@ -28,6 +28,7 @@ class PermissionRole extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('permission_role');
+
     }
 }

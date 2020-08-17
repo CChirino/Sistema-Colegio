@@ -12,15 +12,15 @@ class Notas extends Model
      * @var array
      */
     protected $fillable = [
-        'IL-I', 
-        'IL-G',
-        'IL-F',
-        'IIL-I',
-        'IIL-G',
-        'IIL-F',
-        'IIIL-I',
-        'IIIL-G',
-        'IIIL-F',
+        'IL_I', 
+        'IL_G',
+        'IL_F',
+        'IIL_I',
+        'IIL_G',
+        'IIL_F',
+        'IIIL_I',
+        'IIIL_G',
+        'IIIL_F',
         'estudiante_id',
         'notas_id',
     ];

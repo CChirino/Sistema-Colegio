@@ -38,8 +38,8 @@
                 <th>Horario</th>
                 <th>Aula</th>
                 <th>Cupos</th>
+                {{-- <th>Seccion</th> --}}
                 <th>Materia</th>
-
                 <th colspan="3">Transacciones</th>
 
             </tr>
@@ -51,6 +51,7 @@
                 <td>{{$h->horario}}</td>
                 <td>{{$h->aula}}</td>
                 <td>{{$h->cupos}}</td>
+                {{-- <td>{{$h->seccion}}</td> --}}
                 <td>{{$h->nombre_materia}}</td>
                 <td><a class="btn btn-info" href="{{ route('horarios.show',$h->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
                 <td><a class="btn btn-warning" href="{{ route('horarios.edit',$h->id) }}"> <i class="far fa-edit"></i> Editar</a></td>

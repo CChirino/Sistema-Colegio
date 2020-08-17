@@ -384,7 +384,7 @@
                   </div>
             </div>
             <div class="col-sm-8">
-                <table class="table pb-1 pt-1">
+                <table class="table pb-1 pt-1 ">
                     <thead>
                         <tr>
                             <th>Hora</th>

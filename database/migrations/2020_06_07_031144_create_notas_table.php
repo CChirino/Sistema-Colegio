@@ -15,15 +15,15 @@ class CreateNotasTable extends Migration
     {
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('IL-I');
-            $table->decimal('IL-G');
-            $table->decimal('IL-F');
-            $table->decimal('IIL-I');
-            $table->decimal('IIL-G');
-            $table->decimal('IIL-F');
-            $table->decimal('IIIL-I');
-            $table->decimal('IIIL-G');
-            $table->decimal('IIIL-F');
+            $table->decimal('IL_I');
+            $table->decimal('IL_G');
+            $table->decimal('IL_F');
+            $table->decimal('IIL_I');
+            $table->decimal('IIL_G');
+            $table->decimal('IIL_F');
+            $table->decimal('IIIL_I');
+            $table->decimal('IIIL_G');
+            $table->decimal('IIIL_F');
             $table->foreignId('estudiante_id')->references('id')->on('inscripcion_materia')->onDelete('cascade')->unsigned()->nullable();
             $table->foreignId('notas_id')->references('role_user_id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
             $table->timestamps();

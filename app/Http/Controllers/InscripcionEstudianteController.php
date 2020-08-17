@@ -32,12 +32,18 @@ class InscripcionEstudianteController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','inscripciones-estudiante.create');
         $pensum = Pensum::get();
         $periodo = Periodo::get();
         $materia = Materia::get();
         $estudiantes = Auth::user();
+        $año_materias = DB::table('materias')
+                ->join('pensums', 'materias.pensum_id', '=', 'pensums.id')
+                ->select('pensums.*', 'materias.*')
+                // ->where('materias.role_user_id', '=', $profesor )
+                ->get();
         
-        return view('admin.inscripcion-estudiante.create',compact('pensum','estudiantes','periodo','materia'));
+        return view('admin.inscripcion-estudiante.create',compact('pensum','estudiantes','periodo','materia','año_materias'));
     }
 
     /**
@@ -48,10 +54,11 @@ class InscripcionEstudianteController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('haveaccess','inscripciones-estudiante.store');
         $inscripcion = Inscripcion::create($request->all());
         $inscripcion->materias()->sync($request->get('materias'));
         $inscripcion->save();
-        return redirect()->route('inscripciones.index');    
+        return redirect()->route('home');    
     }
 
     /**

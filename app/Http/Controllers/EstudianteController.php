@@ -126,7 +126,7 @@ class EstudianteController extends Controller
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
-        return redirect()->route('estudiante.index')->with('datos','Registro actualizado correctamente!');;
+        return redirect()->route('estudiante.index')->with('datos','Registro actualizado correctamente!');
     }
 
     /**

@@ -82,6 +82,20 @@
                         @enderror
                     </div>
                     <div class="form-group col-lg-6">
+                        <label for="">Seleccione una Seccion </label>
+                        <select class="form-control" id="seccion" name="seccion">
+                            <option>A</option>  
+                            <option>B</option>  
+                            <option>C</option>  
+                            <option>D</option>  
+                        </select>
+                        @error('seccion')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-lg-6">
                         <label>Cupos</label>
                         <input type="number" id="cupos" class="form-control @error('cupos') is-invalid @enderror" name="cupos" value="{{ old('cupos') }}" required autocomplete="cupos" autofocus>
                         @error('cupos')
@@ -104,10 +118,10 @@
                           @endforeach    
                         </select>
                     </div>
-                    <div class="col-lg-6"></div>
+                    {{-- <div class="col-lg-6"></div> --}}
                 <div class="text-center pt-4 pl-4">
                     <button type="submit" class="btn btn-success loginbtn">Registrar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                    <a  class="btn btn-success loginbtn"href="{{route('horarios.index')}}" style="height: 38px;">Atras</a>               
                 </div>
             </form>
         </div>

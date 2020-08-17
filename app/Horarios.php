@@ -16,6 +16,7 @@ class Horarios extends Model
         'horario',
         'aula',
         'cupos',
+        'seccion',
         'horario_id'
 
     ];

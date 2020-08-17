@@ -96,7 +96,7 @@
                     <div class="form-group col-lg-6" ></div>
                 <div class="text-center pt-3 pb-3">
                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                    <a  class="btn btn-success loginbtn"href="{{route('materias.index')}}" style="height: 38px;">Atras</a>               
                 </div>
             </form>
         </div>

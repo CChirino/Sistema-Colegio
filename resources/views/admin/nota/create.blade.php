@@ -55,7 +55,7 @@
         <div class="col-sm-12">
             <form action="{{ route('notas.store') }}" method="POST">
                 @csrf
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="example" class="table table-striped table-bordered"  style="width:100%">
                     <thead>
                         <tr>
                             <th> Estudiantes</th>
@@ -90,15 +90,15 @@
                             <input style="display:none;" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"  >
                             {{ $est->nombre}}                        
                         </td>
-                        <td><input type="number" id="IL-I"                  name="IL-I" size="1"></td>
-                        <td><input type="number" id="IL-G"                  name="IL-G" size="1"></td>
-                        <td><input type="number" id="IL-F"                  name="IL-F" size="1"></td>
-                        <td><input type="number" id="IIL-I"                 name="IIL-I" size="1"></td>
-                        <td><input type="number" id="IIL-G"                 name="IIL-G" size="1"></td>
-                        <td><input type="number" id="IIL-F"                 name="IIL-F" size="1"></td>
-                        <td><input type="number" id="IIIL-I"                name="IIIL-I" size="1"></td>
-                        <td><input type="number" id="IIIL-G"                name="IIIL-G" size="1"></td>
-                        <td><input type="number" id="IIIL-F"                name="IIIL-F" size="1"></td>
+                        <td><input type="number" id="IL_I"                  name="IL_I" size="1"></td>
+                        <td><input type="number" id="IL_G"                  name="IL_G" size="1"></td>
+                        <td><input type="number" id="IL_F"                  name="IL_F" size="1"></td>
+                        <td><input type="number" id="IIL_I"                 name="IIL_I" size="1"></td>
+                        <td><input type="number" id="IIL_G"                 name="IIL_G" size="1"></td>
+                        <td><input type="number" id="IIL_F"                 name="IIL_F" size="1"></td>
+                        <td><input type="number" id="IIIL_I"                name="IIIL_I" size="1"></td>
+                        <td><input type="number" id="IIIL_G"                name="IIIL_G" size="1"></td>
+                        <td><input type="number" id="IIIL_F"                name="IIIL_F" size="1"></td>
                         <tr>
                             @endforeach      
                         </tr>

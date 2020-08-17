@@ -53,11 +53,12 @@ class HorarioController extends Controller
             'cupos'=>'required',
         ]);
         $horarios = new Horarios([
-            'dia'                           => $request->get('dia'),
-            'horario'                       => $request->get('horario'),
-            'aula'                          => $request->get('aula'),
-            'cupos'                         => $request->get('cupos'),
-            'horario_id'                    => $request->get('horario_id')
+            'dia'                               => $request->get('dia'),
+            'horario'                           => $request->get('horario'),
+            'aula'                              => $request->get('aula'),
+            'cupos'                             => $request->get('cupos'),
+            'seccion'                           => $request->get('seccion'),
+            'horario_id'                        => $request->get('horario_id')
         ]);    
         $horarios->save();
         return redirect()->route('horarios.index');
@@ -106,11 +107,12 @@ class HorarioController extends Controller
             'cupos'=>'required',
         ]);
         $horarios->update([
-            'dia'                           => $request->get('dia'),
-            'horario'                       => $request->get('horario'),
-            'aula'                          => $request->get('aula'),
-            'cupos'                         => $request->get('cupos'),
-            'horario_id'                    => $request->get('horario_id')
+            'dia'                               => $request->get('dia'),
+            'horario'                           => $request->get('horario'),
+            'aula'                              => $request->get('aula'),
+            'cupos'                             => $request->get('cupos'),
+            'seccion'                           => $request->get('seccion'),
+            'horario_id'                        => $request->get('horario_id')
         ]);    
         $horarios->save();
         return redirect()->route('horarios.index');

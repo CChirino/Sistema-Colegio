@@ -29,44 +29,77 @@
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
-                    {{-- <li class="active">
-                        <a class="has-arrow" href="index.html">
-                               <span class="educate-icon educate-home icon-wrap"></span>
-                               <span class="mini-click-non">Education</span>
-                            </a>
-                        <ul class="submenu-angle" aria-expanded="true">
-                            <li><a title="Dashboard v.1" href="index.html"><span class="mini-sub-pro">Dashboard v.1</span></a></li>
-                            <li><a title="Dashboard v.2" href="index-1.html"><span class="mini-sub-pro">Dashboard v.2</span></a></li>
-                            <li><a title="Dashboard v.3" href="index-2.html"><span class="mini-sub-pro">Dashboard v.3</span></a></li>
-                            <li><a title="Analytics" href="analytics.html"><span class="mini-sub-pro">Analytics</span></a></li>
-                            <li><a title="Widgets" href="widgets.html"><span class="mini-sub-pro">Widgets</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
-                    </li> --}}
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false"><span class="icon-wrap" ><i class="fa fa-user"></i></span> <span class="mini-click-non">Perfil</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Perfil" href="{{ route('perfil.index')}}"><span class="mini-sub-pro">Mi perfil</span></a></li>
-                            
                         </ul>
                     </li>
+                    @can('haveaccess', 'notas-estudiante.index')
                     <li>
-                        @can('haveaccess', 'notas.index')
+                        <a class="has-arrow" href="{{ route('notas-estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>                        
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Materias" href="{{ route('notas-estudiante.index')}}"><span class="mini-sub-pro">Calificaciones</span></a></li>
+                            {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('haveaccess', 'notas.index')
+                    <li>
                         <a class="has-arrow" href="{{ route('notas.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>                        
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li>
                             {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
                         </ul>
+                    </li>
+                    @endcan
+                    <li>
+                        @can('haveaccess', 'inscripciones-estudiante.create')
+                        <a class="has-arrow" href="{{ route('inscripciones-estudiante.create')}}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Inscripcion</span></a>                        
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Inscripcion" href="{{ route('inscripciones-estudiante.create')}}"><span class="mini-sub-pro">Crear Inscripcion </span></a></li>
+                            {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
+                        </ul>
                         @endcan
                     </li>
+                    @can('haveaccess', 'evaluaciones.index')
                     <li>
-                        @can('haveaccess', 'estudiante.index')
+                        <a class="has-arrow" href="{{ route('evaluaciones.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones</span></a>                        
+                        @endcan
+                        @can('haveaccess', 'evaluaciones.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Listado de Evaluaciones" href="{{ route('evaluaciones.index')}}"><span class="mini-sub-pro">Evaluaciones</span></a></li>
+                        @endcan
+                        @can('haveaccess', 'listar-evaluaciones.index')
+                            <li><a title="Listado de Evaluaciones" href="{{ route('listar-evaluaciones.index')}}"><span class="mini-sub-pro">Listar Evaluaciones</span></a></li>
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('haveaccess', 'evaluacion-estudiante.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('evaluacion-estudiante.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones</span></a>                        
+                        @endcan
+                        @can('haveaccess', 'evaluacion-estudiante.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Listado de Evaluaciones" href="{{ route('evaluacion-estudiante.index')}}"><span class="mini-sub-pro">Evaluaciones</span></a></li>
+                        @endcan
+                        @can('haveaccess', 'subir-evaluacion-estudiante.create')
+                            <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-estudiante.create')}}"><span class="mini-sub-pro"> Subir Evaluaciones</span></a></li>
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('haveaccess', 'estudiante.index')
+                    <li>
                         <a class="has-arrow" href="{{ route('estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Usuarios</span></a>
                         @endcan
 
                         <ul class="submenu-angle" aria-expanded="false">
+                            @can('haveaccess', 'admin.index')
+                            <li><a title="Usuarios" href="{{ route('usuarios.index')}}"><span class="mini-sub-pro">Usuarios</span></a></li>
+                            @endcan
+                            @can('haveaccess', 'admin.index')
+                            <li><a title="Administradores" href="{{ route('admin.index')}}"><span class="mini-sub-pro">Administradores</span></a></li>
+                            @endcan
                             @can('haveaccess', 'estudiante.index')
                             <li><a title="Estudiantes" href="{{ route('estudiante.index')}}"><span class="mini-sub-pro">Estudiantes</span></a></li>
                             @endcan
@@ -78,12 +111,12 @@
                             @endcan
                             @can('haveaccess', 'colegio.index')
                             <li><a title="Colegio" href="{{ route('colegio.index')}}"><span class="mini-sub-pro">Colegio</span></a></li>
-                            @endcan
-
+                            
                         </ul>
                     </li>
-                    <li>
+                    @endcan
                     @can('haveaccess', 'roles.index')
+                    <li>
 
                         <a class="has-arrow" href="{{ route('roles.index')}}" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Roles</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
@@ -93,9 +126,9 @@
 
                             <li><a title="Crear Rol" href="{{ route('roles.create')}}"><span class="mini-sub-pro">Crear Role</span></a></li>
                             {{-- <li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li> --}}
-                    @endcan
                         </ul>
                     </li>
+                    @endcan
                     @can('haveaccess', 'materias.index')
                     <li>
                         <a class="has-arrow" href="{{ route('materias.index')}}" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Materias</span></a>
@@ -104,12 +137,9 @@
                     @endcan
                     @can('haveaccess', 'materias.create')
                             <li><a title="Crear Materia" href="{{ route('materias.create')}}"><span class="mini-sub-pro">Crear Materia</span></a></li>
-                            {{-- <li><a title="Edit Courses" href="edit-course.html"><span class="mini-sub-pro">Edit Course</span></a></li>
-                            <li><a title="Courses Profile" href="course-info.html"><span class="mini-sub-pro">Courses Info</span></a></li>
-                            <li><a title="Product Payment" href="course-payment.html"><span class="mini-sub-pro">Courses Payment</span></a></li> --}}
-                    @endcan
                         </ul>
                     </li>
+                    @endcan
                     @can('haveaccess', 'horarios.index')
                     <li>
                         <a class="has-arrow" href="{{ route('horarios.index')}}" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Horarios</span></a>
@@ -118,53 +148,9 @@
                     @endcan
                     @can('haveaccess', 'horarios.create')
                             <li><a title="Crear Horario" href="{{ route('horarios.create')}}"><span class="mini-sub-pro">Crear Horario</span></a></li>
-                            {{-- <li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li> --}}
-                    @endcan
                         </ul>
                     </li>
-                    {{-- <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Mailbox</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Inbox" href="mailbox.html"><span class="mini-sub-pro">Inbox</span></a></li>
-                            <li><a title="View Mail" href="mailbox-view.html"><span class="mini-sub-pro">View Mail</span></a></li>
-                            <li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Compose Mail</span></a></li>
-                        </ul>
-                    </li> --}}
-                    {{-- <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Interface</span></a>
-                        <ul class="submenu-angle interface-mini-nb-dp" aria-expanded="false">
-                            <li><a title="Google Map" href="google-map.html"><span class="mini-sub-pro">Google Map</span></a></li>
-                            <li><a title="Data Maps" href="data-maps.html"><span class="mini-sub-pro">Data Maps</span></a></li>
-                            <li><a title="Pdf Viewer" href="pdf-viewer.html"><span class="mini-sub-pro">Pdf Viewer</span></a></li>
-                            <li><a title="X-Editable" href="x-editable.html"><span class="mini-sub-pro">X-Editable</span></a></li>
-                            <li><a title="Code Editor" href="code-editor.html"><span class="mini-sub-pro">Code Editor</span></a></li>
-                            <li><a title="Tree View" href="tree-view.html"><span class="mini-sub-pro">Tree View</span></a></li>
-                            <li><a title="Preloader" href="preloader.html"><span class="mini-sub-pro">Preloader</span></a></li>
-                            <li><a title="Images Cropper" href="images-cropper.html"><span class="mini-sub-pro">Images Cropper</span></a></li>
-                        </ul>
-                    </li> --}}
-                    {{-- <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap"></span> <span class="mini-click-non">Charts</span></a>
-                        <ul class="submenu-angle chart-mini-nb-dp" aria-expanded="false">
-                            <li><a title="Bar Charts" href="bar-charts.html"><span class="mini-sub-pro">Bar Charts</span></a></li>
-                            <li><a title="Line Charts" href="line-charts.html"><span class="mini-sub-pro">Line Charts</span></a></li>
-                            <li><a title="Area Charts" href="area-charts.html"><span class="mini-sub-pro">Area Charts</span></a></li>
-                            <li><a title="Rounded Charts" href="rounded-chart.html"><span class="mini-sub-pro">Rounded Charts</span></a></li>
-                            <li><a title="C3 Charts" href="c3.html"><span class="mini-sub-pro">C3 Charts</span></a></li>
-                            <li><a title="Sparkline Charts" href="sparkline.html"><span class="mini-sub-pro">Sparkline Charts</span></a></li>
-                            <li><a title="Peity Charts" href="peity.html"><span class="mini-sub-pro">Peity Charts</span></a></li>
-                        </ul>
-                    </li> --}}
-                    @can('haveaccess', 'inscripciones.create')
-                    <li>
-                        <a class="has-arrow" href="{{ route('inscripciones.create')}}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Inscripcion </span></a>
-                        {{-- <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Peity Charts" href="static-table.html"><span class="mini-sub-pro">Static Table</span></a></li>
-                            <li><a title="Data Table" href="data-table.html"><span class="mini-sub-pro">Data Table</span></a></li>
-                        </ul> --}}
-                    </li>                         
                     @endcan
-
                     @can('haveaccess', 'periodos.index')
                     <li>
                         <a class="has-arrow" href="{{ route('periodos.index')}}" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Periodo</span></a>
@@ -173,31 +159,14 @@
                     @endcan
                     @can('haveaccess', 'periodos.create')
                             <li><a title="Crear Periodo" href="{{ route('periodos.create')}}"><span class="mini-sub-pro">Crear Periodo</span></a></li>
-                    @endcan
                         </ul>
                     </li>
-                    {{-- <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap"></span> <span class="mini-click-non">App views</span></a>
-                        <ul class="submenu-angle app-mini-nb-dp" aria-expanded="false">
-                            <li><a title="Notifications" href="notifications.html"><span class="mini-sub-pro">Notifications</span></a></li>
-                            <li><a title="Alerts" href="alerts.html"><span class="mini-sub-pro">Alerts</span></a></li>
-                            <li><a title="Modals" href="modals.html"><span class="mini-sub-pro">Modals</span></a></li>
-                            <li><a title="Buttons" href="buttons.html"><span class="mini-sub-pro">Buttons</span></a></li>
-                            <li><a title="Tabs" href="tabs.html"><span class="mini-sub-pro">Tabs</span></a></li>
-                            <li><a title="Accordion" href="accordion.html"><span class="mini-sub-pro">Accordion</span></a></li>
-                        </ul>
-                    </li> --}}
-                    {{-- <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Pages</span></a>
-                        <ul class="submenu-angle page-mini-nb-dp" aria-expanded="false">
-                            <li><a title="Login" href="login.html"><span class="mini-sub-pro">Login</span></a></li>
-                            <li><a title="Register" href="register.html"><span class="mini-sub-pro">Register</span></a></li>
-                            <li><a title="Lock" href="lock.html"><span class="mini-sub-pro">Lock</span></a></li>
-                            <li><a title="Password Recovery" href="password-recovery.html"><span class="mini-sub-pro">Password Recovery</span></a></li>
-                            <li><a title="404 Page" href="404.html"><span class="mini-sub-pro">404 Page</span></a></li>
-                            <li><a title="500 Page" href="500.html"><span class="mini-sub-pro">500 Page</span></a></li>
-                        </ul>
-                    </li> --}}
+                    @endcan
+                    @can('haveaccess', 'inscripciones.create')
+                    <li>
+                        <a class="has-arrow" href="{{ route('inscripciones.create')}}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Inscripcion Adm. </span></a>
+                    </li>                         
+                    @endcan
                 </ul>
             </nav>
         </div>
@@ -1045,11 +1014,9 @@
         @yield('content')
 </div>
     <!-- jquery
-		============================================ -->
+        ============================================ -->
     <script src="{{  asset('js/all.js')}}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-
 </body>
 
 </html>

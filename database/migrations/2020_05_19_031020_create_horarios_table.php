@@ -19,6 +19,7 @@ class CreateHorariosTable extends Migration
             $table->string('horario');
             $table->string('aula');
             $table->integer('cupos');
+            $table->char('seccion');
             $table->foreignId('horario_id')->references('id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
             $table->timestamps();
         });

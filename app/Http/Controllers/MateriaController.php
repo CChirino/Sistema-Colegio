@@ -23,9 +23,9 @@ class MateriaController extends Controller
     {
         Gate::authorize('haveaccess','materias.index');
         $materias = DB::table('materias')
-                    ->join('pensums','pensums.id', '=','materias.pensum_id')
-                    ->join('periodos','periodo_id', '=','materias.periodo_id')
-                    ->select('materias.id','materias.nombre_materia','materias.descripcion_materia','materias.pensum_id','materias.periodo_id','pensums.pensum_nombre','periodos.nombre_periodo')
+                    ->join('periodos','materias.periodo_id', '=','periodos.id')
+                    ->join('pensums','materias.pensum_id', '=','pensums.id')
+                    ->select('materias.*','pensums.*','periodos.*')
                     ->paginate(7);
         return view('admin.materias.index', compact('materias'));
     }

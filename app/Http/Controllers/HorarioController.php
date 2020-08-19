@@ -20,9 +20,8 @@ class HorarioController extends Controller
     {
         Gate::authorize('haveaccess','horarios.index');
         $horarios = DB::table('horarios')
-                ->join('materias','materias.id', '=','horarios.horario_id')
-                ->join('periodos','periodo_id', '=','materias.periodo_id')
-                ->select('horarios.id','horarios.dia','horarios.horario','horarios.aula','horarios.cupos','horarios.horario_id','materias.nombre_materia')
+                ->join('materias','horarios.horario_id', '=','materias.id')
+                ->select('horarios.*','materias.*')
                 ->paginate(7);
         return view('admin.horario.index', compact('horarios'));
     }

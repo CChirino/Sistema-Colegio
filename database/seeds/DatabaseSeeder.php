@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PensumSeeder::class);
         $this->call(PeriodoSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(MateriasSeeder::class);
+        // $this->call(MateriasSeeder::class);
     }
 }

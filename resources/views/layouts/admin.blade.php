@@ -23,7 +23,7 @@
   <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="index.html"><img class="main-logo" src="{{ asset('asset/img/logo/LogoEscuela.png')}}" alt="" width='200' height="60"    /></a>
+            <a href="{{ route('home')}}"><img class="main-logo" src="{{ asset('asset/img/logo/LogoEscuela.png')}}" alt="" width='200' height="60"    /></a>
             {{-- <strong><a href="index.html"><img src="{{ asset('asset/img/logo/logosn.png')}}" alt="" /></a></strong> --}}
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -345,7 +345,11 @@
                                                     </div>
                                                 </div>
                                             </li> --}}
-                                            <li class="nav-item" >Colegio Calicantina</li>
+                                            <li class="nav-item pl-2 pr-2" ><img src="{{asset('asset/img/logo/logo-colegio.jpeg')}}" alt="" style="
+                                                width: 40px;
+                                                border-radius: 50%;
+                                            "></li>
+                                            <li class="nav-item pl-2 mt-1" > <p>Colegio Calicantina</p> </li>
                                             <li class="nav-item">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link">
                                                         <img src="{{asset('storage/'.Auth::user()->image)}} " alt="" />

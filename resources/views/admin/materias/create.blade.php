@@ -59,8 +59,6 @@
                     <div class="form-group col-lg-6">
                         <label for="">Selecciona un año</label>
                         <select class="form-control" id="pensum_id" name="pensum_id">
-                            <option>Selecciona un año</option>
-
                             @foreach ($pensum as $pen)
 
                             <option value="{{ $pen->id }}"> 
@@ -73,7 +71,6 @@
                     <div class="form-group col-lg-6">
                         <label for="">Selecciona un periodo</label>
                         <select class="form-control" id="periodo_id" name="periodo_id">
-                            <option>Selecciona un periodo</option>
                             
                             @foreach ($periodo as $per)
 
@@ -87,7 +84,6 @@
                     <div class="form-group col-lg-6">
                         <label for="">Selecciona un Profesor</label>
                         <select class="form-control" id="role_user_id" name="role_user_id" >
-                            <option>Selecciona un Profesor</option>
                             
                             @foreach ($profesores as $prof)
 

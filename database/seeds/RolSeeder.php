@@ -30,7 +30,15 @@ class RolSeeder extends Seeder
     //     'full-access' => 'no'
     // ]);
     Role::create([
-        'name' => 'Coordinador',
+        'name' => 'Coordinador Etapa 1',
+        'full-access' => 'no'
+    ]);
+    Role::create([
+        'name' => 'Coordinador Etapa 2',
+        'full-access' => 'no'
+    ]);
+    Role::create([
+        'name' => 'Coordinador Etapa 3',
         'full-access' => 'no'
     ]);
     Role::create([
@@ -41,5 +49,6 @@ class RolSeeder extends Seeder
         'name' => 'test',
         'full-access' => 'no'
     ]);
+    
     }
 }

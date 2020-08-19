@@ -75,7 +75,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Fecha de Nacimiento </label>
+                        <label>Fecha de Ingreso </label>
                         <input type="date" id="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required autocomplete="fecha_nacimiento" autofocus>
                         @error('fecha_nacimiento')
                         <span class="invalid-feedback" role="alert">

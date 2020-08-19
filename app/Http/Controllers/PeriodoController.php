@@ -56,6 +56,8 @@ class PeriodoController extends Controller
             'fecha_fin'                         => $request->get('fecha_fin'),
         ]);
         $periodo->save();
+        return redirect()->route('periodos.index');  
+
     }
 
     /**

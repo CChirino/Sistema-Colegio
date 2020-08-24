@@ -58,7 +58,7 @@ class InscripcionEstudianteController extends Controller
         $inscripcion = Inscripcion::create($request->all());
         $inscripcion->materias()->sync($request->get('materias'));
         $inscripcion->save();
-        return redirect()->route('home');    
+        return redirect()->route('home')->with('status_success','Usuario creado de manera correcta');    
     }
 
     /**

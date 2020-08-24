@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Crear Periodo')
+@section('titulo', 'Crear Role')
 
 @section('content')
 <div class="breadcome-area">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Periodos</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Roles</a> <span class="bread-slash">/</span>
                                 </li>
                                 <li><span class="bread-blod">@yield('titulo')</span>
                                 </li>
@@ -33,38 +33,59 @@
 </div>
 </div>
 <div class="content-error">
-    @include('custom.message')
     <div class="hpanel">
         <div class="panel-body">
-            <form method="POST" action="{{ route('periodos.store') }}" id="loginForm" enctype="multipart/form-data" >
+            <form method="POST" action="{{ route('roles.store') }}" id="loginForm" enctype="multipart/form-data" >
                 @csrf
                 <div class="row">
                     <div class="form-group col-lg-12">
-                        <label>Nombre del Periodo </label>
-                        <input type="text" id="nombre_periodo"  class="form-control @error('nombre_periodo') is-invalid @enderror" name="nombre_periodo"  value="{{ old('nombre_periodo') }}" required autocomplete="nombre_periodo" autofocus>
-                        @error('nombre_periodo')
+                        <label>Nombre</label>
+                        <input type="text" id="name"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Fecha de inicio de periodo </label>
-                        <input type="date" id="fecha_inicio" class="form-control @error('fecha_inicio') is-invalid @enderror" name="fecha_inicio" value="{{ old('fecha_inicio') }}" required autocomplete="fecha_inicio" autofocus>
-                        @error('fecha_inicio')
+                        <label>Full Acces</label> <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="full-access" id="full-access-yes" value='si'>
+                            <label class="form-check-label" for="inlineRadio1">si</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="full-access" id="full-access-no" value='no'>
+                            <label class="form-check-label" for="inlineRadio2">no</label>
+                          </div>
+                        @error('full-access')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Fecha de culminación  de periodo </label>
-                        <input type="date" id="fecha_fin" class="form-control @error('fecha_fin') is-invalid @enderror" name="fecha_fin" value="{{ old('fecha_fin') }}" required autocomplete="fecha_fin" autofocus>
-                        @error('fecha_fin')
-                        <span class="invalid-feedback" role="alert">
+
+                        @foreach ($permiso as $per)
+                            
+                        <div class="form-group form-check">
+                            <input type="checkbox" 
+                            class="custom-control-input" 
+                            id="permission_{{$per->id}}"
+                            value="{{$per->id}}"
+                            name="permission[]">
+                            <label class="custom-control-label" 
+                                for="permission_{{$per->id}}">
+                                {{ $per->id }}
+                                - 
+                                {{ $per->name }} 
+                            </label>
+                          </div>
+                        @endforeach
+
+                        {{-- <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                        @enderror
+                        @enderror --}}
                     </div>
                 </div>
                 <div class="text-center">

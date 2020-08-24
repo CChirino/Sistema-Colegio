@@ -131,7 +131,7 @@ class ListarEvaluacionesController extends Controller
                 'profesores_id'                     => $request->profesores_id,
             ]);
         }
-        return redirect()->route('listar-evaluaciones.index', compact('evaluaciones'));
+        return redirect()->route('listar-evaluaciones.index', compact('evaluaciones'))->with('status_success','Usuario actualizado de manera correcta');
 
     }
 
@@ -146,6 +146,6 @@ class ListarEvaluacionesController extends Controller
         Gate::authorize('haveaccess','listar-evaluaciones.destroy');
         $evaluaciones = Evaluacione::findOrFail($id);
         $evaluaciones ->delete();
-        return redirect()->route('listar-evaluaciones.index');
+        return redirect()->route('listar-evaluaciones.index')->with('status_success','Usuario eliminado de manera correcta');
     }
 }

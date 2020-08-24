@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="content-error">
+    @include('custom.message')
     <div class="hpanel">
         <div class="panel-body">
         <form action="{{route('perfil.update',$user->id)}}" method="POST" enctype="multipart/form-data" >

@@ -73,8 +73,7 @@ class EstudianteController extends Controller
             ]);
         }
             
-        // return back()->with('success', '¡Usuario creado con éxito!');
-        return redirect()->route('estudiante.index');        
+        return redirect()->route('estudiante.index')->with('status_success','Usuario creado de manera correcta');        
     }
 
     /**
@@ -126,7 +125,7 @@ class EstudianteController extends Controller
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
-        return redirect()->route('estudiante.index')->with('datos','Registro actualizado correctamente!');
+        return redirect()->route('estudiante.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**
@@ -140,6 +139,6 @@ class EstudianteController extends Controller
         Gate::authorize('haveaccess','estudiantes.destroy');
         $estudiantes = User::find($id);
         $estudiantes ->delete();
-        return redirect()->route('estudiante.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('estudiante.index')->with('status_success','Usuario eliminado de manera correcta');
     }
 }

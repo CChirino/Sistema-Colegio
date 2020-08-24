@@ -35,6 +35,7 @@
 </div>
 </div>
 <div class="content-error">
+    @include('custom.message')
     <div class="hpanel">
         <div class="panel-body">
         <form action="{{route('horarios.update',$horarios->id)}}" method="POST" enctype="multipart/form-data" >

@@ -50,7 +50,7 @@ class RoleController extends Controller
         $role = Role::create($request->all());
         $role->permissions()->sync($request->get('permission'));
         $role->save();
-        return redirect()->route('roles.index');        
+        return redirect()->route('roles.index')->with('status_success','Role creado de manera correcta');        
 
     }
 
@@ -110,7 +110,7 @@ class RoleController extends Controller
         $role->update($request->all());
         $role->permissions()->sync($request->get('permission'));
         $role->save();
-        return redirect()->route('roles.index');    
+        return redirect()->route('roles.index')->with('status_success','Role actualizado de manera correcta');    
     }
 
     /**
@@ -125,6 +125,6 @@ class RoleController extends Controller
 
         $role->delete();
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('status_success','Role eliminado de manera correcta');
     }
 }

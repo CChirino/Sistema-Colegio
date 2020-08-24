@@ -33,6 +33,7 @@
 </div>
 </div>
 <div class="content-error">
+    @include('custom.message')
     <div class="hpanel">
         <div class="panel-body">
             <form method="POST" action="{{ route('coordinador.store') }}" id="loginForm" enctype="multipart/form-data" >

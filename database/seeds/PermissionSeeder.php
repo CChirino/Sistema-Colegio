@@ -253,6 +253,16 @@ class PermissionSeeder extends Seeder
             'slug'          => 'admin.destroy',
             'description'   => 'admin destroy',      
         ]);           
+        Permission::create([
+            'name'          => 'Cambio de Rol index',
+            'slug'          => 'usuario-rol.index',
+            'description'   => 'Cambio de Roles index',      
+        ]);
+        Permission::create([
+            'name'          => 'Cambio de Rol Edit',
+            'slug'          => 'usuario-rol.edit',
+            'description'   => 'usuario-rol.edit',      
+        ]);   
 
     }
     

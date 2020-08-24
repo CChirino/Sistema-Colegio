@@ -37,7 +37,7 @@
                     </li>
                     @can('haveaccess', 'notas-estudiante.index')
                     <li>
-                        <a class="has-arrow" href="{{ route('notas-estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>                        
+                        <a class="has-arrow" href="{{ route('notas-estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones Est</span></a>                        
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Materias" href="{{ route('notas-estudiante.index')}}"><span class="mini-sub-pro">Calificaciones</span></a></li>
                             {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
@@ -46,7 +46,7 @@
                     @endcan
                     @can('haveaccess', 'notas.index')
                     <li>
-                        <a class="has-arrow" href="{{ route('notas.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones</span></a>                        
+                        <a class="has-arrow" href="{{ route('notas.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones Prf</span></a>                        
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li>
                             {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
@@ -64,7 +64,7 @@
                     </li>
                     @can('haveaccess', 'evaluaciones.index')
                     <li>
-                        <a class="has-arrow" href="{{ route('evaluaciones.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones</span></a>                        
+                        <a class="has-arrow" href="{{ route('evaluaciones.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones Prf</span></a>                        
                         @endcan
                         @can('haveaccess', 'evaluaciones.index')
                         <ul class="submenu-angle" aria-expanded="false">
@@ -77,7 +77,7 @@
                     @endcan
                     @can('haveaccess', 'evaluacion-estudiante.index')
                     <li>
-                        <a class="has-arrow" href="{{ route('evaluacion-estudiante.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones</span></a>                        
+                        <a class="has-arrow" href="{{ route('evaluacion-estudiante.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones Est</span></a>                        
                         @endcan
                         @can('haveaccess', 'evaluacion-estudiante.index')
                         <ul class="submenu-angle" aria-expanded="false">
@@ -159,6 +159,19 @@
                     @endcan
                     @can('haveaccess', 'periodos.create')
                             <li><a title="Crear Periodo" href="{{ route('periodos.create')}}"><span class="mini-sub-pro">Crear Periodo</span></a></li>
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('haveaccess', 'usuario-rol.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('usuario-rol.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-users-cog"></i></span> <span class="mini-click-non">Cambio de Rol</span></a>                        
+                        @endcan
+                        @can('haveaccess', 'usuario-rol.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Listado de Evaluaciones" href="{{ route('usuario-rol.index')}}"><span class="mini-sub-pro">Usuarios con rol</span></a></li>
+                        @endcan
+                        @can('haveaccess', 'subir-evaluacion-estudiante.create')
+                            <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-estudiante.create')}}"><span class="mini-sub-pro"></span></a></li>
                         </ul>
                     </li>
                     @endcan

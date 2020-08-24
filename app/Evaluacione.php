@@ -18,6 +18,7 @@ class Evaluacione extends Model
         'archivo_evaluacion',
         'estudiante_id',
         'profesores_id', 
+        // 'materias_id',
 
     ];
 }

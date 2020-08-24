@@ -65,6 +65,7 @@ class UserController extends Controller
                 ]);
         }
         $user->save();
+        return redirect()->route('user.index')->with('status_success','Usuario creado de manera correcta');
     }
 
     /**
@@ -111,7 +112,7 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**
@@ -125,6 +126,6 @@ class UserController extends Controller
         Gate::authorize('haveaccess','periodos.destroy');
         $periodo = User::find($id);
         $periodo ->delete();
-        return redirect()->route('user.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('user.index')->with('status_success','Usuario eliminado de manera correcta');
     }
 }

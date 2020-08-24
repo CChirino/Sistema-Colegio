@@ -11,17 +11,18 @@ class Materia extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'nombre_materia', 
-        'descripcion_materia',
-        'pensum_id',
-        'periodo_id',
-        'role_user_id'
+    // protected $fillable = [
+    //     'nombre_materia', 
+    //     'descripcion_materia',
+    //     'periodo_id',
+    //     'pensum_id',
+    //     'role_user_id'
+    // ];
+    protected $guarded = [];
 
-    ];
     public function pensums()
     {
-        return $this->belongsTo('App\Pensum');
+        return $this->belongsToMany('App\Pensum');
     }
     public function periodos()
     {

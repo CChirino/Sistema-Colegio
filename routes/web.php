@@ -69,6 +69,8 @@ Route::resource('inscripciones-estudiante', 'InscripcionEstudianteController')->
 Route::resource('notas-estudiante', 'NotaEstudianteController')->only([
     'index', 'show'
 ]);
+Route::resource('usuario-rol', 'UserRoleController');
+
 
 
 

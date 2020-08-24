@@ -60,7 +60,7 @@ class HorarioController extends Controller
             'horario_id'                        => $request->get('horario_id')
         ]);    
         $horarios->save();
-        return redirect()->route('horarios.index');
+        return redirect()->route('horarios.index')->with('status_success','Usuario creado de manera correcta');
     }
 
     /**
@@ -100,6 +100,7 @@ class HorarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $horarios = Horarios::find($id);
         $request->validate([
             'dia'=>'required',
             'horario'=>'required',
@@ -114,7 +115,7 @@ class HorarioController extends Controller
             'horario_id'                        => $request->get('horario_id')
         ]);    
         $horarios->save();
-        return redirect()->route('horarios.index');
+        return redirect()->route('horarios.index')->with('status_success','Usuario actualizado de manera correcta');
 
     }
 

@@ -75,7 +75,7 @@ class SubirEvaluacionEstudianteController extends Controller
 
             ]);
         }
-        return redirect()->route('subir-evaluacion-estudiante.index',compact('evaluaciones'));
+        return redirect()->route('subir-evaluacion-estudiante.index',compact('evaluaciones'))->with('status_success','Evaluacion subida de manera correcta');
     }
 
     /**

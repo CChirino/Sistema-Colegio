@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Evaluacione;
+use App\Materia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -49,6 +50,7 @@ class EvaluacionesController extends Controller
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
                     ->select('users.*','inscripcion_materia.*')
                     ->where('materias.role_user_id', '=', $profesor )
+                    // ->orWhere('inscripcion_materia.materia_id','=',$materia_id )
                     ->get();
         $materias = DB::table('users')
             ->join('role_user', 'users.id', '=', 'role_user.id')
@@ -86,7 +88,7 @@ class EvaluacionesController extends Controller
                 'profesores_id'                     => $request->profesores_id,
             ]);
         }
-        return redirect()->route('evaluaciones.index',compact('evaluacione'));
+        return redirect()->route('evaluaciones.index',compact('evaluacione'))->with('status_success','Evaluacion creada de manera correcta');
 
     }
 

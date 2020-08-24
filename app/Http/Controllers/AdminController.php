@@ -73,7 +73,8 @@ class AdminController extends Controller
         }
             
         // return back()->with('success', '¡Usuario creado con éxito!');
-        return redirect()->route('admin.index');  
+        return redirect()->route('admin.index')->with('status_success','Usuario creado de manera correcta'); 
+        ;  
     }
 
     /**
@@ -125,7 +126,7 @@ class AdminController extends Controller
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
-        return redirect()->route('admin.index')->with('datos','Registro actualizado correctamente!');
+        return redirect()->route('admin.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**
@@ -139,6 +140,6 @@ class AdminController extends Controller
         Gate::authorize('haveaccess','admin.destroy');
         $admin = User::find($id);
         $admin ->delete();
-        return redirect()->route('admin.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('admin.index')->with('status_success','Usuario eliminado de manera correcta');
     }
 }

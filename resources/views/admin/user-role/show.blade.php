@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Crear Role')
+@section('titulo', 'Ver Profesor')
 
 @section('content')
 <div class="breadcome-area">
@@ -21,7 +21,9 @@
                             <ul class="breadcome-menu">
                                 <li><a href="#">Roles</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">@yield('titulo')</span>
+                                <li><a href="#">@yield('titulo')</a> <span class="bread-slash">/</span>
+                                </li>
+                            <li><span class="bread-blod">{{$role->name}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -33,29 +35,35 @@
 </div>
 </div>
 <div class="content-error">
-    @include('custom.message')
     <div class="hpanel">
         <div class="panel-body">
-            <form method="POST" action="{{ route('roles.store') }}" id="loginForm" enctype="multipart/form-data" >
+            <form >
                 @csrf
+                @method('put')
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label>Nombre</label>
-                        <input type="text" id="name"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        <input type="text" id="name"  class="form-control" name="name" value="{{$role->name}}" disabled>
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Full Acces</label> <br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="full-access" id="full-access-yes" value='si'>
+                            <input class="form-check-input" type="radio" name="full-access" id="full-access-yes" value='si'
+                            @if ( $role['full-access']=="si") 
+                            checked 
+                            @elseif (old('full-access')=="si") 
+                            checked 
+                            @endif disabled>
+
                             <label class="form-check-label" for="inlineRadio1">si</label>
                           </div>
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="full-access" id="full-access-no" value='no'>
+                            <input class="form-check-input" type="radio" name="full-access" id="full-access-no" value='no'
+                            @if ( $role['full-access']=="no") 
+                            checked 
+                            @elseif (old('full-access')=="no") 
+                            checked 
+                            @endif disabled>
                             <label class="form-check-label" for="inlineRadio2">no</label>
                           </div>
                         @error('full-access')
@@ -73,7 +81,15 @@
                             class="custom-control-input" 
                             id="permission_{{$per->id}}"
                             value="{{$per->id}}"
-                            name="permission[]">
+                            name="permission[]" 
+                            @if( is_array(old('permission')) && in_array("$per->id", old('permission'))    )
+                            checked
+
+                            @elseif( is_array($permission_role) && in_array("$per->id", $permission_role)    )
+                            checked
+
+                            @endif disabled>
+
                             <label class="custom-control-label" 
                                 for="permission_{{$per->id}}">
                                 {{ $per->id }}
@@ -90,8 +106,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success loginbtn">Registrar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                    <a href="{{ route('roles.index')}}" class="btn btn-success loginbtn"> Regresar</a>
                 </div>
             </form>
         </div>

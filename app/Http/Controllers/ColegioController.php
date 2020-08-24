@@ -74,7 +74,7 @@ class ColegioController extends Controller
             
         }
 
-        return redirect()->route('colegio.index');      
+        return redirect()->route('colegio.index')->with('status_success','Usuario creado de manera correcta');      
     }
 
     /**
@@ -127,7 +127,7 @@ class ColegioController extends Controller
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
-        return redirect()->route('colegio.index')->with('datos','Registro actualizado correctamente!');
+        return redirect()->route('colegio.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**
@@ -141,6 +141,6 @@ class ColegioController extends Controller
         Gate::authorize('haveaccess','colegio.destroy');
         $colegio = User::find($id);
         $colegio ->delete();
-        return redirect()->route('colegio.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('colegio.index')->with('status_success','Usuario eliminado de manera correcta');
     }
 }

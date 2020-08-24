@@ -78,19 +78,7 @@ class ProfesorController extends Controller
             ]);
             
         }
-
-        // if ($request->hasfile('image')) {
-        //     $image = $request->file('image');
-        //     $filename = time() . '.' . $image->getClientOriginalExtension();
-        //     $location = storage_path('app/public/images/') . $filename;
-                
-        //     Image::make($image)->save($location);
-    
-        //     $role->image = $filename;
-        //     $role->save();
-        //   }
-        // // return back()->with('success', '¡Usuario creado con éxito!');
-        return redirect()->route('profesor.index');        
+        return redirect()->route('profesor.index')->with('status_success','Profesor creado de manera correcta');        
     }
 
     /**
@@ -145,7 +133,7 @@ class ProfesorController extends Controller
                 ]);
         }
         // User::where('id', '=', $id)->update($profesores);
-        return redirect()->route('profesor.index')->with('datos','Registro actualizado correctamente!');
+        return redirect()->route('profesor.index')->with('status_success','Profesor actualizado de manera correcta');
     }
 
     /**
@@ -159,7 +147,7 @@ class ProfesorController extends Controller
         Gate::authorize('haveaccess','profesor.destroy');
         $profesores = User::find($id);
         $profesores ->delete();
-        return redirect()->route('profesor.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('profesor.index')->with('status_success','Profesor eliminado de manera correcta');
 
     }
 }

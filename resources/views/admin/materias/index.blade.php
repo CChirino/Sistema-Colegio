@@ -31,15 +31,15 @@
 </div>
 <!-- Static Table Start -->
 <div class="container">
+    @include('custom.message')
     <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>
                 <th>Nombre de Materia</th>
                 <th>Descripcion de Materia</th>
-                <th>Año</th>
-                <th>Periodo</th>
+                {{-- <th>Año</th>
+                <th>Periodo</th> --}}
                 <th colspan="3">Transacciones</th>
-
             </tr>
         </thead>
         <tbody>
@@ -47,13 +47,12 @@
             <tr>
                 <td>{{$mat->nombre_materia}}</td>
                 <td>{{$mat->descripcion_materia}}</td>
-                <td>{{$mat->pensum_nombre}}</td>
-                <td>{{$mat->nombre_periodo}}</td>
-            
+                {{-- <td>{{$mat->pensum_nombre}}</td>
+                <td>{{$mat->nombre_periodo}}</td> --}}
                 <td><a class="btn btn-info" href="{{ route('materias.show',$mat->id) }}" > <i class="far fa-eye"></i> Ver</a></td>
                 <td><a class="btn btn-warning" href="{{ route('materias.edit',$mat->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                 <td>
-                <form action="{{ route('materias.destroy',$mat->id) }}" method="post">
+                <form action="{{route('materias.destroy',$mat->id)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
@@ -67,7 +66,7 @@
         </tbody>
     </table>
     <div>
-        {{$materias->links()}} 
+    {{$materias->links()}}
     </div>
 </div>
 @endsection

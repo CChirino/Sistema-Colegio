@@ -22,11 +22,13 @@ class MateriaController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','materias.index');
-        $materias = DB::table('materias')
-                    ->join('periodos','materias.periodo_id', '=','periodos.id')
-                    ->join('pensums','materias.pensum_id', '=','pensums.id')
-                    ->select('materias.*','pensums.*','periodos.*')
-                    ->paginate(7);
+        // $lista_materias = DB::table('materias')
+        //             ->join('periodos','materias.periodo_id', '=','periodos.id')
+        //             ->join('pensums','materias.pensum_id', '=','pensums.id')
+        //             ->select('materias.*','pensums.*','periodos.*')
+        //             ->paginate(7);
+        $materias = Materia::all();
+        $materias = Materia::paginate(7);
         return view('admin.materias.index', compact('materias'));
     }
 
@@ -52,19 +54,22 @@ class MateriaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // $materias = Materia::create($request->except('_method', '_token'));
+        // $materias->sync($request->get('pensum_id'));
+        request()->validate([
             'nombre_materia'=>'required',
-            'descripcion_materia'=>'required'
-        ]);        
-        $materias = new Materia([
-            'nombre_materia'                    => $request->get('nombre_materia'),
-            'descripcion_materia'               => $request->get('descripcion_materia'),
-            'pensum_id'                         => $request->get('pensum_id'),
-            'periodo_id'                        => $request->get('periodo_id'),
-            'role_user_id'                      => $request->get('role_user_id'),
-        ]);
+           'descripcion_materia'=>'required'
+           ]);        
+        // $materias = new Materia([
+        //     'nombre_materia'                    => $request->get('nombre_materia'),
+        //     'descripcion_materia'               => $request->get('descripcion_materia'),
+        //     'pensum_id'                         => $request->get('pensum_id'),
+        //     'periodo_id'                        => $request->get('periodo_id'),
+        //     'role_user_id'                      => $request->get('role_user_id'),
+        // ]);
+        $materias = Materia::create(request()->all());
         $materias->save();
-        return redirect()->route('materias.index');
+        return redirect()->route('materias.index', compact('materias'))->with('status_success','La materia se ha creado de manera correcta');
 
     }
 
@@ -124,7 +129,7 @@ class MateriaController extends Controller
             ]);
         $materias->save();
         
-        return redirect()->route('materias.index');
+        return redirect()->route('materias.index')->with('status_success','La materia se ha actualizado de manera correcta');
     }
 
     /**
@@ -137,7 +142,7 @@ class MateriaController extends Controller
     {
         Gate::authorize('haveaccess','materias.destroy');
         $materias = Materia::find($id);
-        $materias ->delete();
-        return redirect()->route('materias.index')->with('datos','Registro eliminado correctamente!');
+        $materias->delete();
+        return redirect()->route('materias.index')->with('status_success','La materia se ha eliminado de manera correcta');
     }
 }

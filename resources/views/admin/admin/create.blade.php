@@ -35,6 +35,7 @@
 <div class="content-error">
     <div class="hpanel">
         <div class="panel-body">
+            @include('custom.message')
             <form method="POST" action="{{ route('admin.store') }}" id="loginForm" enctype="multipart/form-data" >
                 @csrf
                 <div class="row">

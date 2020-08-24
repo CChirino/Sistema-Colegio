@@ -40,9 +40,8 @@ class NotasController extends Controller
      */
     public function create()
     {
-
+        $materia = Materia::all();
         $profesor = Auth::user()->id;
-        
         Gate::authorize('haveaccess','notas.create');
         $estudiante =DB::table('inscripcion_materia')->distinct()
                     ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
@@ -58,7 +57,7 @@ class NotasController extends Controller
             ->select('users.*', 'role_user.*', 'materias.*')
             ->where('materias.role_user_id', '=', $profesor )
             ->get();
-        return view('admin.nota.create',compact('estudiante','materias'));
+        return view('admin.nota.create',compact('estudiante','materias','materia'));
     }
 
     /**
@@ -77,7 +76,7 @@ class NotasController extends Controller
         // ]);        
         $notas = Notas::create($request->except('_method', '_token'));
         $notas->save();
-        return redirect()->route('notas.index');
+        return redirect()->route('notas.index')->with('status_success','Usuario creado de manera correcta');
     }
 
     /**
@@ -153,7 +152,7 @@ class NotasController extends Controller
         $notas->update($request->all());
         // $notas = Notas::update($request->except('_method', '_token'));
         // $notas->save();
-        return redirect()->route('notas.index', compact('notas'));
+        return redirect()->route('notas.index', compact('notas'))->with('status_success','Usuario creado de manera correcta');
 
     }
 

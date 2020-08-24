@@ -93,7 +93,7 @@ class PerfilController extends Controller
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
-        return redirect()->route('perfil.index')->with('datos','Registro actualizado correctamente!');;
+        return redirect()->route('perfil.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**

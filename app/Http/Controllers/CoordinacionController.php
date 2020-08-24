@@ -72,7 +72,7 @@ class CoordinacionController extends Controller
             
         }
 
-        return redirect()->route('coordinador.index');      
+        return redirect()->route('coordinador.index')->with('status_success','Usuario creado de manera correcta');      
     }
 
     /**
@@ -125,7 +125,7 @@ class CoordinacionController extends Controller
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
-        return redirect()->route('coordinador.index')->with('datos','Registro actualizado correctamente!');
+        return redirect()->route('coordinador.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**
@@ -139,6 +139,6 @@ class CoordinacionController extends Controller
         Gate::authorize('haveaccess','horarios.destroy');
         $coordinador = User::find($id);
         $coordinador ->delete();
-        return redirect()->route('coordinador.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('coordinador.index')->with('status_success','Usuario eliminado de manera correcta');
     }
 }

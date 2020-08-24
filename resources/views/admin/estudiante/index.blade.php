@@ -31,6 +31,7 @@
 </div>
 <!-- Static Table Start -->
 <div class="container">
+    @include('custom.message')
     <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>
@@ -60,7 +61,7 @@
                 <td><a class="btn btn-info" href="{{ route('estudiante.show',$est->id) }}" > <i class="far fa-eye"></i> Ver</a></td>
                 <td><a class="btn btn-warning" href="{{ route('estudiante.edit',$est->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                 <td>
-                <form action="{{ route('estudiante.destroy',$est->id) }}" method="post">
+                <form action="{{route('estudiante.destroy',$est->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >

@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="container pt-4 pb-4">
+        @include('custom.message')
         <div class="row">
             <div class="col-sm-4">
                 <img class="card-img-user pb-1 pt-1" src="{{asset('storage/'.Auth::user()->image)}}">

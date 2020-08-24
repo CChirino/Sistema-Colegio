@@ -36,6 +36,7 @@
 </div>
 <div class="content-error">
     <div class="hpanel">
+        @include('custom.message')
         <div class="panel-body">
         <form action="{{route('roles.update',$role->id)}}" method="POST" enctype="multipart/form-data" >
                 @csrf

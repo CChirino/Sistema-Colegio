@@ -56,7 +56,7 @@ class PeriodoController extends Controller
             'fecha_fin'                         => $request->get('fecha_fin'),
         ]);
         $periodo->save();
-        return redirect()->route('periodos.index');  
+        return redirect()->route('periodos.index')->with('status_success','Periodo creado de manera correcta');  
 
     }
 
@@ -104,8 +104,7 @@ class PeriodoController extends Controller
 
         $periodo->update($request->all());
 
-        return redirect()->route('periodos.index')
-                         ->with('success','Product updated successfully');
+        return redirect()->route('periodos.index')->with('status_success','Periodo actualizado de manera correcta');
     }
 
     /**
@@ -119,6 +118,6 @@ class PeriodoController extends Controller
         Gate::authorize('haveaccess','periodos.destroy');
         $periodo = Periodo::find($id);
         $periodo ->delete();
-        return redirect()->route('periodos.index')->with('datos','Registro eliminado correctamente!');
+        return redirect()->route('periodos.index')->with('status_success','Periodo eliminado de manera correcta');
     }
 }

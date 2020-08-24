@@ -1,20 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Inscripcion;
-use App\Materia;
-use App\Pensum;
-use App\Periodo;
-use App\Role;
 use App\User;
+use App\Role;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 
-
-
-class InscripcionController extends Controller
+class UserRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +15,14 @@ class InscripcionController extends Controller
      */
     public function index()
     {
-        //
+        // $role_users = DB::table('role_user')
+        //             ->join('roles', 'role_user.role_id', '=', 'roles.id')
+        //             ->join('users', 'role_user.user_id', '=', 'users.id')
+        //             ->select('role_user.*','roles.*','users.*')
+        //             ->get();  
+        $users =  User::with('roles')->orderBy('id','asc')->paginate(5);
+
+        return view('admin.user-role.index', compact('users'));
     }
 
     /**
@@ -33,12 +32,7 @@ class InscripcionController extends Controller
      */
     public function create()
     {
-        Gate::authorize('haveaccess','materias.create');
-        $pensum = Pensum::get();
-        $periodo = Periodo::get();
-        $materia = Materia::get();
-        $estudiantes = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 3');
-        return view('admin.inscripcion.create',compact('pensum','estudiantes','periodo','materia'));
+        //
     }
 
     /**
@@ -49,16 +43,7 @@ class InscripcionController extends Controller
      */
     public function store(Request $request)
     {
-        //  $request->validate([
-        //      'periodo_id '=>'required',
-        //      'pensum_id'=>'required',
-        //      'role_user_id'=>'required',
-        // ]);
-        $inscripcion = Inscripcion::create($request->all());
-        $inscripcion->materias()->sync($request->get('materias'));
-        $inscripcion->save();
-        return redirect()->route('home')->with('status_success','Usuario creado de manera correcta');    
-
+        //
     }
 
     /**
@@ -80,7 +65,10 @@ class InscripcionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = Role::get();
+        $user = User::find($id);
+        return view ('admin.user-role.edit', compact('roles','user'));
+
     }
 
     /**
@@ -92,7 +80,18 @@ class InscripcionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        //dd($request->all());
+
+        $user->update($request->all());
+
+        $user->roles()->sync($request->get('roles'));
+        
+        return redirect()->route('usuario-rol.index')
+            ->with('status_success','Usuario Actualizado de manera correcta'); 
+
+
     }
 
     /**

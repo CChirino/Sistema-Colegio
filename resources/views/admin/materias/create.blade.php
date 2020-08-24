@@ -33,6 +33,8 @@
 </div>
 </div>
 <div class="content-error">
+    @include('custom.message')
+
     <div class="hpanel">
         <div class="panel-body">
             <form method="POST" action="{{ route('materias.store') }}" id="loginForm" enctype="multipart/form-data" >
@@ -57,7 +59,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="">Selecciona un año</label>
+                        <label for="">Seleccionar años</label>
                         <select class="form-control" id="pensum_id" name="pensum_id">
                             @foreach ($pensum as $pen)
 
@@ -65,9 +67,9 @@
                                 {{ $pen ->pensum_nombre}}                        
                             </option>
                         
-                          @endforeach    
+                            @endforeach    
                         </select>
-                    </div>
+                    </div> 
                     <div class="form-group col-lg-6">
                         <label for="">Selecciona un periodo</label>
                         <select class="form-control" id="periodo_id" name="periodo_id">
@@ -94,6 +96,18 @@
                           @endforeach    
                         </select>
                     </div>
+                    {{-- <div class="form-group col-lg-6">
+                        <label for="">Seleccionar años</label>
+                        @foreach ($pensum as $pen)
+                        <div class="form-group form-check">
+                            <input class="form-check-input" type="checkbox" 
+                            value="{{$pen->id}}" id="pensum_id" name="pensum_id">
+                            <label class="form-check-label">
+                                {{$pen->pensum_nombre}}
+                            </label>                          
+                        </div>
+                        @endforeach    
+                    </div> --}}
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Registrar</button>

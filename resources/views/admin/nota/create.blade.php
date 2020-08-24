@@ -51,6 +51,7 @@
     </div>
 </div>  --}}
 <div class="container">
+    @include('custom.message')
     <div class="row">
         <div class="col-sm-12">
             <form action="{{ route('notas.store') }}" method="POST">
@@ -71,13 +72,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <div class="pb-4">
+                        {{-- <div class="pb-4">
                             <div class="form-group col-lg-6">
                                 <label for="">Materia</label>
                                 <select class="form-control" name="notas_id" id="notas_id" >        
                                     @foreach ($materias as $mat)
         
                                     <option value="{{ $mat->role_user_id }}"> 
+                                        {{ $mat ->nombre_materia}}                        
+                                    </option>
+                                
+                                  @endforeach    
+                                </select>
+                            </div>
+                        </div> --}}
+                        <div class="pb-4">
+                            <div class="form-group col-lg-6">
+                                <label for="">Materia</label>
+                                <select class="form-control" name="materias_id" id="materias_id" >        
+                                    @foreach ($materia as $mat)
+        
+                                    <option value="{{ $mat->id }}"> 
                                         {{ $mat ->nombre_materia}}                        
                                     </option>
                                 

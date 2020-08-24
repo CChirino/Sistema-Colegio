@@ -33,6 +33,7 @@
     </div>
 </div>
 <div class="container">
+    @include('custom.message')
     <div class="row">
         <div class="col-sm-12">
             <form action="{{ route('inscripciones-estudiante.store') }}" method="POST">

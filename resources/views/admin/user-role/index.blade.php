@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Lista de Evaluaciones')
+@section('titulo', 'Lista de Roles')
 
 @section('content')
 <div class="breadcome-area">
@@ -11,12 +11,12 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcome-heading">
-                                {{-- <td><a class="btn btn-success" href="{{ route('listar-evaluaciones.index') }}"> <i class="fas fa-plus-circle"></i> Ver Evalauciones </a></td>     --}}
+                                {{-- <td><a class="btn btn-success" href="{{ route('roles.create') }}"> <i class="fas fa-plus-circle"></i> Crear Role</a></td>     --}}
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Evaluaciones</a> <span class="bread-slash">/</span>
+                                <li><a href="#">Usuarios por role</a> <span class="bread-slash">/</span>
                                 </li>
                                 <li><span class="bread-blod">@yield('titulo')</span>
                                 </li>
@@ -32,29 +32,40 @@
 <!-- Static Table Start -->
 <div class="container">
     @include('custom.message')
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>
-                <th>Nombre de estudiante</th>
-                <th>Materia</th>
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Rol</th>
                 <th colspan="3">Transacciones</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach($listarevaluaciones as $le)
+                @foreach($users as $user)
             <tr>
-                <td>{{$le->nombre}} {{$le->apellido}}</td>
-                <td>{{$le->nombre_materia}}</td>
-            @endforeach
-            @foreach($subirevaluaciones as $se)
-                <td><a class="btn btn-info" href="{{ route('subir-evaluacion-estudiante.show',$se->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
-            @endforeach
+                <td>{{$user->dni}}</td>
+                <td>{{$user->nombre}}</td>
+                <td>{{$user->apellido}}</td>
+                <td>
+                    @isset( $user->roles[0]->name )
+                    {{ $user->roles[0]->name}}
+                  @endisset
+                </td>
+                <td><a class="btn btn-warning" href="{{ route('usuario-rol.edit',$user->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
+                
             </tr>
+            @endforeach
+            {{-- <tr>
+                @foreach($users as $user)
+                @endforeach
+            </tr> --}}
         </tbody>
     </table>
     <div>
-        {{-- {{$materias->links()}}  --}}
+        {{$users->links()}} 
     </div>
 </div>
 @endsection

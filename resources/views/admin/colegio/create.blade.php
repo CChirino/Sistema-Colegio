@@ -33,6 +33,7 @@
 </div>
 </div>
 <div class="content-error">
+    @include('custom.message')
     <div class="hpanel">
         <div class="panel-body">
             <form method="POST" action="{{ route('colegio.store') }}" id="loginForm" enctype="multipart/form-data" >

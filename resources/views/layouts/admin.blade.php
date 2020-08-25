@@ -62,13 +62,16 @@
                         </ul>
                         @endcan
                     </li>
-                    @can('haveaccess', 'evaluaciones.index')
+                    @can('haveaccess', 'evaluaciones.create')
                     <li>
-                        <a class="has-arrow" href="{{ route('evaluaciones.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones Prf</span></a>                        
+                        <a class="has-arrow" href="{{ route('evaluaciones.create')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones Prf</span></a>                        
                         @endcan
-                        @can('haveaccess', 'evaluaciones.index')
+                        @can('haveaccess', 'evaluaciones.create')
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Listado de Evaluaciones" href="{{ route('evaluaciones.index')}}"><span class="mini-sub-pro">Evaluaciones</span></a></li>
+                            <li><a title="Listado de Evaluaciones" href="{{ route('evaluaciones.create')}}"><span class="mini-sub-pro">Crear Evaluacion</span></a></li>
+                        @endcan
+                        @can('haveaccess', 'subir-evaluacion-estudiante.index')
+                        <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-estudiante.index')}}"><span class="mini-sub-pro">Evaluaciones de Estudiantes</span></a></li>
                         @endcan
                         @can('haveaccess', 'listar-evaluaciones.index')
                             <li><a title="Listado de Evaluaciones" href="{{ route('listar-evaluaciones.index')}}"><span class="mini-sub-pro">Listar Evaluaciones</span></a></li>

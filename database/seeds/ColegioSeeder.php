@@ -245,6 +245,22 @@ class ColegioSeeder extends Seeder
     
         $permission_all[] = $permission->id;
 
+        $permission = Permission::create([
+            'name' => 'subir-evaluacion-estudiante index',
+            'slug' => 'subir-evaluacion-estudiante.index',
+            'description' => 'subir-evaluacion-estudiante index',
+        ]);
+    
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'subir-evaluacion-estudiante show',
+            'slug' => 'subir-evaluacion-estudiante.show',
+            'description' => 'subir-evaluacion-estudiante show',
+        ]);
+    
+        $permission_all[] = $permission->id;
+
      
         //table permission_role
         $rolprf->permissions()->sync( $permission_all);
@@ -311,22 +327,6 @@ class ColegioSeeder extends Seeder
         'name' => 'notas-estudiante index',
         'slug' => 'notas-estudiante.index',
         'description' => 'notas-estudiante index',
-    ]);
-
-    $permission_all[] = $permission->id;
-
-    $permission = Permission::create([
-        'name' => 'subir-evaluacion-estudiante index',
-        'slug' => 'subir-evaluacion-estudiante.index',
-        'description' => 'subir-evaluacion-estudiante index',
-    ]);
-
-    $permission_all[] = $permission->id;
-
-    $permission = Permission::create([
-        'name' => 'subir-evaluacion-estudiante show',
-        'slug' => 'subir-evaluacion-estudiante.show',
-        'description' => 'subir-evaluacion-estudiante show',
     ]);
 
     $permission_all[] = $permission->id;

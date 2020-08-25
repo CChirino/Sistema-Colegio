@@ -58,10 +58,10 @@
                         <div>
                             <div class="form-group col-lg-6">
                                 <label for="">Materia</label>
-                                <select class="form-control" name="profesores_id" id="profesores_id" >        
+                                <select class="form-control" name="materias_id" id="materias_id" >        
                                     @foreach ($materias as $mat)
         
-                                    <option value="{{Auth::user()->id}}"> 
+                                    <option value="{{$mat->id}}"> 
                                         {{ $mat ->nombre_materia}}                        
                                     </option>
                                 
@@ -70,7 +70,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            
                             <div class="form-group col-lg-6">
                                 <label>Nombre de Evaluación</label>
                                 <input type="text" id="nombre_evaluacion"  class="form-control @error('nombre_evaluacion') is-invalid @enderror" name="nombre_evaluacion"  required autocomplete="nombre_evaluacion" autofocus>
@@ -108,7 +107,7 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group col-lg-12">
+                            {{-- <div class="form-group col-lg-12">
                                 <table class="table table-striped table-bordered " style="width:100%">
                                     <thead>
                                         <tr>
@@ -128,7 +127,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-12">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success loginbtn">Registrar</button>

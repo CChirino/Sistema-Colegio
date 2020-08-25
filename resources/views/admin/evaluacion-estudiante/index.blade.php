@@ -48,12 +48,13 @@
                 <td>{{$eval->nombre_evaluacion}}</td>
                 <td>{{$eval->fecha_inicio}}</td>
                 <td>{{$eval->fecha_fin}}</td>
+                {{-- <td><a class="btn btn-info" href="{{ route('evaluacion-estudiante.show',$eval->${$evaluacion.'id'}) }}"> <i class="far fa-eye"></i> Ver Evaluacion</a></td>                 --}}
+                <td><a class="btn btn-warning" href="{{ route('subir-evaluacion-estudiante.create') }}"> <i class="far fa-edit"></i> Subir Evaluacion </a></td>
             @endforeach
             @foreach($evaluacion as $eva)
                 <td><a class="btn btn-info" href="{{ route('evaluacion-estudiante.show',$eva->id) }}"> <i class="far fa-eye"></i> Ver Evaluacion</a></td>                
             @endforeach
-                <td><a class="btn btn-warning" href="{{ route('subir-evaluacion-estudiante.create') }}"> <i class="far fa-edit"></i> Subir Evaluacion </a></td>
-
+            
                 {{-- <td><a class="btn btn-warning" href="{{ route('listar-evaluaciones.edit',$eval->id) }}"> <i class="far fa-edit"></i> Editar</a></td> --}}
                 {{-- <td>
                     <form action="{{ route('admin.destroy',$eval->id) }}" method="post">

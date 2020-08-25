@@ -23,13 +23,13 @@ class SubirEvaluacionEstudianteController extends Controller
         $profesor = Auth::user()->id;
         $listarevaluaciones = DB::table('subir_evaluaciones')
             ->join('evaluaciones', 'subir_evaluaciones.evaluaciones_id', '=', 'evaluaciones.id')
-            ->join('materias', 'evaluaciones.profesores_id', '=', 'materias.role_user_id')
-            ->join('inscripcion_materia', 'evaluaciones.estudiante_id', '=', 'inscripcion_materia.id')
+            ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
+            ->join('inscripcion_materia', 'evaluaciones.materias_id', '=', 'inscripcion_materia.id')
             ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
             ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
             ->join('users', 'role_user.user_id', '=', 'users.id')
             ->select('subir_evaluaciones.*','evaluaciones.*','inscripcion_materia.*','inscripcions.*','role_user.*','users.*','materias.*')
-            ->where('evaluaciones.profesores_id', '=', $profesor )
+            ->where('materias.role_user_id', '=', $profesor )
             ->get();  
         $subirevaluaciones = SubirEvaluacione::all();        
         $subirevaluaciones = SubirEvaluacione::paginate(7);
@@ -75,7 +75,7 @@ class SubirEvaluacionEstudianteController extends Controller
 
             ]);
         }
-        return redirect()->route('subir-evaluacion-estudiante.index',compact('evaluaciones'))->with('status_success','Evaluacion subida de manera correcta');
+        return redirect()->route('evaluacion-estudiante.index',compact('evaluaciones'))->with('status_success','Evaluacion subida de manera correcta');
     }
 
     /**

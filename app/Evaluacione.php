@@ -16,9 +16,9 @@ class Evaluacione extends Model
         'fecha_inicio',
         'fecha_fin',
         'archivo_evaluacion',
-        'estudiante_id',
-        'profesores_id', 
-        // 'materias_id',
+        'materias_id',
+        // 'estudiante_id',
+        // 'profesores_id', 
 
     ];
 }

@@ -27,7 +27,7 @@ class EvaluacionesEstudianteController extends Controller
                     ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
                     ->join('evaluaciones', 'inscripcion_materia.id', '=', 'evaluaciones.materias_id')
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-                    ->select('users.*', 'role_user.*', 'inscripcions.*','inscripcion_materia.*','evaluaciones.*','materias.*')
+                    ->select('evaluaciones.*','materias.*')
                     ->where('users.id', '=', $estudiante )
                     ->get();  
         $evaluacion = Evaluacione::all();            

@@ -70,7 +70,6 @@ class EvaluacionesController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','evaluaciones.store');
-        $evaluacione = Evaluacione::create($request->except('_method', '_token'));
         $request->validate([
             'nombre_evaluacion'                 => ['required', 'string', 'max:255'],
             'fecha_inicio'                      => ['required', 'date'],
@@ -79,7 +78,7 @@ class EvaluacionesController extends Controller
         ]);
         if($request->hasFile('archivo_evaluacion')){
             $filename = $request->archivo_evaluacion->getClientOriginalName();
-            $evaluacione->create([
+            $evaluacione= Evaluacione::create([
                 'nombre_evaluacion'                 => $request->nombre_evaluacion,
                 'fecha_inicio'                      => $request->fecha_inicio,
                 'fecha_fin'                         => $request->fecha_fin,

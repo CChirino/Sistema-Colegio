@@ -21,15 +21,15 @@ class SubirEvaluacionEstudianteController extends Controller
     {
         Gate::authorize('haveaccess','subir-evaluacion-estudiante.index');
         $profesor = Auth::user()->id;
-        $listarevaluaciones = DB::table('subir_evaluaciones')
-            ->join('evaluaciones', 'subir_evaluaciones.evaluaciones_id', '=', 'evaluaciones.id')
-            ->join('materias', 'evaluaciones.profesores_id', '=', 'materias.role_user_id')
-            ->join('inscripcion_materia', 'evaluaciones.estudiante_id', '=', 'inscripcion_materia.id')
-            ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
-            ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
-            ->join('users', 'role_user.user_id', '=', 'users.id')
-            ->select('subir_evaluaciones.*','evaluaciones.*','inscripcion_materia.*','inscripcions.*','role_user.*','users.*','materias.*')
-            ->where('evaluaciones.profesores_id', '=', $profesor )
+        $listarevaluaciones = DB::table('users')
+            ->join('role_user', 'users.id', '=', 'role_user.user_id')
+            ->join('inscripcions', 'role_user.id', '=', 'inscripcions.role_user_id')
+            ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
+            ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
+            ->join('evaluaciones', 'materias.id', '=', 'evaluaciones.materias_id')
+            ->join('subir_evaluaciones', 'evaluaciones.id', '=', 'subir_evaluaciones.evaluaciones_id')
+            ->select('subir_evaluaciones.*','users.*','materias.*')
+            ->where('materias.role_user_id', '=', $profesor )
             ->get();  
         $subirevaluaciones = SubirEvaluacione::all();        
         $subirevaluaciones = SubirEvaluacione::paginate(7);
@@ -59,7 +59,7 @@ class SubirEvaluacionEstudianteController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','subir-evaluacion-estudiante.store');
-        $evaluaciones = SubirEvaluacione::create($request->except('_method', '_token'));
+        // $evaluaciones = SubirEvaluacione::create($request->except('_method', '_token'));
          $request->validate([
              'nombre_archivo'                    => ['required', 'string', 'max:255'],
             'comentario'                        => ['required', 'string', 'max:255'],
@@ -67,7 +67,7 @@ class SubirEvaluacionEstudianteController extends Controller
         ]);
         if($request->hasFile('archivo_evaluacion')){
             $filename = $request->archivo_evaluacion->getClientOriginalName();
-            $evaluaciones->create([
+            $evaluaciones = SubirEvaluacione::create([
                 'archivo_evaluacion'                    => $request->archivo_evaluacion->storeAs('evaluaciones',$filename,'public'),
                 'nombre_archivo'                        => $request->nombre_archivo,
                 'comentario'                            => $request->comentario,
@@ -75,7 +75,7 @@ class SubirEvaluacionEstudianteController extends Controller
 
             ]);
         }
-        return redirect()->route('subir-evaluacion-estudiante.index',compact('evaluaciones'))->with('status_success','Evaluacion subida de manera correcta');
+        return redirect()->route('evaluacion-estudiante.index',compact('evaluaciones'))->with('status_success','Evaluacion subida de manera correcta');
     }
 
     /**

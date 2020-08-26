@@ -25,13 +25,13 @@ class EvaluacionesEstudianteController extends Controller
                     ->join('role_user', 'users.id', '=', 'role_user.id')
                     ->join('inscripcions', 'role_user.id', '=', 'inscripcions.role_user_id')
                     ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
-                    ->join('evaluaciones', 'inscripcion_materia.id', '=', 'evaluaciones.estudiante_id')
+                    ->join('evaluaciones', 'inscripcion_materia.id', '=', 'evaluaciones.materias_id')
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-                    ->select('users.*', 'role_user.*', 'inscripcions.*','inscripcion_materia.*','evaluaciones.*','materias.*')
+                    ->select('evaluaciones.*','materias.*')
                     ->where('users.id', '=', $estudiante )
                     ->get();  
         $evaluacion = Evaluacione::all();            
-        return view('admin.evaluacion-estudiante.index', compact('evaluaciones','evaluacion'));
+        return view('admin.evaluacion-estudiante.index', compact('evaluaciones','evaluacion','estudiante'));
     }
 
     /**

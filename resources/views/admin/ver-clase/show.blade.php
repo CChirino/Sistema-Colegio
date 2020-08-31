@@ -37,7 +37,7 @@
             <div class="panel-body">
                     <form >
                         @csrf
-                        <div>
+                        {{-- <div>
                             <div class="form-group col-lg-6">
                                 <label for="">Materia</label>
                                 <select class="form-control" name="evaluaciones_id" id="evaluaciones_id" disabled >        
@@ -50,25 +50,20 @@
                                   @endforeach    
                                 </select>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-lg-12">
-                                <label>Archivo de evaluacion</label> <br>
-                                <iframe src="{{$clase ->link_clase}}" width="500" height="500" frameborder="0"></iframe> 
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label>Nombre de video </label>
-                            <input type="text" id="nombre_clase"  class="form-control" name="nombre_clase" value="{{$clase->nombre_clase}}" disabled>
-                                @error('nombre_clase')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="text-center">
-                                    {{-- <button type="submit" class="btn btn-success loginbtn">Registrar</button> --}}
-                                    <button class="btn btn-success loginbtn"><a href="{{ route('clases-en-linea.index') }}"> Atras</a></button>
+                        </div> --}}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12 pt-2 pb-2">
+                                    <h1 class="text-center">{{$verclases->nombre_clase}}</h1>
+                                </div>
+                                <div class="col-sm-12 pt-2 pb-4 embed-responsive embed-responsive-16by9" >
+                                    <iframe class="embed-responsive-item" src="{{$verclases ->link_clase}}" width="1000" height="500" frameborder="0"></iframe> 
+                                </div>
+                                <div class="col-lg-12 pt-2 ">
+                                    <div class="text-center">
+                                        {{-- <button type="submit" class="btn btn-success loginbtn">Registrar</button> --}}
+                                        <button class="btn btn-success loginbtn"><a href="{{ route('clases-en-linea.index') }}"> Atras</a></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

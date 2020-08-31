@@ -36,23 +36,22 @@
     <table id="example" class="table table-striped table-bordered " style="width:100%">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Link del video</th>
+                <th>Nombre del video</th>
+                <th>Materia</th>
                 <th colspan="3">Transacciones</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach($clase as $class)
+            @foreach($verclases as $vclass)
             <tr>
-                <td>{{$class->nombre_clase}}</td>
-                <td>{{$class->link_clase}}</td>
+                <td>{{$vclass->nombre_clase}}</td>
+                <td>{{$vclass->nombre_materia}}</td>
 
                 {{-- <td><a class="btn btn-success" href="{{ route('evaluaciones.create') }}"> <i class="fas fa-plus-circle"></i> Agregar Evaluacion</a></td>     --}}
-                <td><a class="btn btn-info" href="{{ route('clases-en-linea.show',$class->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
-                <td><a class="btn btn-warning" href="{{ route('clases-en-linea.edit',$class->id) }}"> <i class="far fa-edit"></i> Editar</a></td> 
-
-                <td>
+                <td><a class="btn btn-info" href="{{ route('ver-clase-en-linea.show',$vclass->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
+                {{-- <td><a class="btn btn-warning" href="{{ route('clases-en-linea.edit',$class->id) }}"> <i class="far fa-edit"></i> Editar</a></td>  --}}
+                {{-- <td>
                 <form action="{{ route('clases-en-linea.destroy',$class->id) }}" method="post">
                     @csrf
                     @method('DELETE')
@@ -61,7 +60,7 @@
                         Eliminar
                     </button>
                 </form>
-            </td>
+            </td> --}}
                 @endforeach
             </tr>
         </tbody>

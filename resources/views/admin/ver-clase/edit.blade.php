@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Subir Video')
+@section('titulo', 'Editar Video')
 
 @section('content')
 <div class="breadcome-area">
@@ -53,8 +53,9 @@
         @include('custom.message')
         <div class="hpanel">
             <div class="panel-body">
-                    <form action="{{ route('clases-en-linea.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('clases-en-linea.update',$clase->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div>
                             <div class="form-group col-lg-6">
                                 <label for="">Materia</label>
@@ -72,7 +73,7 @@
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <label>Nombre del video</label>
-                                <input type="text" id="nombre_clase"  class="form-control @error('nombre_clase') is-invalid @enderror" name="nombre_clase"  required autocomplete="nombre_clase" autofocus>
+                                <input type="text" id="nombre_clase"  class="form-control" name="nombre_clase" value="{{$clase->nombre_clase}}">
                                 @error('nombre_clase')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -81,8 +82,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Link del video</label>
-                                <input type="text" id="link_clase"  class="form-control @error('link_clase') is-invalid @enderror" name="link_clase"  required autocomplete="link_clase" autofocus>
-                                <small class="form-text text-muted">Por favoe el Link del video de cumplir con esta estructura https://www.youtube.com/embed/W7vEV5KR4lM</small>
+                                <input type="text" id="link_clase"  class="form-control" name="link_clase" value="{{$clase ->link_clase}}">
                                 @error('link_clase')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -91,8 +91,8 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success loginbtn">Registrar</button>
-                                    <button class="btn btn-default">Cancelar</button>
+                                    <button type="submit" class="btn btn-success loginbtn">Actualizar</button>
+                                    <button class="btn btn-default"> <a href="{{ route('clases-en-linea.index') }}">Cancelar</a></button>
                                 </div>
                             </div>
                         </div>

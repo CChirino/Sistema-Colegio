@@ -54,7 +54,7 @@ class ClasesController extends Controller
             'materia_id'                                    => $request->get('materia_id'),
         ]);    
         $clase->save();
-        return redirect()->route('home',compact('clase'))->with('status_success','Evaluacion creada de manera correcta');
+        return redirect()->route('clases-en-linea.index',compact('clase'))->with('status_success','Video subido de manera correcta');
 
     }
 
@@ -86,7 +86,15 @@ class ClasesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $clase = Clase::find($id);
+        $profesor = Auth::user()->id;
+        $materias = DB::table('users')
+                    ->join('role_user', 'users.id', '=', 'role_user.id')
+                    ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
+                    ->select('users.*', 'role_user.*', 'materias.*')
+                    ->where('materias.role_user_id', '=', $profesor )
+                    ->get();
+        return view('admin.clase.edit',compact('materias','clase'));    
     }
 
     /**
@@ -98,7 +106,14 @@ class ClasesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $clase = Clase::find($id);
+        $clase->update([
+            'nombre_clase'                                  => $request->get('nombre_clase'),
+            'link_clase'                                    => $request->get('link_clase'),
+            'materia_id'                                    => $request->get('materia_id'),
+        ]);    
+        $clase->save();
+        return redirect()->route('clases-en-linea.index',compact('clase'))->with('status_success','Video modificado de manera correcta');
     }
 
     /**
@@ -109,6 +124,8 @@ class ClasesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $clase = Clase::find($id);
+        $clase ->delete();
+        return redirect()->route('clases-en-linea.index')->with('status_success','Video eliminado de manera correcta');
     }
 }

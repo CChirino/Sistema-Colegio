@@ -91,6 +91,29 @@
                         </ul>
                     </li>
                     @endcan
+                    @can('haveaccess', 'clases-en-linea.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('clases-en-linea.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-video"></i></span> <span class="mini-click-non">Clases en Linea</span></a>                        
+                        @endcan
+                        @can('haveaccess', 'clases-en-linea.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Listado de Clase" href="{{ route('clases-en-linea.index')}}"><span class="mini-sub-pro">Listado de clases </span></a></li>
+                        @endcan
+                        @can('haveaccess', 'clases-en-linea.create')
+                            <li><a title="Crear Clase" href="{{ route('clases-en-linea.create')}}"><span class="mini-sub-pro">Crear Clase en linea</span></a></li>
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('haveaccess', 'ver-clase-en-linea.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('ver-clase-en-linea.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-play"></i></span> <span class="mini-click-non"> Ver Clases en Linea</span></a>                        
+                        @endcan
+                        @can('haveaccess', 'ver-clase-en-linea.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Ver Clases en Linea" href="{{ route('ver-clase-en-linea.index')}}"><span class="mini-sub-pro">Listado de clases </span></a></li>
+                        </ul>
+                    </li>    
+                    @endcan
                     @can('haveaccess', 'estudiante.index')
                     <li>
                         <a class="has-arrow" href="{{ route('estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Usuarios</span></a>
@@ -178,6 +201,7 @@
                         </ul>
                     </li>
                     @endcan
+
                     @can('haveaccess', 'inscripciones.create')
                     <li>
                         <a class="has-arrow" href="{{ route('inscripciones.create')}}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Inscripcion Adm. </span></a>

@@ -17,12 +17,13 @@ class VerClasesController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','ver-clase-en-linea.index');
         $estudiante =  Auth::user()->id;
         $verclases = DB::table('users')
             ->join('role_user', 'users.id', '=', 'role_user.id')
             ->join('inscripcions', 'role_user.id', '=', 'inscripcions.role_user_id')
             ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
-            ->join('clases', 'inscripcion_materia.id', '=', 'clases.id')
+            ->join('clases', 'inscripcion_materia.id', '=', 'clases.materia_id')
             ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
             ->select('clases.*','materias.*')
             ->where('inscripcions.role_user_id', '=', $estudiante )
@@ -60,6 +61,7 @@ class VerClasesController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','ver-clase-en-linea.show');
         $verclases = Clase::find($id);
         return view('admin.ver-clase.show', compact('verclases'));
 

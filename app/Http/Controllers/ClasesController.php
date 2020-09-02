@@ -17,6 +17,7 @@ class ClasesController extends Controller
      */
     public function index()
     {
+        Gate::authorize('haveaccess','clases-en-linea.index');
         $clase = Clase::get()->all();
         return view('admin.clase.index',compact('clase'));    
 
@@ -29,6 +30,7 @@ class ClasesController extends Controller
      */
     public function create()
     {
+        Gate::authorize('haveaccess','clases-en-linea.create');
         $profesor = Auth::user()->id;
         $materias = DB::table('users')
                     ->join('role_user', 'users.id', '=', 'role_user.id')
@@ -66,6 +68,7 @@ class ClasesController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('haveaccess','clases-en-linea.show');
         $clase = Clase::find($id);
         $profesor = Auth::user()->id;
         $materias = DB::table('users')
@@ -86,6 +89,7 @@ class ClasesController extends Controller
      */
     public function edit($id)
     {
+        Gate::authorize('haveaccess','clases-en-linea.edit');
         $clase = Clase::find($id);
         $profesor = Auth::user()->id;
         $materias = DB::table('users')
@@ -124,6 +128,7 @@ class ClasesController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('haveaccess','clases-en-linea.destroy');
         $clase = Clase::find($id);
         $clase ->delete();
         return redirect()->route('clases-en-linea.index')->with('status_success','Video eliminado de manera correcta');

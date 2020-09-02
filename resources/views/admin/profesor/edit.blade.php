@@ -49,7 +49,7 @@
     
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>DNI</label>
+                        <label>Cedula de Identidad</label>
                         <input type="number" id="dni"  class="form-control" name="dni" value="{{$profesores->dni}}" disabled >
                     </div>
                     <div class="form-group col-lg-12">

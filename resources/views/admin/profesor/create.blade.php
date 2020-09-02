@@ -40,7 +40,7 @@
                 @csrf
                 <div class="row">
                     <div class="form-group col-lg-12">
-                        <label>DNI</label>
+                        <label>Cedula de Identidad</label>
                         <input type="number" id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="00.000.000" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
                         @error('dni')
                         <span class="invalid-feedback" role="alert">

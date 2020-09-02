@@ -46,7 +46,7 @@
                     <img src="{{ asset('storage/'.$colegio->image) }}" alt="" width="300px" class="mb-2" >    
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>DNI</label>
+                        <label>Cedula de Identidad</label>
                         <input type="number" id="dni"  class="form-control" name="dni" value="{{$colegio->dni}}" disabled>
                     </div>
                     <div class="form-group col-lg-12">
@@ -63,7 +63,7 @@
                         <input type="text" id="direccion" class="form-control"  name="direccion" value="{{$colegio->direccion}}" disabled>
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Fecha de Nacimiento </label>
+                        <label>Fecha de Ingreso </label>
                         <input  id="fecha_nacimiento" class="form-control" name="fecha_nacimiento" value="{{$colegio->fecha_nacimiento}} " disabled>
                     </div>
                     <div class="form-group col-lg-12">

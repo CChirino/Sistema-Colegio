@@ -36,7 +36,7 @@
         <thead>
             <tr>
                 <th>Foto</th>
-                <th>DNI</th>
+                <th>Cedula de Identidad</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Direccion</th>

@@ -40,7 +40,7 @@
                 @csrf
                 <div class="row">
                     <div class="form-group col-lg-12">
-                        <label>DNI</label>
+                        <label>Cedula de Identidad</label>
                         <input type="number" id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="00.000.000" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
                         @error('dni')
                         <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Fecha de Nacimiento </label>
+                        <label>Fecha de Ingreso </label>
                         <input type="date" id="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required autocomplete="fecha_nacimiento" autofocus>
                         @error('fecha_nacimiento')
                         <span class="invalid-feedback" role="alert">

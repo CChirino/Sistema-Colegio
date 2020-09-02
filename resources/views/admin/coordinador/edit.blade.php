@@ -66,7 +66,7 @@
                         <input type="text" id="direccion" class="form-control"  name="direccion" value="{{$coordinador->direccion}}" >
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>Fecha de Nacimiento </label>
+                        <label>Fecha de Ingreso </label>
                         <input  id="fecha_nacimiento" class="form-control" name="fecha_nacimiento" value="{{$coordinador->fecha_nacimiento}}">
                     </div>
                     <div class="form-group col-lg-12">

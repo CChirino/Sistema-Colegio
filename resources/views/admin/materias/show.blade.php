@@ -38,8 +38,8 @@
     <div class="hpanel">
         <div class="panel-body">
             <form >
-                @csrf
-                @method('put')
+                {{-- @csrf
+                @method('put') --}}
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label>Nombre de Materia </label>
@@ -52,26 +52,24 @@
                     <div class="form-group col-lg-6">
                         <label>Año</label>                        
                         <select class="form-control" id="pensum_id" name="pensum_id" disabled>    
-                            @foreach ($pensum as $pen)
-
-                            <option value="{{ $pen->id }}"> 
-                                {{ $pen ->pensum_nombre}}                        
+                            
+                            <option value="{{ $materias->pensum_id }}"> 
+                                {{ $materias->pensum_id}}                        
                             </option>
+
                         
-                          @endforeach    
                         </select>
                     </div>
                     <div class="col-lg-6"></div>
                     <div class="form-group col-lg-6">
                         <label>Periodo</label>                                               
                         <select class="form-control" id="periodo_id" name="periodo_id" disabled>     
-                            @foreach ($periodo as $per)
-
-                            <option value="{{ $per->id }}"> 
-                                {{ $per ->nombre_periodo}}                        
+                            
+                            <option value="{{ $materias->periodo_id }}"> 
+                                {{ $materias->periodo_id}}                        
                             </option>
-                        
-                          @endforeach    
+                            
+
                         </select>
                     </div>
                     <div class="col-lg-6"></div>
@@ -79,13 +77,11 @@
                         <label for="">Selecciona un Profesor</label>
                         <select class="form-control" id="role_user_id" name="role_user_id" disabled>
                             
-                            @foreach ($profesores as $prof)
-
-                            <option value="{{ $prof->id }}"> 
-                                {{ $prof->nombre}}                        
+                            
+                            <option value="{{ $materias->role_user_id }}"> 
+                                {{ $materias->role_user_id}}                        
                             </option>
-                        
-                          @endforeach    
+                            
                         </select>
                     </div>
                 </div>

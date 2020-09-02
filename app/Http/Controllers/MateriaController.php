@@ -83,10 +83,14 @@ class MateriaController extends Controller
     {
         Gate::authorize('haveaccess','materias.show');
         $materias = Materia::find($id);
-        $pensum = Pensum::get();
-        $periodo = Periodo::get();
-        $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 2');
-        return view('admin.materias.show', compact('materias','pensum','periodo','profesores'));
+        $profesores = DB::table('materias')
+                     ->join('pensums','materias.pensum_id', '=','pensums.id')
+                     ->join('periodos','materias.periodo_id', '=','periodos.id')
+                     ->join('role_user','materias.role_user_id', '=','role_user.id')
+                     ->join('periodos','role_user.user_id', '=','users.id')
+                     ->select('users.*','pensums.*','periodos.*','users.*')
+                     ->where('materias.id', '=', $materias );
+        return view('admin.materias.show', compact('materias','profesores'));
     }
 
     /**
@@ -98,7 +102,6 @@ class MateriaController extends Controller
     public function edit($id)
     {
         Gate::authorize('haveaccess','materias.edit');
-        $materias = Materia::find($id);
         $pensum = Pensum::get();
         $periodo = Periodo::get();
         $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 2');
@@ -125,11 +128,10 @@ class MateriaController extends Controller
             'pensum_id'                         => $request->get('pensum_id'),
             'periodo_id'                         => $request->get('periodo_id'),
             'role_user_id'                        => $request->get('role_user_id'),
-
             ]);
         $materias->save();
         
-        return redirect()->route('materias.index')->with('status_success','La materia se ha actualizado de manera correcta');
+        return redirect()->route('materias.index', compact('materias'))->with('status_success','La materia se ha actualizado de manera correcta');
     }
 
     /**

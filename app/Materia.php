@@ -11,14 +11,14 @@ class Materia extends Model
      *
      * @var array
      */
-    // protected $fillable = [
-    //     'nombre_materia', 
-    //     'descripcion_materia',
-    //     'periodo_id',
-    //     'pensum_id',
-    //     'role_user_id'
-    // ];
-    protected $guarded = [];
+    protected $fillable = [
+         'nombre_materia', 
+         'descripcion_materia',
+         'periodo_id',
+         'pensum_id',
+         'role_user_id',
+        ];
+    // protected $guarded = [];
 
     public function pensums()
     {

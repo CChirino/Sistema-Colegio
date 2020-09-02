@@ -36,11 +36,11 @@
         <thead>
             <tr>
                 <th>Foto</th>
-                <th>DNI</th>
+                <th>Cedula de Identidad</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Direccion</th>
-                <th>Fecha de Nacimiento</th>
+                <th>Fecha de Ingreso</th>
                 <th>Email</th>
                 <th colspan="3">Transacciones</th>
 

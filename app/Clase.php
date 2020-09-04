@@ -16,4 +16,8 @@ class Clase extends Model
         'link_clase',
         'materia_id',
     ];
+    public function materias()
+    {
+        return $this->hasMany('App\Materia');
+    }
 }

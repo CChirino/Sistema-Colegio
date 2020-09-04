@@ -70,6 +70,9 @@ Route::resource('notas-estudiante', 'NotaEstudianteController')->only([
     'index', 'show'
 ]);
 Route::resource('usuario-rol', 'UserRoleController');
+Route::resource('clases-en-linea', 'ClasesController');
+Route::resource('ver-clase-en-linea', 'VerClasesController');
+
 
 
 

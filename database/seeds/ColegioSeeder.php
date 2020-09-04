@@ -261,6 +261,45 @@ class ColegioSeeder extends Seeder
     
         $permission_all[] = $permission->id;
 
+        $permission = Permission::create([
+            'name' => 'clases-en-linea.index index profesor',
+            'slug' => 'clases-en-linea.index',
+            'description' => 'clases-en-linea.index profesor',
+        ]);
+    
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'clases-en-linea.create create profesor clase',
+            'slug' => 'clases-en-linea.create',
+            'description' => 'clases-en-linea.create clase en linea',
+        ]);
+    
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'clases-en-linea.show profesor clase',
+            'slug' => 'clases-en-linea.show',
+            'description' => 'clases-en-linea.show profesor clase',
+        ]);
+    
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'clases-en-linea.edit profesor clase',
+            'slug' => 'clases-en-linea.edit',
+            'description' => 'clases-en-linea.edit profesor clase',
+        ]);
+    
+        $permission_all[] = $permission->id;
+        
+        $permission = Permission::create([
+            'name' => 'clases-en-linea.destroy profesor clase',
+            'slug' => 'clases-en-linea.destroy',
+            'description' => 'clases-en-linea.show profesor clase',
+        ]);
+    
+        $permission_all[] = $permission->id;
      
         //table permission_role
         $rolprf->permissions()->sync( $permission_all);
@@ -384,6 +423,22 @@ class ColegioSeeder extends Seeder
         'name' => 'evaluacion-estudiante destroy',
         'slug' => 'evaluacion-estudiante.destroy',
         'description' => 'evaluacion-estudiante destroy',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'ver-clase-en-linea index estudiante',
+        'slug' => 'ver-clase-en-linea.index',
+        'description' => 'ver-clase-en-linea index estudiante',
+    ]);
+
+    $permission_all[] = $permission->id;
+
+    $permission = Permission::create([
+        'name' => 'ver-clase-en-linea show estudiante',
+        'slug' => 'ver-clase-en-linea.show',
+        'description' => 'ver-clase-en-linea show estudiante',
     ]);
 
     $permission_all[] = $permission->id;

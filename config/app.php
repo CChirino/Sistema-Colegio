@@ -167,11 +167,11 @@ return [
         /*
          * Package Service Providers...
          */
-
+        // \Chatify\ChatifyServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
-        \Chatify\ChatifyServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,

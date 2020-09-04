@@ -37,7 +37,7 @@ class PensumSeeder extends Seeder
             'pensum_nombre'          => 'Cuarto Grado',
         ]);
         Pensum::create([
-            'pensum_nombre'          => 'Quintado Grado',
+            'pensum_nombre'          => 'Quinto Grado',
         ]);
         Pensum::create([
             'pensum_nombre'          => 'Sexto Grado',

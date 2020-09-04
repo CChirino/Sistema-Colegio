@@ -22,14 +22,16 @@ class MateriaController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','materias.index');
-        // $lista_materias = DB::table('materias')
-        //             ->join('periodos','materias.periodo_id', '=','periodos.id')
-        //             ->join('pensums','materias.pensum_id', '=','pensums.id')
-        //             ->select('materias.*','pensums.*','periodos.*')
-        //             ->paginate(7);
+        $lista_materias = DB::table('materias')
+                    ->join('periodos','materias.periodo_id', '=','periodos.id')
+                    ->join('pensums','materias.pensum_id', '=','pensums.id')
+                    ->join('role_user','materias.role_user_id', '=','role_user.id')
+                    ->join('users','role_user.user_id', '=','users.id')
+                    ->select('materias.*','pensums.*','periodos.*','users.*')
+                    ->paginate(7);
         $materias = Materia::all();
         $materias = Materia::paginate(7);
-        return view('admin.materias.index', compact('materias'));
+        return view('admin.materias.index', compact('materias','lista_materias'));
     }
 
     /**
@@ -82,16 +84,26 @@ class MateriaController extends Controller
     public function show($id)
     {
         Gate::authorize('haveaccess','materias.show');
-        $materias = Materia::find($id);
-        // $profesores =  Materia::with(['pensums','periodos'])->get();
-        // $profesores = DB::table('materias')
-        //              ->join('pensums','materias.pensum_id', '=','pensums.id')
-        //              ->join('periodos','materias.periodo_id', '=','periodos.id')
-        //              ->join('role_user','materias.role_user_id', '=','role_user.id')
-        //              ->join('periodos','role_user.user_id', '=','users.id')
-        //              ->select('users.*','pensums.*','periodos.*','users.*')
-        //              ->where('materias.id', '=', $materias );
-        return view('admin.materias.show', compact('materias','profesores'));
+        // $materias = Materia::find($id);
+        // $pensum = Pensum::find($id);
+        // $periodo = Periodo::find($id);
+        //  $profesores = DB::table('materias')
+        //          ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+        //          ->join('users', 'role_user.user_id', '=', 'users.id')
+        //          ->select('materias.*','users.*')
+        //          ->where('materias.role_user_id', '=', $id )
+        //          ->first;          
+        // // $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 2');
+        // // $profesores =  Materia::with(['pensums','periodos'])->get();
+        // // $profesores = DB::table('materias')
+        // //              ->join('pensums','materias.pensum_id', '=','pensums.id')
+        // //              ->join('periodos','materias.periodo_id', '=','periodos.id')
+        // //              ->join('role_user','materias.role_user_id', '=','role_user.id')
+        // //              ->join('users','role_user.user_id', '=','users.id')
+        // //              ->select('materias.*','pensums.*','periodos.*','users.*')
+        // //              ->where('materias.id', '=', $materias )
+        // //              ->get();
+        // return view('admin.materias.show', compact('materias','profesores','pensum','periodo'));
     }
 
     /**
@@ -103,6 +115,7 @@ class MateriaController extends Controller
     public function edit($id)
     {
         Gate::authorize('haveaccess','materias.edit');
+        $materias = Materia::find($id);
         $pensum = Pensum::get();
         $periodo = Periodo::get();
         $profesores = DB::select('SELECT * FROM users JOIN role_user ON users.id = role_user.user_id WHERE role_id = 2');

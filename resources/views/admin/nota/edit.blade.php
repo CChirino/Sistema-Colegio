@@ -76,10 +76,10 @@
                         <div class="pb-4">
                             <div class="form-group col-lg-6">
                                 <label for="">Materia</label>
-                                <select class="form-control" name="notas_id" id="notas_id" >        
+                                <select class="form-control" name="materias_id" id="materias_id" >        
                                     @foreach ($materias as $mat)
         
-                                    <option value="{{ $mat->role_user_id }}"> 
+                                    <option value="{{ $mat->id }}"> 
                                         {{ $mat ->nombre_materia}}                        
                                     </option>
                                 

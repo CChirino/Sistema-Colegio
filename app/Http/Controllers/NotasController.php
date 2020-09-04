@@ -43,7 +43,7 @@ class NotasController extends Controller
         $materia = Materia::all();
         $profesor = Auth::user()->id;
         Gate::authorize('haveaccess','notas.create');
-        $estudiante =DB::table('inscripcion_materia')->distinct()
+        $estudiante =DB::table('inscripcion_materia')
                     ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
                     ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
                     ->join('users', 'role_user.user_id', '=', 'users.id')
@@ -51,12 +51,13 @@ class NotasController extends Controller
                     ->select('users.*','inscripcion_materia.*')
                     ->where('materias.role_user_id', '=', $profesor ) 
                     ->get();
-        $materias = DB::table('users')->distinct()
-            ->join('role_user', 'users.id', '=', 'role_user.id')
-            ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
-            ->select('users.*', 'role_user.*', 'materias.*')
+        $materias = DB::table('materias')
+            ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+            ->join('users', 'role_user.user_id', '=', 'users.id')
+            ->select('materias.*')
             ->where('materias.role_user_id', '=', $profesor )
             ->get();
+        // dd($materias);
         return view('admin.nota.create',compact('estudiante','materias','materia'));
     }
 
@@ -76,7 +77,7 @@ class NotasController extends Controller
         // ]);        
         $notas = Notas::create($request->except('_method', '_token'));
         $notas->save();
-        return redirect()->route('notas.index')->with('status_success','Usuario creado de manera correcta');
+        return redirect()->route('notas.index')->with('status_success','Notas asignada de manera correcta');
     }
 
     /**
@@ -97,12 +98,12 @@ class NotasController extends Controller
                     ->select('users.*','inscripcion_materia.*')
                     ->where('materias.role_user_id', '=', $profesor )
                     ->get();
-        $materias = DB::table('users')
-                    ->join('role_user', 'users.id', '=', 'role_user.id')
-                    ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
-                    ->select('users.*', 'role_user.*', 'materias.*')
+        $materias = DB::table('materias')
+                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->select('materias.*')
                     ->where('materias.role_user_id', '=', $profesor )
-                    ->get();                    
+                    ->get();                  
         $notas = Notas::find($id);
         return view('admin.nota.show', compact('notas','estudiante','materias'));
 
@@ -118,12 +119,12 @@ class NotasController extends Controller
     {
         $profesor = Auth::user()->id;
         Gate::authorize('haveaccess','notas.edit');
-        $materias = DB::table('users')
-                    ->join('role_user', 'users.id', '=', 'role_user.id')
-                    ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
-                    ->select('users.*', 'role_user.*', 'materias.*')
-                    ->where('materias.role_user_id', '=', $profesor )
-                    ->get();  
+        $materias = DB::table('materias')
+            ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+            ->join('users', 'role_user.user_id', '=', 'users.id')
+            ->select('materias.*')
+            ->where('materias.role_user_id', '=', $profesor )
+            ->get();
         $estudiante =DB::table('inscripcion_materia')
             ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
             ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
@@ -149,10 +150,10 @@ class NotasController extends Controller
     {
         
         $notas = Notas::find($id);
-        $notas->update($request->all());
+        $notas->update($request->except('_method', '_token','materias_id','estudiante_id'));
         // $notas = Notas::update($request->except('_method', '_token'));
         // $notas->save();
-        return redirect()->route('notas.index', compact('notas'))->with('status_success','Usuario creado de manera correcta');
+        return redirect()->route('notas.index', compact('notas'))->with('status_success','Notas actualizada de manera correcta');
 
     }
 

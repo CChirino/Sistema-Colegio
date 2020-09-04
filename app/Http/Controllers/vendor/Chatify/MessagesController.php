@@ -352,7 +352,7 @@ class MessagesController extends Controller
         return Response::json([
             'records' => $records->count() > 0
                 ? $getRecords
-                : '<p class="message-hint"><span>Nothing to show.</span></p>',
+                : '<p class="message-hint"><span>Nada que mostrar.</span></p>',
             'addData' => 'html'
         ], 200);
     }

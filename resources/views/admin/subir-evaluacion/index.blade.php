@@ -69,7 +69,7 @@
         </div>
     </div>
     <div>
-        {{-- {{$materias->links()}}  --}}
+    {{$listarevaluaciones->links()}} 
     </div>
 </div>
 @endsection

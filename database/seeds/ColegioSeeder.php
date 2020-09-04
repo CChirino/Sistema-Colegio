@@ -43,15 +43,30 @@ class ColegioSeeder extends Seeder
          $useradminmuestra->delete();
      }
      $useradminmuestra= User::create([
-        'dni'               => 27159380,
-        'nombre'            => 'admin',
-        'apellido'          => 'admin',
-        'direccion'         => 'admin',
+        'dni'               => 11817957,
+        'nombre'            => 'Gustavo',
+        'apellido'          => 'Adolfo',
+        'direccion'         => 'Caracas',
         'fecha_nacimiento'  => '1997-03-14',
         'email'             => 'admin@gmail.com',
-        'password'          => Hash::make('colegioadmin'),
+        'password'          => Hash::make('Eskuela-141173*+Xyz'),
         'image'             => 'images/default.png'
 
+     ]);
+
+     $admin2= User::where('email','christopherchirinosj@gmail.com');
+     if ($admin2) {
+         $admin2->delete();
+     }
+     $admin2= User::create([
+        'dni'               => 271593822,
+        'nombre'            => 'Jose',
+        'apellido'          => 'Suarez',
+        'direccion'         => 'Caracas',
+        'fecha_nacimiento'  => '1997-03-14',
+        'email'             => 'christopherchirinosj@gmail.com',
+        'password'          => Hash::make('Eskuela-141173*+Xyz'),
+        'image'             => 'images/default.png'
      ]);
 
      //rol admin

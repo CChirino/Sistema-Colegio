@@ -36,6 +36,7 @@ class ColegioSeeder extends Seeder
         'fecha_nacimiento'  => '1997-03-14',
         'email'             => 'critijo@gmail.com',
         'password'          => Hash::make('chacao14397'),
+        'image'             => 'images/default.png'
      ]);
      $useradminmuestra= User::where('email','admin@gmail.com');
      if ($useradminmuestra) {
@@ -49,6 +50,8 @@ class ColegioSeeder extends Seeder
         'fecha_nacimiento'  => '1997-03-14',
         'email'             => 'admin@gmail.com',
         'password'          => Hash::make('colegioadmin'),
+        'image'             => 'images/default.png'
+
      ]);
 
      //rol admin
@@ -125,6 +128,8 @@ class ColegioSeeder extends Seeder
             'fecha_nacimiento'  => '1997-03-14',
             'email'             => 'christopherchirinosj@gmail.com',
             'password'          => Hash::make('chacao14397'),
+            'image'             => 'images/default.png'
+
          ]);
     
          //rol Profesor
@@ -319,6 +324,7 @@ class ColegioSeeder extends Seeder
         'fecha_nacimiento'  => '1997-03-14',
         'email'             => 'sucriso@gmail.com',
         'password'          => Hash::make('chacao14397'),
+        'image'             => 'images/default.png'
      ]);
 
      

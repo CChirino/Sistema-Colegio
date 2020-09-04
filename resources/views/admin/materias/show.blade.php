@@ -43,18 +43,18 @@
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label>Nombre de Materia </label>
-                        <input type="text" id="nombre_materia"  class="form-control" name="nombre_materia"  value="{{ $materias->nombre_materia }}" disabled >
+                        <input type="text" id="nombre_materia"  class="form-control" name="nombre_materia"  value="{{ $profesores->nombre_materia }}" disabled >
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Descripcion de Materia </label>
-                        <input type="text" id="descripcion_materia" class="form-control" name="descripcion_materia" value="{{ $materias->descripcion_materia}}" disabled >
+                        <input type="text" id="descripcion_materia" class="form-control" name="descripcion_materia" value="{{ $profesores->descripcion_materia}}" disabled >
                     </div>
                     <div class="form-group col-lg-6">
                         <label>Año</label>                        
                         <select class="form-control" id="pensum_id" name="pensum_id" disabled>    
                             
-                            <option value="{{ $materias->pensum_id }}"> 
-                                {{ $materias->pensum_id}}                        
+                            <option value="{{ $profesores->pensum_id }}"> 
+                                {{ $profesores->pensum_id}}                        
                             </option>
 
                         
@@ -65,8 +65,8 @@
                         <label>Periodo</label>                                               
                         <select class="form-control" id="periodo_id" name="periodo_id" disabled>     
                             
-                            <option value="{{ $materias->periodo_id }}"> 
-                                {{ $materias->periodo_id}}                        
+                            <option value="{{ $profesores->periodo_id }}"> 
+                                {{ $profesores->periodo_id}}                        
                             </option>
                             
 
@@ -78,8 +78,8 @@
                         <select class="form-control" id="role_user_id" name="role_user_id" disabled>
                             
                             
-                            <option value="{{ $materias->role_user_id }}"> 
-                                {{ $materias->role_user_id}}                        
+                            <option value="{{ $profesores->role_user_id }}"> 
+                                {{ $profesores->role_user_id}}                        
                             </option>
                             
                         </select>

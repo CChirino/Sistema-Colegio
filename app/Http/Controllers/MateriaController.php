@@ -83,13 +83,14 @@ class MateriaController extends Controller
     {
         Gate::authorize('haveaccess','materias.show');
         $materias = Materia::find($id);
-        $profesores = DB::table('materias')
-                     ->join('pensums','materias.pensum_id', '=','pensums.id')
-                     ->join('periodos','materias.periodo_id', '=','periodos.id')
-                     ->join('role_user','materias.role_user_id', '=','role_user.id')
-                     ->join('periodos','role_user.user_id', '=','users.id')
-                     ->select('users.*','pensums.*','periodos.*','users.*')
-                     ->where('materias.id', '=', $materias );
+        // $profesores =  Materia::with(['pensums','periodos'])->get();
+        // $profesores = DB::table('materias')
+        //              ->join('pensums','materias.pensum_id', '=','pensums.id')
+        //              ->join('periodos','materias.periodo_id', '=','periodos.id')
+        //              ->join('role_user','materias.role_user_id', '=','role_user.id')
+        //              ->join('periodos','role_user.user_id', '=','users.id')
+        //              ->select('users.*','pensums.*','periodos.*','users.*')
+        //              ->where('materias.id', '=', $materias );
         return view('admin.materias.show', compact('materias','profesores'));
     }
 

@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 20)->create();
+        // factory(App\User::class, 20)->create();
 
         // $role = Role::find(1); //Rol Administrador
         // $role = factory(App\User::class)->create([

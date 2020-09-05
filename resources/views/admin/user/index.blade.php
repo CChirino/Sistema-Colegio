@@ -9,12 +9,20 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcome-list single-page-breadcome">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="breadcome-heading">
                                 {{-- <td><a class="btn btn-success" href="{{ route('admin.create') }}"> <i class="fas fa-plus-circle"></i> Crear Administrador </a></td>     --}}
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="breadcome-heading">
+                                <form role="search" class="sr-input-func">
+                                <input type="text" placeholder="Buscar..." class="search-int form-control" name="search" value="{{$nombre}}">
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </form>                            
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="#">Usuarios</a> <span class="bread-slash">/</span>
                                 </li>
@@ -32,6 +40,13 @@
 <!-- Static Table Start -->
 <div class="container">
     @include('custom.message')
+    <h6>
+        @if ($nombre)
+        <div class="alert alert-primary" role="alert">
+        Los resultados para la busqueda '{{$nombre}}' son:
+        </div>
+        @endif
+    </h6>
     <table id="example" class="table table-striped table-bordered table-responsive " style="width:100%">
         <thead>
             <tr>

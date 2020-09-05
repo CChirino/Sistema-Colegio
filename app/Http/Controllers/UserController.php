@@ -13,12 +13,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         Gate::authorize('haveaccess','periodos.index');
-        $user = User::all();        
+        $nombre = $request->get('search'); 
+        $user = User::where('nombre','LIKE','%'.$nombre.'%');        
         $user = User::paginate(7);
-        return view('admin.user.index', compact('user'));
+        return view('admin.user.index', compact('user','nombre'));
 
     }
 

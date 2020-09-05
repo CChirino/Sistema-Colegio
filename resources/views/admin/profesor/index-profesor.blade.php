@@ -19,7 +19,8 @@
                                 <form role="search" class="sr-input-func">
                                 <input type="text" placeholder="Buscar..." class="search-int form-control" name="search" value="{{$nombre}}">
                                     <a href="#"><i class="fa fa-search"></i></a>
-                                </form>                            </div>
+                                </form>                            
+                            </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <ul class="breadcome-menu">

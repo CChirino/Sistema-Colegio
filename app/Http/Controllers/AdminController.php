@@ -16,15 +16,17 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         Gate::authorize('haveaccess','admin.index');
+        $nombre = $request->get('search'); 
         $admin = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
                     ->where('role_id','=',1)
+                    ->where('users.nombre','LIKE','%'.$nombre.'%')
                     ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(7);
-        return view('admin.admin.index', compact('admin'));
+        return view('admin.admin.index', compact('admin','nombre'));
     }
 
     /**

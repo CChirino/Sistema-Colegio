@@ -42,16 +42,6 @@ class EvaluacionesController extends Controller
     {
         Gate::authorize('haveaccess','evaluaciones.create');
         $profesor = Auth::user()->id;
-        // Gate::authorize('haveaccess','notas.create');
-        // $estudiante =DB::table('inscripcion_materia')
-        //             ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
-        //             ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
-        //             ->join('users', 'role_user.user_id', '=', 'users.id')
-        //             ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-        //             ->select('users.*','inscripcion_materia.*')
-        //             ->where('materias.role_user_id', '=', $profesor )
-        //             // ->orWhere('inscripcion_materia.materia_id','=',$materia_id )
-        //             ->get();
         $materias = DB::table('users')
             ->join('role_user', 'users.id', '=', 'role_user.id')
             ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
@@ -82,10 +72,9 @@ class EvaluacionesController extends Controller
                 'nombre_evaluacion'                 => $request->nombre_evaluacion,
                 'fecha_inicio'                      => $request->fecha_inicio,
                 'fecha_fin'                         => $request->fecha_fin,
-                'archivo_evaluacion'                => $request->archivo_evaluacion->storeAs('evaluaciones',$filename,'public'),
+                'archivo_evaluacion'                => $requet->archivo_evaluacion->storeAs('evaluaciones',$filename,'public'),
                 'materias_id'                       => $request->materias_id,
-                // 'estudiante_id'                     => $request->estudiante_id,
-                // 'profesores_id'                     => $request->profesores_id,
+
             ]);
         }
         return redirect()->route('listar-evaluaciones.index',compact('evaluacione'))->with('status_success','Evaluacion creada de manera correcta');

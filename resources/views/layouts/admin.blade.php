@@ -93,24 +93,24 @@
                     @endcan
                     @can('haveaccess', 'clases-en-linea.index')
                     <li>
-                        <a class="has-arrow" href="{{ route('clases-en-linea.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-video"></i></span> <span class="mini-click-non">Clases en Linea</span></a>                        
+                        <a class="has-arrow" href="{{ route('clases-en-linea.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-video"></i></span> <span class="mini-click-non">Video Clases</span></a>                        
                         @endcan
                         @can('haveaccess', 'clases-en-linea.index')
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Listado de Clase" href="{{ route('clases-en-linea.index')}}"><span class="mini-sub-pro">Listado de clases </span></a></li>
+                            <li><a title="Listado de Clase" href="{{ route('clases-en-linea.index')}}"><span class="mini-sub-pro">Listado de Video Clases </span></a></li>
                         @endcan
                         @can('haveaccess', 'clases-en-linea.create')
-                            <li><a title="Crear Clase" href="{{ route('clases-en-linea.create')}}"><span class="mini-sub-pro">Crear Clase en linea</span></a></li>
+                            <li><a title="Crear Clase" href="{{ route('clases-en-linea.create')}}"><span class="mini-sub-pro">Crear Video Clase</span></a></li>
                         </ul>
                     </li>
                     @endcan
                     @can('haveaccess', 'ver-clase-en-linea.index')
                     <li>
-                        <a class="has-arrow" href="{{ route('ver-clase-en-linea.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-play"></i></span> <span class="mini-click-non"> Ver Clases en Linea</span></a>                        
+                        <a class="has-arrow" href="{{ route('ver-clase-en-linea.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-play"></i></span> <span class="mini-click-non"> Ver Video Clases</span></a>                        
                         @endcan
                         @can('haveaccess', 'ver-clase-en-linea.index')
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Ver Clases en Linea" href="{{ route('ver-clase-en-linea.index')}}"><span class="mini-sub-pro">Listado de clases </span></a></li>
+                            <li><a title="Ver Clases en Linea" href="{{ route('ver-clase-en-linea.index')}}"><span class="mini-sub-pro">Listado de Video Clases </span></a></li>
                         </ul>
                     </li>    
                     @endcan

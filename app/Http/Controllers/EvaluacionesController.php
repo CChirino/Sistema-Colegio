@@ -42,12 +42,13 @@ class EvaluacionesController extends Controller
     {
         Gate::authorize('haveaccess','evaluaciones.create');
         $profesor = Auth::user()->id;
-        $materias = DB::table('users')
-            ->join('role_user', 'users.id', '=', 'role_user.id')
-            ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
-            ->select('users.*', 'role_user.*', 'materias.*')
-            ->where('materias.role_user_id', '=', $profesor )
+        $materias = DB::table('materias')
+            ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+            ->join('users', 'role_user.user_id', '=', 'users.id')
+            ->select('materias.*')
+            ->where('users.id', '=', $profesor )
             ->get();
+        // dd($materias);
         return view('admin.evaluacion.create',compact('materias'));    
     }
 
@@ -60,6 +61,7 @@ class EvaluacionesController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','evaluaciones.store');
+        $profesor = Auth::user()->id;
         $request->validate([
             'nombre_evaluacion'                 => ['required', 'string', 'max:255'],
             'fecha_inicio'                      => ['required', 'date'],
@@ -72,7 +74,7 @@ class EvaluacionesController extends Controller
                 'nombre_evaluacion'                 => $request->nombre_evaluacion,
                 'fecha_inicio'                      => $request->fecha_inicio,
                 'fecha_fin'                         => $request->fecha_fin,
-                'archivo_evaluacion'                => $requet->archivo_evaluacion->storeAs('evaluaciones',$filename,'public'),
+                'archivo_evaluacion'                => $request->archivo_evaluacion->storeAs('evaluaciones',$filename,'public'),
                 'materias_id'                       => $request->materias_id,
 
             ]);

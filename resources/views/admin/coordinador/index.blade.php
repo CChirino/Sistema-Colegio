@@ -51,7 +51,7 @@
         <thead>
             <tr>
                 <th>Foto</th>
-                <th>Cedula de Identida4</th>
+                <th>Cedula de Identida</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Direccion</th>

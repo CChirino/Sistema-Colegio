@@ -107,30 +107,11 @@
                             <div class="form-group col-lg-6">
                             </div>
                             <div class="form-group col-lg-6">
-                                <table class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <div class="content-error">
-                                                {{-- <th> <input type="checkbox" name="marcarTodo" id="marcarTodo"> Seleccionar Todos</th> --}}
-                                            <th>Estudiantes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($estudiante as $est)
-                                        {{-- <td><input type="checkbox" class="case" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"></td> --}}
-                                        <td>
-                                            {{ $est->nombre}}                        
-                                        </td>
-                                        <tr>
-                                            @endforeach      
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                             <div class="col-lg-12">
                                 <div class="text-center">
                                     {{-- <button type="submit" class="btn btn-success loginbtn">Registrar</button> --}}
-                                    <button class="btn btn-default">Atras</button>
+                                    <button class="btn btn-default"> <a href="{{ route('listar-evaluaciones.index') }}">Atras</a></button>
                                 </div>
                             </div>
                         </div>

@@ -29,8 +29,9 @@ class EvaluacionesEstudianteController extends Controller
                     ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
                     ->select('evaluaciones.*','materias.*')
                     ->where('users.id', '=', $estudiante )
-                    ->get();  
-        $evaluacion = Evaluacione::all();            
+                    ->paginate(7);
+        $evaluacion = Evaluacione::all();      
+        $evaluacion = Evaluacione::paginate(7);      
         return view('admin.evaluacion-estudiante.index', compact('evaluaciones','evaluacion','estudiante'));
     }
 

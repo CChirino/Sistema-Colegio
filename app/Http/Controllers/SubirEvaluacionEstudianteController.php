@@ -29,7 +29,7 @@ class SubirEvaluacionEstudianteController extends Controller
             ->join('evaluaciones', 'materias.id', '=', 'evaluaciones.materias_id')
             ->join('subir_evaluaciones', 'evaluaciones.id', '=', 'subir_evaluaciones.evaluaciones_id')
             ->select('subir_evaluaciones.*','users.*','materias.*')
-            ->where('materias.role_user_id', '=', $profesor )
+            // ->where('role_user.user_id', '=', $profesor )
             ->paginate(7);        
         $subirevaluaciones = SubirEvaluacione::all();        
         $subirevaluaciones = SubirEvaluacione::paginate(7);

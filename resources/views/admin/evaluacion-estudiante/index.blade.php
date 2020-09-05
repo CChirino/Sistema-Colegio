@@ -31,46 +31,49 @@
 </div>
 <!-- Static Table Start -->
 <div class="container">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Materia</th>
-                <th>Nombre Evaluacion</th>
-                <th>Fecha de Inicio</th>
-                <th>Fecha Fin</th>
-                <th colspan="3">Transacciones</th>
+    <div class="row">
+        <div class="col-9" style="width:100%;padding-right: 0px;padding-left: 0px;">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Materia</th>
+                        <th>Nombre Evaluacion</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha Fin</th>        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($evaluaciones as $eval)
+                    <tr>
+                        <td style="padding: 19px;">{{$eval->nombre_materia}}</td>
+                        <td>{{$eval->nombre_evaluacion}}</td>
+                        <td>{{$eval->fecha_inicio}}</td>
+                        <td>{{$eval->fecha_fin}}</td>
+                    @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3" style="width:100%;padding-right: 0px;padding-left: 0px;">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3">Transacciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($evaluacion as $eval)
+                    <tr>
+                        <td><a class="btn btn-info" href="{{ route('evaluacion-estudiante.show',$eval->id) }}"> <i class="far fa-eye"></i> Ver Evaluacion</a></td>                
+                    </tr>
+                    @endforeach 
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($evaluaciones as $eval)
-            <tr>
-                <td>{{$eval->nombre_materia}}</td>
-                <td>{{$eval->nombre_evaluacion}}</td>
-                <td>{{$eval->fecha_inicio}}</td>
-                <td>{{$eval->fecha_fin}}</td>
-                <td><a class="btn btn-info" href="{{ route('evaluacion-estudiante.show',$eval->id) }}"> <i class="far fa-eye"></i> Ver Evaluacion</a></td>                
-            @endforeach
-            {{-- @foreach($evaluacion as $eva)
-                <td><a class="btn btn-info" href="{{ route('evaluacion-estudiante.show',$eva->id) }}"> <i class="far fa-eye"></i> Ver Evaluacion</a></td>                
-            @endforeach --}}
-            
-                {{-- <td><a class="btn btn-warning" href="{{ route('listar-evaluaciones.edit',$eval->id) }}"> <i class="far fa-edit"></i> Editar</a></td> --}}
-                {{-- <td>
-                    <form action="{{ route('admin.destroy',$eval->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
-                            <i class="fas fa-trash"></i> 
-                            Eliminar
-                        </button>
-                    </form>
-                </td> --}}
-            </tr>
-        </tbody>
-    </table>
     <div>
-        {{-- {{$materias->links()}}  --}}
+        {{$evaluacion->links()}}
     </div>
 </div>
 @endsection

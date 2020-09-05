@@ -17,7 +17,7 @@ class CreateInscripcionsTable extends Migration
             $table->id();
             $table->foreignId('periodo_id')->references('id')->on('periodos')->onDelete('cascade')->unsigned()->nullable();
             $table->foreignId('pensum_id')->references('id')->on('pensums')->onDelete('cascade')->unsigned()->nullable();
-            $table->foreignId('role_user_id')->references('id')->on('role_user')->onDelete('cascade')->unsigned()->nullable();
+            $table->foreignId('role_user_id')->references('user_id')->on('role_user')->onDelete('cascade')->unsigned()->nullable();
             $table->timestamps();
         });
     }

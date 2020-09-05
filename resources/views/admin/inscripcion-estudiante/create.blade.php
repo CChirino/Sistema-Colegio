@@ -45,7 +45,7 @@
                                 {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                                 <div class="card-body">
                                 <h5 class="card-title">{{Auth::user()->nombre}} {{Auth::user()->apellido}}</h5>
-                                  <input type="text" id="role_user_id" name="role_user_id" value="{{ $estudiantes->id }}" style="display: none;">
+                                  <input type="text" id="role_user_id" name="role_user_id" value="{{Auth::user()->id }}" style="display: none;">
                                   <p class="card-text">
                                       {{Auth::user()->dni}}
                                   </p>

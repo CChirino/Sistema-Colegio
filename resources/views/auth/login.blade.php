@@ -15,18 +15,18 @@
                     <form  id="loginForm"  method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <label class="control-label" for="username">Cedula</label>
-                            <input type="number" id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="00.000.000" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
+                            <label class="control-label" for="username">Ingrese la respectiva Cedula o Correo</label>
+                            <input  id="dni"  class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
                                 @error('dni')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror                           
-                             <span class="help-block small">Por favor ingrese la respectiva cedula</span>
+                             <span class="help-block small">Por favor ingrese la respectiva cedula o correo</span>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="password">Contraseña</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" >
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

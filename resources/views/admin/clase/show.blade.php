@@ -54,7 +54,8 @@
                         <div class="row">
                             <div class="form-group col-lg-12">
                                 <label>Archivo de evaluacion</label> <br>
-                                <iframe src="{{$clase ->link_clase}}" width="500" height="500" frameborder="0"></iframe> 
+                                <x-embed url="{{$clase ->link_clase}}" />
+                                {{-- <iframe src="{{$clase ->link_clase}}" width="500" height="500" frameborder="0"></iframe>  --}}
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Nombre de video </label>

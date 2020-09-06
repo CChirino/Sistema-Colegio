@@ -15,7 +15,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/9afc1391aa.js" crossorigin="anonymous"></script>    
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
-    
+    <x-embed-styles />
 
 </head>
 

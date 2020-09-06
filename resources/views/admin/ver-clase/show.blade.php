@@ -57,7 +57,7 @@
                                     <h1 class="text-center">{{$verclases->nombre_clase}}</h1>
                                 </div>
                                 <div class="col-sm-12 pt-2 pb-4 embed-responsive embed-responsive-16by9" >
-                                    <iframe class="embed-responsive-item" src="{{$verclases ->link_clase}}" width="1000" height="500" frameborder="0"></iframe> 
+                                    <x-embed url="{{$clase ->link_clase}}" />
                                 </div>
                                 <div class="col-lg-12 pt-2 ">
                                     <div class="text-center">

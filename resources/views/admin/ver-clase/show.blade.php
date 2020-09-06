@@ -56,8 +56,8 @@
                                 <div class="col-sm-12 pt-2 pb-2">
                                     <h1 class="text-center">{{$verclases->nombre_clase}}</h1>
                                 </div>
-                                <div class="col-sm-12 pt-2 pb-4 embed-responsive embed-responsive-16by9" >
-                                    <x-embed url="{{$clase ->link_clase}}" />
+                                <div class="col-sm-12 pt-2 pb-4 embed-responsive" >
+                                    <x-embed url="{{$verclases->link_clase}}" />
                                 </div>
                                 <div class="col-lg-12 pt-2 ">
                                     <div class="text-center">

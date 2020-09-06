@@ -19,16 +19,15 @@ class VerClasesController extends Controller
     {
         Gate::authorize('haveaccess','ver-clase-en-linea.index');
         $estudiante =  Auth::user()->id;
-        $verclases = DB::table('users')
-            ->join('role_user', 'users.id', '=', 'role_user.id')
-            ->join('inscripcions', 'role_user.id', '=', 'inscripcions.role_user_id')
+        $verclases = DB::table('inscripcions')
             ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
-            ->join('clases', 'inscripcion_materia.id', '=', 'clases.materia_id')
+            ->join('clases', 'inscripcion_materia.materia_id', '=', 'clases.materia_id')
             ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
             ->select('clases.*','materias.*')
             ->where('inscripcions.role_user_id', '=', $estudiante )
             ->get();  
-        return view('admin.ver-clase.index', compact('verclases','estudiante'));
+        $clase = Clase::get()->all();
+        return view('admin.ver-clase.index', compact('verclases','estudiante','clase'));
 
     }
 

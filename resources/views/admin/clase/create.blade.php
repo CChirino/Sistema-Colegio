@@ -82,7 +82,7 @@
                             <div class="form-group col-lg-6">
                                 <label>Link del video</label>
                                 <input type="text" id="link_clase"  class="form-control @error('link_clase') is-invalid @enderror" name="link_clase"  required autocomplete="link_clase" autofocus>
-                                <small class="form-text text-muted">Por favoe el Link del video de cumplir con esta estructura https://www.youtube.com/embed/W7vEV5KR4lM</small>
+                                <small class="form-text text-muted">Por favor el Link del video de cumplir con esta estructura https://www.youtube.com/embed/W7vEV5KR4lM</small>
                                 @error('link_clase')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

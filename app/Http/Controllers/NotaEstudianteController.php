@@ -22,15 +22,19 @@ class NotaEstudianteController extends Controller
     {
         Gate::authorize('haveaccess','notas-estudiante.index');
         $estudiante =  Auth::user()->id;
-        $materias = DB::table('users')
-                    ->join('role_user', 'users.id', '=', 'role_user.id')
-                    ->join('inscripcions', 'role_user.id', '=', 'inscripcions.role_user_id')
-                    ->join('pensums', 'inscripcions.pensum_id', '=', 'pensums.id')
-                    ->join('periodos', 'inscripcions.periodo_id', '=', 'periodos.id')
-                    ->select('users.*', 'role_user.*', 'inscripcions.*','pensums.*','periodos.*')
-                    ->where('users.id', '=', $estudiante )
+        $materias = DB::table('notas')
+                    ->join('inscripcion_materia', 'notas.estudiante_id', '=', 'inscripcion_materia.id')
+                    ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
+                    ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.user_id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->join('materias', 'notas.materias_id', '=', 'materias.id')
+                    ->join('periodos', 'materias.periodo_id', '=', 'periodos.id')
+                    ->join('pensums', 'materias.pensum_id', '=', 'pensums.id')
+                    ->select('notas.*', 'materias.*','pensums.*','periodos.*','users.*')
+                    ->where('role_user.user_id', '=', $estudiante )
                     ->get();  
-        return view('admin.nota-estudiante.index', compact('materias'));
+        $nota = Notas::get()->all();
+        return view('admin.nota-estudiante.index', compact('materias','nota'));
 
     }
 
@@ -66,14 +70,16 @@ class NotaEstudianteController extends Controller
         Gate::authorize('haveaccess','notas-estudiante.show');
         $estudiante = Auth::user()->id;
         // Gate::authorize('haveaccess','notas.edit');
-        $materias = DB::table('users')
-                    ->join('role_user', 'users.id', '=', 'role_user.id')
-                    ->join('inscripcions', 'role_user.id', '=', 'inscripcions.role_user_id')
-                    ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
-                    ->join('notas', 'inscripcion_materia.id', '=', 'notas.estudiante_id')
-                    ->join('materias', 'notas.notas_id', '=', 'materias.role_user_id')
-                    ->select('users.*', 'role_user.*', 'inscripcions.*','inscripcion_materia.*','notas.*','materias.*')
-                    ->where('users.id', '=', $estudiante )
+        $materias = DB::table('notas')
+                    ->join('inscripcion_materia', 'notas.estudiante_id', '=', 'inscripcion_materia.id')
+                    ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
+                    ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.user_id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->join('materias', 'notas.materias_id', '=', 'materias.id')
+                    ->join('periodos', 'materias.periodo_id', '=', 'periodos.id')
+                    ->join('pensums', 'materias.pensum_id', '=', 'pensums.id')
+                    ->select('notas.*', 'materias.*','pensums.*','periodos.*','users.*')
+                    ->where('role_user.user_id', '=', $estudiante )
                     ->get();  
         return view('admin.nota-estudiante.show', compact('materias','estudiante'));
 

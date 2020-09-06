@@ -103,7 +103,7 @@
                         @foreach ($estudiante as $est)
                         <td  value="{{ $est->id }}" id="estudiante_id" name="estudiante_id" >
                             <input style="display:none;" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"  >
-                            {{ $est->nombre}} {{ $est->apellido}}                    
+                            {{ $est->nombre}} {{ $est->apellido}}            
                         </td>
                         <td><input type="number" id="IL_I"                  name="IL_I" size="1" value="0.0" ></td>
                         <td><input type="number" id="IL_G"                  name="IL_G" size="1" value="0.0" ></td>

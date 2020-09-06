@@ -32,11 +32,11 @@ class ClasesController extends Controller
     {
         Gate::authorize('haveaccess','clases-en-linea.create');
         $profesor = Auth::user()->id;
-        $materias = DB::table('users')
-                    ->join('role_user', 'users.id', '=', 'role_user.id')
-                    ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
-                    ->select('users.*', 'role_user.*', 'materias.*')
-                    ->where('materias.role_user_id', '=', $profesor )
+        $materias = DB::table('materias')
+                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->select('materias.*')
+                    ->where('users.id', '=', $profesor )
                     ->get();
         return view('admin.clase.create',compact('materias'));    
 
@@ -71,12 +71,12 @@ class ClasesController extends Controller
         Gate::authorize('haveaccess','clases-en-linea.show');
         $clase = Clase::find($id);
         $profesor = Auth::user()->id;
-        $materias = DB::table('users')
-            ->join('role_user', 'users.id', '=', 'role_user.id')
-            ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
-            ->select('users.*', 'role_user.*', 'materias.*')
-            ->where('materias.role_user_id', '=', $profesor )
-            ->get();
+        $materias = DB::table('materias')
+                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->select('materias.*')
+                    ->where('users.id', '=', $profesor )
+                    ->get();
         return view('admin.clase.show', compact('clase','materias'));
 
     }
@@ -92,11 +92,11 @@ class ClasesController extends Controller
         Gate::authorize('haveaccess','clases-en-linea.edit');
         $clase = Clase::find($id);
         $profesor = Auth::user()->id;
-        $materias = DB::table('users')
-                    ->join('role_user', 'users.id', '=', 'role_user.id')
-                    ->join('materias', 'role_user.id', '=', 'materias.role_user_id')
-                    ->select('users.*', 'role_user.*', 'materias.*')
-                    ->where('materias.role_user_id', '=', $profesor )
+        $materias = DB::table('materias')
+                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->select('materias.*')
+                    ->where('users.id', '=', $profesor )
                     ->get();
         return view('admin.clase.edit',compact('materias','clase'));    
     }

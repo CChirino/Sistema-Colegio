@@ -30,25 +30,45 @@
 </div>
 <!-- Static Table Start -->
 <div class="container">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Materias</th>
-                <th colspan="3">Transacciones</th>
+    <div class="row">
+        <div class="col-8" style="width:100%;padding-right: 0px;padding-left: 0px;">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nombre </th>
+                        <th>Año</th>
+                        <th>Año Escolar</th>        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($materias as $mat)
+                    <tr>
+                        <td style="padding: 19px;" >{{$mat->nombre}} {{$mat->apellido}} </td>
+                        <td>{{$mat->pensum_nombre}}</td>
+                        <td>{{$mat->nombre_periodo}}</td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4" style="width:100%;padding-right: 0px;padding-left: 0px;" >
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3">Transacciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($nota as $not)
+                    <tr>
+                        <td><a class="btn btn-info" href="{{ route('notas-estudiante.show',$not->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
+                    </tr>
+                    @endforeach 
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($materias as $mat)
-            <tr>
-                <td>{{$mat->nombre}}</td>
-                <td>{{$mat->pensum_nombre}}</td>
-                <td>{{$mat->nombre_periodo}}</td>
-                <td><a class="btn btn-info" href="{{ route('notas-estudiante.show',$mat->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
-                @endforeach
-            </tr>
-        </tbody>
-    </table>
     <div>
         {{-- {{$materias->links()}}  --}}
     </div>

@@ -21,12 +21,10 @@ class EvaluacionesEstudianteController extends Controller
     {
         Gate::authorize('haveaccess','evaluacion-estudiante.index');
         $estudiante =  Auth::user()->id;
-        $evaluaciones = DB::table('users')
-                    ->join('role_user', 'users.id', '=', 'role_user.user_id')
-                    ->join('inscripcions', 'role_user.id', '=', 'inscripcions.role_user_id')
-                    ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
-                    ->join('evaluaciones', 'inscripcion_materia.materia_id', '=', 'evaluaciones.materias_id')
+        $evaluaciones = DB::table('evaluaciones')
                     ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
+                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.user_id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
                     ->select('evaluaciones.*','materias.*')
                     ->where('users.id', '=', $estudiante )
                     ->paginate(7);

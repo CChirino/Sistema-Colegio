@@ -62,7 +62,7 @@
                                 <div class="col-lg-12 pt-2 ">
                                     <div class="text-center">
                                         {{-- <button type="submit" class="btn btn-success loginbtn">Registrar</button> --}}
-                                        <button class="btn btn-success loginbtn"><a href="{{ route('clases-en-linea.index') }}"> Atras</a></button>
+                                        <button class="btn btn-success loginbtn"><a href="{{ route('ver-clase-en-linea.index') }}"> Atras</a></button>
                                     </div>
                                 </div>
                             </div>

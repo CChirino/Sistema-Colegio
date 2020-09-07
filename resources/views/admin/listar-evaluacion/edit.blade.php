@@ -111,7 +111,7 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group col-lg-12">
+                            {{-- <div class="form-group col-lg-12">
                                 <table class="table table-striped table-bordered " style="width:100%">
                                     <thead>
                                         <tr>
@@ -131,7 +131,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-12">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>

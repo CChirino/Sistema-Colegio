@@ -59,12 +59,10 @@
                             <div class="form-group col-lg-6">
                                 <label for="">Materia</label>
                                 <select class="form-control" name="profesores_id" id="profesores_id" disabled >        
-                                    @foreach ($materias as $mat)
-        
-                                    <option value="{{Auth::user()->id}}"> 
-                                        {{ $mat ->nombre_materia}}                        
-                                    </option>
-                                
+                                    @foreach ($materias as $m)
+                                    <option value="">
+                                        {{ $m->nombre_materia}}                        
+                                    </option>                                
                                   @endforeach    
                                 </select>
                             </div>

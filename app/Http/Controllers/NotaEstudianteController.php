@@ -33,7 +33,17 @@ class NotaEstudianteController extends Controller
                     ->select('notas.*', 'materias.*','pensums.*','periodos.*','users.*')
                     ->where('role_user.user_id', '=', $estudiante )
                     ->get();  
-        $nota = Notas::get()->all();
+        $nota = DB::table('notas')
+                    ->join('inscripcion_materia', 'notas.estudiante_id', '=', 'inscripcion_materia.id')
+                    ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
+                    ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.user_id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->join('materias', 'notas.materias_id', '=', 'materias.id')
+                    ->join('periodos', 'materias.periodo_id', '=', 'periodos.id')
+                    ->join('pensums', 'materias.pensum_id', '=', 'pensums.id')
+                    ->select('notas.id',)
+                    ->where('role_user.user_id', '=', $estudiante )
+                    ->get();  
         return view('admin.nota-estudiante.index', compact('materias','nota'));
 
     }

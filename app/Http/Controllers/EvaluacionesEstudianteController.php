@@ -28,8 +28,13 @@ class EvaluacionesEstudianteController extends Controller
                     ->select('evaluaciones.*','materias.*')
                     ->where('users.id', '=', $estudiante )
                     ->paginate(7);
-        $evaluacion = Evaluacione::all();      
-        $evaluacion = Evaluacione::paginate(7);      
+        $evaluacion = DB::table('evaluaciones')
+                    ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
+                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.user_id')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->select('evaluaciones.id',)
+                    ->where('users.id', '=', $estudiante )
+                    ->paginate(7);   
         return view('admin.evaluacion-estudiante.index', compact('evaluaciones','evaluacion','estudiante'));
     }
 

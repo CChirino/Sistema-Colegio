@@ -31,7 +31,16 @@ class SubirEvaluacionEstudianteController extends Controller
         JOIN role_user ON inscripcions.role_user_id = role_user.user_id
         JOIN users ON role_user.user_id = users.id
         WHERE u.id = '$profesor'"));
-        $subirevaluaciones = SubirEvaluacione::all();        
+        $subirevaluaciones = DB::select(DB::raw("SELECT subir_evaluaciones.id FROM inscripcions 
+        JOIN inscripcion_materia ON inscripcions.id = inscripcion_materia.inscripcion_id
+        JOIN materias ON inscripcion_materia.materia_id = materias.id
+        JOIN role_user as ru ON materias.role_user_id = ru.id
+        JOIN users as u ON ru.user_id = u.id
+        JOIN evaluaciones ON materias.id = evaluaciones.materias_id
+        JOIN subir_evaluaciones ON evaluaciones.id = subir_evaluaciones.id
+        JOIN role_user ON inscripcions.role_user_id = role_user.user_id
+        JOIN users ON role_user.user_id = users.id
+        WHERE u.id = '$profesor'"));     
         // $subirevaluaciones = SubirEvaluacione::paginate(2);
         return view('admin.subir-evaluacion.index', compact('listarevaluaciones','profesor','subirevaluaciones'));
 
@@ -63,7 +72,7 @@ class SubirEvaluacionEstudianteController extends Controller
          $request->validate([
              'nombre_archivo'                    => ['required', 'string', 'max:255'],
             'comentario'                        => ['required', 'string', 'max:255'],
-           'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:100000' ]
+           'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:1048576' ]
         ]);
         if($request->hasFile('archivo_evaluacion')){
             $filename = $request->archivo_evaluacion->getClientOriginalName();

@@ -12,6 +12,7 @@
         <div class="content-error">
             <div class="hpanel">
                 <div class="panel-body">
+                    @include('custom.message')
                     <form  id="loginForm"  method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">

@@ -4,6 +4,11 @@
 </div>
 @endif
 
+@if (session('error_login'))
+<div class="alert alert-danger" role="alert">
+    {{ session('error_login') }}
+</div>
+@endif
 @if ($errors->any())
 <div class="alert alert-danger" role="alert">
     <ul>

@@ -15,7 +15,6 @@ class Inscripcion extends Model
         'periodo_id',
         'pensum_id',
         'role_user_id',
-
     ];
 
 
@@ -30,6 +29,11 @@ class Inscripcion extends Model
     public function periodos()
     {
         return $this->belongsTo('App\Periodo');
+    }
+
+    public function notas()
+    {
+        return $this->belongsToMany('App\Notas')->withTimesTamps();
     }
 
 

@@ -56,6 +56,7 @@
                     <form action="{{ route('subir-evaluacion-estudiante.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
+                            <input id="user_id" name="user_id" value="{{Auth::user()->id }}" style="display:none;">
                             <div class="form-group col-lg-6">
                                 <label for="">Evaluacion</label>
                                 <select class="form-control" name="evaluaciones_id" id="evaluaciones_id" >        

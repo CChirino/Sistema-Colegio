@@ -20,7 +20,7 @@ class ListarEvaluacionesController extends Controller
         Gate::authorize('haveaccess','listar-evaluaciones.index');
         $profesor = Auth::user()->id;
         $evaluaciones =DB::table('evaluaciones')
-                        ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
+                        ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
                         ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
                         ->join('users', 'role_user.user_id', '=', 'users.id')
                         ->select('evaluaciones.*')
@@ -70,7 +70,7 @@ class ListarEvaluacionesController extends Controller
         //         ->get();
         $evaluaciones = Evaluacione::find($id);
         $materias = DB::table('evaluaciones')
-                    ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
+                    ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
                     ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
                     ->join('users', 'role_user.user_id', '=', 'users.id')
                     ->select('materias.*','evaluaciones.*')
@@ -91,7 +91,7 @@ class ListarEvaluacionesController extends Controller
         $evaluaciones = Evaluacione::find($id);
         $profesor = Auth::user()->id;
         $materias = DB::table('evaluaciones')
-                    ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
+                    ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
                     ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
                     ->join('users', 'role_user.user_id', '=', 'users.id')
                     ->select('materias.*','evaluaciones.*')

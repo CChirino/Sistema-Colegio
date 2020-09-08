@@ -45,4 +45,5 @@ class Materia extends Model
     public function inscripcions(){
         return $this->belongsToMany('App\Inscripcion')->withTimesTamps();
     }
+
 }

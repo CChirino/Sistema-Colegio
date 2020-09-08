@@ -16,6 +16,7 @@ class SubirEvaluacione extends Model
         'nombre_archivo', 
         'comentario',
         'evaluaciones_id',
+        'user_id',
 
     ];
 }

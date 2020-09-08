@@ -21,7 +21,7 @@ class CreateEvaluacionesTable extends Migration
             $table->string('archivo_evaluacion');
             // $table->foreignId('estudiante_id')->references('id')->on('inscripcion_materia')->onDelete('cascade')->unsigned()->nullable();
             // $table->foreignId('profesores_id')->references('role_user_id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
-            $table->foreignId('materias_id')->references('id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
+            $table->foreignId('materia_id')->references('id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
             $table->timestamps();
         });
     }

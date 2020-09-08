@@ -16,7 +16,7 @@ class Evaluacione extends Model
         'fecha_inicio',
         'fecha_fin',
         'archivo_evaluacion',
-        'materias_id',
+        'materia_id',
         // 'estudiante_id',
         // 'profesores_id', 
 

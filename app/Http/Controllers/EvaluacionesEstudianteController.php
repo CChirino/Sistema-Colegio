@@ -21,20 +21,20 @@ class EvaluacionesEstudianteController extends Controller
     {
         Gate::authorize('haveaccess','evaluacion-estudiante.index');
         $estudiante =  Auth::user()->id;
-        $evaluaciones = DB::table('evaluaciones')
-                    ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
-                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.user_id')
-                    ->join('users', 'role_user.user_id', '=', 'users.id')
+        $evaluaciones = DB::table('inscripcions')
+                    ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
+                    ->join('evaluaciones', 'inscripcion_materia.materia_id', '=', 'evaluaciones.materia_id')
+                    ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
                     ->select('evaluaciones.*','materias.*')
-                    ->where('users.id', '=', $estudiante )
+                    ->where('inscripcions.role_user_id', '=', $estudiante )
                     ->paginate(7);
-        $evaluacion = DB::table('evaluaciones')
-                    ->join('materias', 'evaluaciones.materias_id', '=', 'materias.id')
-                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.user_id')
-                    ->join('users', 'role_user.user_id', '=', 'users.id')
-                    ->select('evaluaciones.id',)
-                    ->where('users.id', '=', $estudiante )
-                    ->paginate(7);   
+        $evaluacion = DB::table('inscripcions')
+                    ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
+                    ->join('evaluaciones', 'inscripcion_materia.materia_id', '=', 'evaluaciones.materia_id')
+                    ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
+                    ->select('evaluaciones.*','materias.*')
+                    ->where('inscripcions.role_user_id', '=', $estudiante )
+                    ->paginate(7);
         return view('admin.evaluacion-estudiante.index', compact('evaluaciones','evaluacion','estudiante'));
     }
 

@@ -56,10 +56,37 @@
         <div class="col-sm-12">
             <form action="{{ route('notas.store') }}" method="POST">
                 @csrf
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Materia</label>
+                        <select class="form-control" name="materias_id" id="materias_id" >        
+                            @foreach ($materia as $mat)
+    
+                            <option value="{{ $mat->id }}"> 
+                                {{ $mat ->nombre_materia}}                        
+                            </option>
+                        
+                          @endforeach    
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Estudiante</label>
+                        <select class="form-control" name="estudiante_id" id="estudiante_id" >        
+                            @foreach ($estudiante as $est)
+    
+                            <option value="{{ $est->id }}"> 
+                                {{ $est->nombre}} {{ $est->apellido}}                                    
+                            </option>
+                        
+                          @endforeach    
+                        </select>
+                    </div>
+                </div>
                 <table id="example" class="table table-striped table-bordered table-responsive"  style="width:100%">
                     <thead>
                         <tr>
-                            <th> Estudiantes</th>
                             <th> IL-I </th>
                             <th> IL-G </th>
                             <th> IL-F </th>
@@ -86,25 +113,11 @@
                                 </select>
                             </div>
                         </div> --}}
-                        <div class="pb-4">
-                            <div class="form-group col-lg-6">
-                                <label for="">Materia</label>
-                                <select class="form-control" name="materias_id" id="materias_id" >        
-                                    @foreach ($materia as $mat)
-        
-                                    <option value="{{ $mat->id }}"> 
-                                        {{ $mat ->nombre_materia}}                        
-                                    </option>
-                                
-                                  @endforeach    
-                                </select>
-                            </div>
-                        </div>
-                        @foreach ($estudiante as $est)
-                        <td  value="{{ $est->id }}" id="estudiante_id" name="estudiante_id" >
+                        {{-- @foreach ($estudiante as $est) --}}
+                        {{-- <td  >
                             <input style="display:none;" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"  >
                             {{ $est->nombre}} {{ $est->apellido}}            
-                        </td>
+                        </td> --}}
                         <td><input type="number" id="IL_I"                  name="IL_I" size="1" value="0.0" ></td>
                         <td><input type="number" id="IL_G"                  name="IL_G" size="1" value="0.0" ></td>
                         <td><input type="number" id="IL_F"                  name="IL_F" size="1" value="0.0" ></td>
@@ -114,9 +127,9 @@
                         <td><input type="number" id="IIIL_I"                name="IIIL_I" size="1" value="0.0" ></td>
                         <td><input type="number" id="IIIL_G"                name="IIIL_G" size="1" value="0.0" ></td>
                         <td><input type="number" id="IIIL_F"                name="IIIL_F" size="1" value="0.0" ></td>
-                        <tr>
+                        {{-- <tr>
                             @endforeach      
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
                 <div class="text-center">

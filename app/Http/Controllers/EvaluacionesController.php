@@ -75,7 +75,7 @@ class EvaluacionesController extends Controller
                 'fecha_inicio'                      => $request->fecha_inicio,
                 'fecha_fin'                         => $request->fecha_fin,
                 'archivo_evaluacion'                => $request->archivo_evaluacion->storeAs('evaluaciones',$filename,'public'),
-                'materias_id'                       => $request->materias_id,
+                'materia_id'                       => $request->materias_id,
 
             ]);
         }

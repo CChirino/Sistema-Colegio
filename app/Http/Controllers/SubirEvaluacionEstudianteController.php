@@ -21,26 +21,24 @@ class SubirEvaluacionEstudianteController extends Controller
     {
         Gate::authorize('haveaccess','subir-evaluacion-estudiante.index');
         $profesor = Auth::user()->id;
-        $listarevaluaciones = DB::select(DB::raw("SELECT users.nombre, users.apellido, materias.nombre_materia FROM inscripcions 
-        JOIN inscripcion_materia ON inscripcions.id = inscripcion_materia.inscripcion_id
-        JOIN materias ON inscripcion_materia.materia_id = materias.id
-        JOIN role_user as ru ON materias.role_user_id = ru.id
-        JOIN users as u ON ru.user_id = u.id
-        JOIN evaluaciones ON materias.id = evaluaciones.materias_id
-        JOIN subir_evaluaciones ON evaluaciones.id = subir_evaluaciones.id
-        JOIN role_user ON inscripcions.role_user_id = role_user.user_id
-        JOIN users ON role_user.user_id = users.id
-        WHERE u.id = '$profesor'"));
-        $subirevaluaciones = DB::select(DB::raw("SELECT subir_evaluaciones.id FROM inscripcions 
-        JOIN inscripcion_materia ON inscripcions.id = inscripcion_materia.inscripcion_id
-        JOIN materias ON inscripcion_materia.materia_id = materias.id
-        JOIN role_user as ru ON materias.role_user_id = ru.id
-        JOIN users as u ON ru.user_id = u.id
-        JOIN evaluaciones ON materias.id = evaluaciones.materias_id
-        JOIN subir_evaluaciones ON evaluaciones.id = subir_evaluaciones.id
-        JOIN role_user ON inscripcions.role_user_id = role_user.user_id
-        JOIN users ON role_user.user_id = users.id
-        WHERE u.id = '$profesor'"));     
+        $listarevaluaciones =  DB::table('subir_evaluaciones')
+                            ->join('role_user', 'subir_evaluaciones.user_id', '=', 'role_user.user_id')
+                            ->join('users', 'role_user.user_id', '=', 'users.id')
+                            ->join('evaluaciones', 'subir_evaluaciones.evaluaciones_id', '=', 'evaluaciones.id')
+                            ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
+                            ->join('role_user as ru', 'materias.role_user_id', '=', 'ru.id')
+                            ->select('users.*','materias.*')
+                            ->where('ru.user_id', '=', $profesor )
+                            ->get();
+        $subirevaluaciones =  DB::table('subir_evaluaciones')
+                            ->join('evaluaciones', 'subir_evaluaciones.evaluaciones_id', '=', 'evaluaciones.id')
+                            ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
+                            ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+                            ->join('users', 'role_user.user_id', '=', 'users.id')
+                            ->select('subir_evaluaciones.id')
+                            ->where('users.id', '=', $profesor )
+                            ->get();
+        // dd($subirevaluaciones);
         // $subirevaluaciones = SubirEvaluacione::paginate(2);
         return view('admin.subir-evaluacion.index', compact('listarevaluaciones','profesor','subirevaluaciones'));
 
@@ -81,7 +79,7 @@ class SubirEvaluacionEstudianteController extends Controller
                 'nombre_archivo'                        => $request->nombre_archivo,
                 'comentario'                            => $request->comentario,
                 'evaluaciones_id'                       => $request->evaluaciones_id,
-
+                'user_id'                               => $request->user_id,
             ]);
         }
         return redirect()->route('evaluacion-estudiante.index',compact('evaluaciones'))->with('status_success','Evaluacion subida de manera correcta');

@@ -41,9 +41,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($materias as $mat)
+                    @foreach($estudiante as $est)
                     <tr>
-                        <td style="padding: 19px;">{{$mat->nombre_materia}}</td>
+                        <td style="padding: 19px;">{{$est->nombre}} {{$est->apellido}} - {{$est->nombre_materia}}</td>
                         @endforeach
                     </tr>
                 </tbody>

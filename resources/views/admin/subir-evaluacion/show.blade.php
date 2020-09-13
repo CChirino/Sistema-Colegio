@@ -70,7 +70,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Comentario</label>
-                                <input type="text" id="comentario"  class="form-control" name="comentario"  value="{{$subirevaluaciones->fecha_inicio}}" disabled>
+                                <input type="text" id="comentario"  class="form-control" name="comentario"  value="{{$subirevaluaciones->comentario}}" disabled>
                                 @error('comentario')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

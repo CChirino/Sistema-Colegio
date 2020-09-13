@@ -32,7 +32,7 @@ class EvaluacionesEstudianteController extends Controller
                     ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
                     ->join('evaluaciones', 'inscripcion_materia.materia_id', '=', 'evaluaciones.materia_id')
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-                    ->select('evaluaciones.*','materias.*')
+                    ->select('evaluaciones.id')
                     ->where('inscripcions.role_user_id', '=', $estudiante )
                     ->paginate(7);
         return view('admin.evaluacion-estudiante.index', compact('evaluaciones','evaluacion','estudiante'));

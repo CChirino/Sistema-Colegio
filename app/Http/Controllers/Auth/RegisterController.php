@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -79,11 +78,6 @@ class RegisterController extends Controller
             'password'          => Hash::make($data['password']),
             'image'             => 'images/default.png'
         ]);
-        // if(request()->hasFile('image')){
-        //     $filename = request()->image->getClientOriginalName();
-        //     request()->image->storeAs('images',$filename,'public');
-        //     $user->update(['image' => $filename]);
-        // }
         return $user;
     }
 }

@@ -383,7 +383,12 @@
                     </div>
                   </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-4 pt-4">
+                <img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="300">
+            </div>
+            <div class="col-sm-4 pt-4">
+                <img src="{{asset('asset/img/logo/logo-colegio.jpeg')}}" alt="">            </div>
+            {{-- <div class="col-sm-8">
                 <table class="table pb-1 pt-1 ">
                     <thead>
                         <tr>
@@ -438,26 +443,17 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
         </div>
     </div>
 
-    <div class="container">
+    {{-- <div class="container">
         <div class="row">
             <div class="col-sm-4 pt-4 pb-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Materias</h5>
-                        <ul>
-                            <li>Matematica</li>
-                            <li>Biologia</li>
-                            <li>Historia de Venezuela</li>
-                            <li>Lenguaje</li>
-                            <li>Educacion Artistica</li>
-                            <li>Educacion Fisica</li>
-                            <li>Ingles</li>
-                            <li>Geografia General</li>
-                        </ul>
+                        <p class="card-text">Proximamente tendras </p>
                       </div>
                 </div>
             </div>
@@ -473,7 +469,7 @@
                 <img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="300">
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- <div class="footer-copyright-area">
         <div class="container-fluid">
             <div class="row">

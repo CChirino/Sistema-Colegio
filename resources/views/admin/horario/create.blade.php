@@ -57,10 +57,14 @@
                     <div class="form-group col-lg-6">
                         <label for="">Seleccione un Horario </label>
                         <select class="form-control" id="horario" name="horario">
-                            <option>7:00 AM A 8:30 AM</option>  
-                            <option>8:30 AM A 10:00 AM</option>  
-                            <option>11:00 AM A 12:00 AM</option>  
-                            <option>12:00 AM A 1:30 PM</option>  
+                            <option>6:50 AM A 7:30 AM</option>  
+                            <option>07:30 AM A 08:15 AM</option>  
+                            <option>08:30 AM A 09:10 AM</option>  
+                            <option>09:10 AM A 09:55 AM</option>  
+                            <option>10:05 AM A 10:50 AM</option>  
+                            <option>10:50 AM A 11:30 AM</option>  
+                            <option>11:30 AM A 12:10 AM</option>  
+                            <option>12:10 AM A 12:50 AM</option>  
                         </select>
                         @error('horario')
                         <span class="invalid-feedback" role="alert">

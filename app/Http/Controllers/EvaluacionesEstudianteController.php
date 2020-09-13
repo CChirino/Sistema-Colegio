@@ -27,6 +27,7 @@ class EvaluacionesEstudianteController extends Controller
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
                     ->select('evaluaciones.*','materias.*')
                     ->where('inscripcions.role_user_id', '=', $estudiante )
+                    ->orderBy('evaluaciones.id', 'desc')
                     ->paginate(7);
         $evaluacion = DB::table('inscripcions')
                     ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
@@ -34,6 +35,7 @@ class EvaluacionesEstudianteController extends Controller
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
                     ->select('evaluaciones.id')
                     ->where('inscripcions.role_user_id', '=', $estudiante )
+                    ->orderBy('evaluaciones.id', 'desc')
                     ->paginate(7);
         return view('admin.evaluacion-estudiante.index', compact('evaluaciones','evaluacion','estudiante'));
     }

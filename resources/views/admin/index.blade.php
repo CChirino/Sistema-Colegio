@@ -383,11 +383,9 @@
                     </div>
                   </div>
             </div>
-            <div class="col-sm-4 pt-4">
-                <img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="300">
+            <div class="col-sm-8 pt-4">
+                <img src="{{ asset('asset/img/logo/bienvenida.jpeg')}}" >
             </div>
-            <div class="col-sm-4 pt-4">
-                <img src="{{asset('asset/img/logo/logo-colegio.jpeg')}}" alt="">            </div>
             {{-- <div class="col-sm-8">
                 <table class="table pb-1 pt-1 ">
                     <thead>

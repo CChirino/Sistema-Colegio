@@ -29,7 +29,6 @@ class ProfesorController extends Controller
                     ->where('users.nombre','LIKE','%'.$nombre.'%')
                     ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(7);
-        // $profesores= User::where('nombre','LIKE', '%nombre%')->paginate(7);
         return view('admin.profesor.index-profesor', compact('profesores','nombre'));
     }
 

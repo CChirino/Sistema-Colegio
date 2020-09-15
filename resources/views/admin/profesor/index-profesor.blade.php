@@ -90,7 +90,7 @@
         </tbody>
     </table>
     <div>
-        {{-- {{$profesores->links()}}  --}}
+    {{$profesores->links()}} 
     </div>
 </div>
 @endsection

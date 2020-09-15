@@ -28,9 +28,12 @@ class MateriaController extends Controller
                     ->join('role_user','materias.role_user_id', '=','role_user.id')
                     ->join('users','role_user.user_id', '=','users.id')
                     ->select('materias.*','pensums.*','periodos.*','users.*')
+                    ->orderBy('materias.id', 'asc')
                     ->paginate(7);
-        $materias = Materia::all();
-        $materias = Materia::paginate(7);
+        $materias = DB::table('materias')
+                    ->select('materias.id')
+                    ->orderBy('materias.id', 'asc')
+                    ->paginate(7);
         return view('admin.materias.index', compact('materias','lista_materias'));
     }
 

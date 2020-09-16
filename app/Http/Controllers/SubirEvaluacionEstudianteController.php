@@ -52,7 +52,16 @@ class SubirEvaluacionEstudianteController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','subir-evaluacion-estudiante.create');
-        $evaluacion = Evaluacione::get()->all();
+        $estudiante = Auth::user()->id;
+        $evaluacion =  DB::table('users')
+                    ->join('role_user', 'users.id', '=', 'role_user.user_id')
+                    ->join('inscripcions', 'role_user.user_id', '=', 'inscripcions.role_user_id')
+                    ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
+                    ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
+                    ->join('evaluaciones', 'materias.id', '=', 'evaluaciones.materia_id')
+                    ->select('evaluaciones.*')
+                    ->where('users.id', '=', $estudiante )
+                    ->get();
         return view('admin.subir-evaluacion.create',compact('evaluacion'));    
 
     }

@@ -61,6 +61,7 @@ class SubirEvaluacionEstudianteController extends Controller
                     ->join('evaluaciones', 'materias.id', '=', 'evaluaciones.materia_id')
                     ->select('evaluaciones.*')
                     ->where('users.id', '=', $estudiante )
+                    ->orderBy('evaluaciones.id', 'desc')
                     ->get();
         return view('admin.subir-evaluacion.create',compact('evaluacion'));    
 

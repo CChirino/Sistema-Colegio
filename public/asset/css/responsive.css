@@ -7,16 +7,14 @@
 		display:none;
 	}
 	.logo-pro{
-		display:block;
+		display:none;
 		text-align:center;
 		background:#fff;
 	}
 	.menu-switcher-pro{
 		display:none;
 	}
-	.logo-pro{
-		display:none;
-	}
+
 	.col-lg-1.col-md-0.col-sm-1.col-xs-12{
 		display:none;
 	}

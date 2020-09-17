@@ -120,7 +120,7 @@
                         @endcan
 
                         <ul class="submenu-angle" aria-expanded="false">
-                            @can('haveaccess', 'admin.index')
+                            @can('haveaccess', 'usuarios.index')
                             <li><a title="Usuarios" href="{{ route('usuarios.index')}}"><span class="mini-sub-pro">Usuarios</span></a></li>
                             @endcan
                             @can('haveaccess', 'admin.index')
@@ -218,8 +218,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="logo-pro pt-4 pb-4">
-                    {{-- <a href="index.html"><img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="300"></a> --}}
+                <div class="logo-pro">
+                    <a href="index.html"><img src="{{ asset('asset/img/logo/LogoEscuela.png')}}" width="150"></a>
                 </div>
             </div>
         </div>
@@ -877,176 +877,158 @@
                         <div class="mobile-menu">
                             <nav id="dropdown">
                                 <ul class="mobile-menu-nav">
-                                    <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    <li><a title="Perfil" href="{{ route('perfil.index')}}"><span class="mini-sub-pro">Mi perfil</span></a></li>
+                                    @can('haveaccess', 'notas-estudiante.index')
+                                    <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('notas-estudiante.index')}}">Calificaciones Estudiantes <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul class="collapse dropdown-header-top">
-                                            <li><a href="index.html">Dashboard v.1</a></li>
-                                            <li><a href="index-1.html">Dashboard v.2</a></li>
-                                            <li><a href="index-3.html">Dashboard v.3</a></li>
-                                            <li><a href="analytics.html">Analytics</a></li>
-                                            <li><a href="widgets.html">Widgets</a></li>
+                                            <li><a title="Materias" href="{{ route('notas-estudiante.index')}}"><span class="mini-sub-pro">Calificaciones</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="events.html">Event</a></li>
-                                    <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'notas.index')
+                                    <li><a data-toggle="collapse" data-target="#demoevent" href="{{ route('notas.index')}}">Calificaciones Profesor <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="demoevent" class="collapse dropdown-header-top">
-                                            <li><a href="all-professors.html">All Professors</a>
-                                            </li>
-                                            <li><a href="add-professor.html">Add Professor</a>
-                                            </li>
-                                            <li><a href="edit-professor.html">Edit Professor</a>
-                                            </li>
-                                            <li><a href="professor-profile.html">Professor Profile</a>
-                                            </li>
+                                            <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'inscripciones-estudiante.create')
+                                    <li><a data-toggle="collapse" data-target="#demopro" href="{{ route('inscripciones-estudiante.create')}}">Inscripcion <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="demopro" class="collapse dropdown-header-top">
-                                            <li><a href="all-students.html">All Students</a>
-                                            </li>
-                                            <li><a href="add-student.html">Add Student</a>
-                                            </li>
-                                            <li><a href="edit-student.html">Edit Student</a>
-                                            </li>
-                                            <li><a href="student-profile.html">Student Profile</a>
-                                            </li>
+                                            <li><a title="Inscripcion" href="{{ route('inscripciones-estudiante.create')}}"><span class="mini-sub-pro">Crear Inscripcion </span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'evaluaciones.create')
+                                    <li><a data-toggle="collapse" data-target="#democrou" href="{{ route('evaluaciones.create')}}">Evaluaciones Profesor <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="democrou" class="collapse dropdown-header-top">
-                                            <li><a href="all-courses.html">All Courses</a>
+                                            @endcan
+                                            @can('haveaccess', 'evaluaciones.create')
+                                            <li><a title="Listado de Evaluaciones" href="{{ route('evaluaciones.create')}}"><span class="mini-sub-pro">Crear Evaluacion</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'subir-evaluacion-estudiante.index')
+                                            <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-estudiante.index')}}"><span class="mini-sub-pro">Evaluaciones de Estudiantes</span></a></li>
                                             </li>
-                                            <li><a href="add-course.html">Add Course</a>
-                                            </li>
-                                            <li><a href="edit-course.html">Edit Course</a>
-                                            </li>
-                                            <li><a href="course-profile.html">Courses Info</a>
-                                            </li>
-                                            <li><a href="course-payment.html">Courses Payment</a>
-                                            </li>
+                                            @endcan
+                                            @can('haveaccess', 'listar-evaluaciones.index')
+                                            <li><a title="Listado de Evaluaciones" href="{{ route('listar-evaluaciones.index')}}"><span class="mini-sub-pro">Listar Evaluaciones</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'evaluacion-estudiante.index')
+                                    <li><a data-toggle="collapse" data-target="#demolibra" href="{{ route('evaluacion-estudiante.index')}}">Evaluaciones Estudiantes <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan    
                                         <ul id="demolibra" class="collapse dropdown-header-top">
-                                            <li><a href="library-assets.html">Library Assets</a>
-                                            </li>
-                                            <li><a href="add-library-assets.html">Add Library Asset</a>
-                                            </li>
-                                            <li><a href="edit-library-assets.html">Edit Library Asset</a>
-                                            </li>
+                                            @can('haveaccess', 'evaluacion-estudiante.index')
+                                            <li><a title="Listado de Evaluaciones" href="{{ route('evaluacion-estudiante.index')}}"><span class="mini-sub-pro">Evaluaciones</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'subir-evaluacion-estudiante.create')
+                                            <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-estudiante.create')}}"><span class="mini-sub-pro"> Subir Evaluaciones</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'clases-en-linea.index')
+                                    <li><a data-toggle="collapse" data-target="#demodepart" href="{{ route('clases-en-linea.index')}}">Video Clases <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="demodepart" class="collapse dropdown-header-top">
-                                            <li><a href="departments.html">Departments List</a>
-                                            </li>
-                                            <li><a href="add-department.html">Add Departments</a>
-                                            </li>
-                                            <li><a href="edit-department.html">Edit Departments</a>
-                                            </li>
+                                            @endcan
+                                            @can('haveaccess', 'clases-en-linea.index')
+                                            <li><a title="Listado de Clase" href="{{ route('clases-en-linea.index')}}"><span class="mini-sub-pro">Listado de Video Clases </span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'clases-en-linea.create')
+                                            <li><a title="Crear Clase" href="{{ route('clases-en-linea.create')}}"><span class="mini-sub-pro">Crear Video Clase</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'ver-clase-en-linea.index')
+                                    <li><a data-toggle="collapse" data-target="#demo" href="{{ route('ver-clase-en-linea.index')}}">Ver Video Clases <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
                                         <ul id="demo" class="collapse dropdown-header-top">
-                                            <li><a href="mailbox.html">Inbox</a>
-                                            </li>
-                                            <li><a href="mailbox-view.html">View Mail</a>
-                                            </li>
-                                            <li><a href="mailbox-compose.html">Compose Mail</a>
-                                            </li>
+                                            @can('haveaccess', 'ver-clase-en-linea.index')
+                                            <li><a title="Ver Clases en Linea" href="{{ route('ver-clase-en-linea.index')}}"><span class="mini-sub-pro">Listado de Video Clases </span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'usuarios.index')
+                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="{{ route('usuarios.index')}}">Usuarios <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                            <li><a href="google-map.html">Google Map</a>
-                                            </li>
-                                            <li><a href="data-maps.html">Data Maps</a>
-                                            </li>
-                                            <li><a href="pdf-viewer.html">Pdf Viewer</a>
-                                            </li>
-                                            <li><a href="x-editable.html">X-Editable</a>
-                                            </li>
-                                            <li><a href="code-editor.html">Code Editor</a>
-                                            </li>
-                                            <li><a href="tree-view.html">Tree View</a>
-                                            </li>
-                                            <li><a href="preloader.html">Preloader</a>
-                                            </li>
-                                            <li><a href="images-cropper.html">Images Cropper</a>
-                                            </li>
+                                            @endcan
+                                            @can('haveaccess', 'admin.index')
+                                            <li><a title="Administradores" href="{{ route('admin.index')}}"><span class="mini-sub-pro">Administradores</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'estudiante.index')
+                                            <li><a title="Estudiantes" href="{{ route('estudiante.index')}}"><span class="mini-sub-pro">Estudiantes</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'profesor.index')
+                                            <li><a title="Profesores" href="{{ route('profesor.index')}}"><span class="mini-sub-pro">Profesores</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'coordinador.index')
+                                            <li><a title="Coordinador" href="{{ route('coordinador.index')}}"><span class="mini-sub-pro">Coodinador </span></a></li>                                        </li>
+                                            @endcan
+                                            @can('haveaccess', 'colegio.index')
+                                            <li><a title="Colegio" href="{{ route('colegio.index')}}"><span class="mini-sub-pro">Colegio</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'usuarios.index')
+                                            <li><a title="Usuarios" href="{{ route('usuarios.index')}}"><span class="mini-sub-pro">Usuarios</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'roles.index')
+                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="{{ route('roles.index')}}">Roles <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="Chartsmob" class="collapse dropdown-header-top">
-                                            <li><a href="bar-charts.html">Bar Charts</a>
-                                            </li>
-                                            <li><a href="line-charts.html">Line Charts</a>
-                                            </li>
-                                            <li><a href="area-charts.html">Area Charts</a>
-                                            </li>
-                                            <li><a href="rounded-chart.html">Rounded Charts</a>
-                                            </li>
-                                            <li><a href="c3.html">C3 Charts</a>
-                                            </li>
-                                            <li><a href="sparkline.html">Sparkline Charts</a>
-                                            </li>
-                                            <li><a href="peity.html">Peity Charts</a>
-                                            </li>
+                                            @endcan
+                                            @can('haveaccess', 'roles.index')
+                                            <li><a title="Todos los roles" href="{{ route('roles.index')}}"><span class="mini-sub-pro">Todos los Roles</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'roles.create')
+                                            <li><a title="Crear Rol" href="{{ route('roles.create')}}"><span class="mini-sub-pro">Crear Role</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'materias.index')
+                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="{{ route('materias.index')}}">Materias <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="Tablesmob" class="collapse dropdown-header-top">
-                                            <li><a href="static-table.html">Static Table</a>
-                                            </li>
-                                            <li><a href="data-table.html">Data Table</a>
-                                            </li>
+                                            @endcan    
+                                            @can('haveaccess', 'materias.index')
+                                            <li><a title="Todas las materias" href="{{ route('materias.index')}}"><span class="mini-sub-pro">Todas las materias</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'materias.create')
+                                            <li><a title="Crear Materia" href="{{ route('materias.create')}}"><span class="mini-sub-pro">Crear Materia</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'horarios.index')
+                                    <li><a data-toggle="collapse" data-target="#formsmob" href="{{ route('horarios.index')}}">Horarios <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="formsmob" class="collapse dropdown-header-top">
-                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                            </li>
-                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                            </li>
-                                            <li><a href="password-meter.html">Password Meter</a>
-                                            </li>
-                                            <li><a href="multi-upload.html">Multi Upload</a>
-                                            </li>
-                                            <li><a href="tinymc.html">Text Editor</a>
-                                            </li>
-                                            <li><a href="dual-list-box.html">Dual List Box</a>
-                                            </li>
+                                            @endcan
+                                            @can('haveaccess', 'horarios.index')
+                                            <li><a title="Todos los horarios" href="{{ route('horarios.index')}}"><span class="mini-sub-pro">Todos los horarios</span></a></li>\
+                                            @endcan
+                                            @can('haveaccess', 'horarios.create')
+                                            <li><a title="Crear Horario" href="{{ route('horarios.create')}}"><span class="mini-sub-pro">Crear Horario</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'periodos.index')
+                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="{{ route('periodos.index')}}">Periodo<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="Appviewsmob" class="collapse dropdown-header-top">
-                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                            </li>
-                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                            </li>
-                                            <li><a href="password-meter.html">Password Meter</a>
-                                            </li>
-                                            <li><a href="multi-upload.html">Multi Upload</a>
-                                            </li>
-                                            <li><a href="tinymc.html">Text Editor</a>
-                                            </li>
-                                            <li><a href="dual-list-box.html">Dual List Box</a>
-                                            </li>
+                                            @endcan    
+                                            @can('haveaccess', 'periodos.index')
+                                            <li><a title="Todos los periodos" href="{{ route('periodos.index')}}"><span class="mini-sub-pro">Todos los periodos</span></a></li>
+                                            @endcan    
+                                            @can('haveaccess', 'periodos.create')
+                                            <li><a title="Crear Periodo" href="{{ route('periodos.create')}}"><span class="mini-sub-pro">Crear Periodo</span></a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                    @can('haveaccess', 'usuario-rol.index')
+                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="{{ route('usuario-rol.index')}}">Cambio de Rol<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="Pagemob" class="collapse dropdown-header-top">
-                                            <li><a href="login.html">Login</a>
-                                            </li>
-                                            <li><a href="register.html">Register</a>
-                                            </li>
-                                            <li><a href="lock.html">Lock</a>
-                                            </li>
-                                            <li><a href="password-recovery.html">Password Recovery</a>
-                                            </li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                            <li><a href="500.html">500 Page</a></li>
+                                            @endcan
+                                            @can('haveaccess', 'usuario-rol.index')
+                                            <li><a title="Listado de Evaluaciones" href="{{ route('usuario-rol.index')}}"><span class="mini-sub-pro">Usuarios con rol</span></a></li>
                                         </ul>
                                     </li>
+                                    @endcan
                                 </ul>
                             </nav>
                         </div>

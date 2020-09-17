@@ -33,7 +33,7 @@
 <div class="container">
     @include('custom.message')
     <div class="row">
-        <div class="col-6" style="width:100%;padding-right: 0px;padding-left: 0px;">
+        <div class="col-sm-6" style="width:100%;padding-right: 0px;padding-left: 0px;">
             <table id="example" class="table table-striped table-bordered " style="width:100%">
                 <thead>
                     <tr>
@@ -49,7 +49,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-6" style="width:100%;padding-right: 0px;padding-left: 0px;">
+        <div class="col-sm-6" style="width:100%;padding-right: 0px;padding-left: 0px;">
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>

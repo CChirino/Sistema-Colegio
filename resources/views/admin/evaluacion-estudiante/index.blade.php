@@ -32,7 +32,7 @@
 <!-- Static Table Start -->
 <div class="container">
     <div class="row">
-        <div class="col-9" style="width:100%;padding-right: 0px;padding-left: 0px;">
+        <div class="col-sm-9" style="width:100%;padding-right: 0px;padding-left: 0px;">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
@@ -54,7 +54,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-3" style="width:100%;padding-right: 0px;padding-left: 0px;">
+        <div class="col-sm-3 " style="width:100%;padding-right: 0px;padding-left: 0px;">
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>

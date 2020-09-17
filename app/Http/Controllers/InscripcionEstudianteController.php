@@ -40,7 +40,7 @@ class InscripcionEstudianteController extends Controller
         $año_materias = DB::table('materias')
                 ->join('pensums', 'materias.pensum_id', '=', 'pensums.id')
                 ->select('pensums.*', 'materias.*')
-                ->orderBy('pensums.id', 'desc')
+                ->orderBy('pensums.id', 'asc')
                 // ->where('materias.role_user_id', '=', $profesor )
                 ->get();
         

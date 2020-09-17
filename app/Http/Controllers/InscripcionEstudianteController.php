@@ -40,6 +40,7 @@ class InscripcionEstudianteController extends Controller
         $año_materias = DB::table('materias')
                 ->join('pensums', 'materias.pensum_id', '=', 'pensums.id')
                 ->select('pensums.*', 'materias.*')
+                ->orderBy('pensums.id', 'desc')
                 // ->where('materias.role_user_id', '=', $profesor )
                 ->get();
         
@@ -58,6 +59,8 @@ class InscripcionEstudianteController extends Controller
         $inscripcion = Inscripcion::create($request->all());
         $inscripcion->materias()->sync($request->get('materias'));
         $inscripcion->save();
+        // if(Inscripcion::where('role_user_id','=',Auth::user()->id ) ){
+        // }
         return redirect()->route('home')->with('status_success','Usuario creado de manera correcta');    
     }
 

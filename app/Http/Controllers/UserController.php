@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -17,8 +18,10 @@ class UserController extends Controller
     {
         Gate::authorize('haveaccess','periodos.index');
         $nombre = $request->get('search'); 
-        $user = User::where('nombre','LIKE','%'.$nombre.'%');        
-        $user = User::paginate(7);
+        $user = DB::table('users')
+                ->where('users.nombre','LIKE','%'.$nombre.'%')
+                ->select('users.*')
+                ->paginate(7);
         return view('admin.user.index', compact('user','nombre'));
 
     }

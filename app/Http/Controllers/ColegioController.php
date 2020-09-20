@@ -125,8 +125,16 @@ class ColegioController extends Controller
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
                 // 'email'             => $request->email,
-                'password'          => Hash::make($request->password),
+                // 'password'          => Hash::make($request->password),
                 'image'             => $request->image->storeAs('images',$filename,'public'),
+                ]);
+        }
+        else{
+            $colegio->update([
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
                 ]);
         }
         return redirect()->route('colegio.index')->with('status_success','Usuario actualizado de manera correcta');

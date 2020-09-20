@@ -128,8 +128,19 @@ class ProfesorController extends Controller
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
                 // 'email'             => $request->email,
-                'password'          => Hash::make($request->password),
+                // 'password'          => Hash::make($request->password),
                 'image'             => $request->image->storeAs('images',$filename,'public'),
+                ]);
+        }
+        else{
+            $profesores->update([
+                // 'dni'               => $request->dni,
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                // 'email'             => $request->email,
+                // 'password'          => Hash::make($request->password),
                 ]);
         }
         // User::where('id', '=', $id)->update($profesores);

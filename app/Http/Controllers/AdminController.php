@@ -118,17 +118,22 @@ class AdminController extends Controller
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
             $admin->update([
-                // 'dni'               => $request->dni,
                 'nombre'            => $request->nombre,
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
-                // 'email'             => $request->email,
-                'password'          => Hash::make($request->password),
-                'image'             => $request->image->storeAs('images',$filename,'public'),
+                'image'             => $request->image->storeAs('images',$filename,'public')
                 ]);
         }
-        return redirect()->route('admin.index')->with('status_success','Usuario actualizado de manera correcta');
+        else{
+            $admin->update([
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                ]);
+        }
+            return redirect()->route('admin.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**

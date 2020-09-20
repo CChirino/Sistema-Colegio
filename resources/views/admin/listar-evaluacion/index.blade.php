@@ -37,8 +37,8 @@
                 <th>Nombre Evaluacion</th>
                 <th>Fecha de Inicio</th>
                 <th>Fecha Fin</th>
+                <th>Materia</th>
                 <th colspan="3">Transacciones</th>
-
             </tr>
         </thead>
         <tbody>
@@ -47,6 +47,7 @@
                 <td>{{$eval->nombre_evaluacion}}</td>
                 <td>{{$eval->fecha_inicio}}</td>
                 <td>{{$eval->fecha_fin}}</td>
+                <td>{{$eval->nombre_materia}}</td>
                 <td><a class="btn btn-info" href="{{ route('listar-evaluaciones.show',$eval->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
                 <td><a class="btn btn-warning" href="{{ route('listar-evaluaciones.edit',$eval->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                 <td>

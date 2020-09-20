@@ -55,18 +55,6 @@
             <div class="panel-body">
                     <form >
                         @csrf
-                        <div>
-                            <div class="form-group col-lg-6">
-                                <label for="">Materia</label>
-                                <select class="form-control" name="profesores_id" id="profesores_id" disabled >        
-                                    @foreach ($materias as $m)
-                                    <option value="">
-                                        {{ $m->nombre_materia}}                        
-                                    </option>                                
-                                  @endforeach    
-                                </select>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="form-group col-lg-12">
                                 <label>Archivo de evaluacion</label> <br>

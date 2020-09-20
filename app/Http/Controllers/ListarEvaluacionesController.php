@@ -23,7 +23,7 @@ class ListarEvaluacionesController extends Controller
                         ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
                         ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
                         ->join('users', 'role_user.user_id', '=', 'users.id')
-                        ->select('evaluaciones.*')
+                        ->select('evaluaciones.id','evaluaciones.nombre_evaluacion','evaluaciones.fecha_inicio','evaluaciones.fecha_fin','evaluaciones.archivo_evaluacion','evaluaciones.materia_id','materias.nombre_materia')
                         ->where('users.id', '=', $profesor )
                         ->paginate(7);
         return view('admin.listar-evaluacion.index', compact('evaluaciones'));
@@ -60,23 +60,15 @@ class ListarEvaluacionesController extends Controller
     {
         Gate::authorize('haveaccess','listar-evaluaciones.show');
         $profesor = Auth::user()->id;
-        // $estudiante =DB::table('inscripcion_materia')
-        //         ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
-        //         ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.id')
-        //         ->join('users', 'role_user.user_id', '=', 'users.id')
-        //         ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-        //         ->select('users.*','inscripcion_materia.*')
-        //         ->where('materias.role_user_id', '=', $profesor )
-        //         ->get();
         $evaluaciones = Evaluacione::find($id);
-        $materias = DB::table('evaluaciones')
-                    ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
-                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
-                    ->join('users', 'role_user.user_id', '=', 'users.id')
-                    ->select('materias.*','evaluaciones.*')
-                    ->where('users.id', '=', $profesor )
-                    ->get();
-        return view('admin.listar-evaluacion.show', compact('evaluaciones','materias'));
+        // $materias = DB::table('evaluaciones')
+        //             ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
+        //             ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+        //             ->join('users', 'role_user.user_id', '=', 'users.id')
+        //             ->select('materias.id','materias.nombre_materia','evaluaciones.nombre_evaluacion','evaluaciones.fecha_inicio','evaluaciones.fecha_fin','evaluaciones.archivo_evaluacion','evaluaciones.materia_id')
+        //             ->where('users.id', '=', $profesor )
+        //             ->get();
+        return view('admin.listar-evaluacion.show', compact('evaluaciones'));
     }
 
     /**

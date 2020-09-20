@@ -72,10 +72,10 @@
                 <td>{{$u->direccion}}</td>
                 <td>{{$u->fecha_nacimiento}}</td>
                 <td>{{$u->email}}</td>
-                <td><a class="btn btn-info" href="{{ route('admin.show',$u->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
-                <td><a class="btn btn-warning" href="{{ route('admin.edit',$u->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
+                <td><a class="btn btn-info" href="{{ route('usuarios.show',$u->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
+                <td><a class="btn btn-warning" href="{{ route('usuarios.edit',$u->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                 <td>
-                <form action="{{ route('admin.destroy',$u->id) }}" method="post">
+                <form action="{{ route('usuarios.destroy',$u->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >

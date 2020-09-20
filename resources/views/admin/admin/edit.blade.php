@@ -54,11 +54,11 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$admin->nombre}}"">
+                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$admin->nombre}}">
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Apellido</label>
-                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$admin->apellido}}"">
+                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$admin->apellido}}">
 
                     </div>
                     <div class="form-group col-lg-12">

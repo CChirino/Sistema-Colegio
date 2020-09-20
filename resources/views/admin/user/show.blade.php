@@ -23,7 +23,7 @@
                                 </li>
                                 <li><a href="#">@yield('titulo')</a> <span class="bread-slash">/</span>
                                 </li>
-                            <li><span class="bread-blod">{{$admin->nombre}}</span>
+                            <li><span class="bread-blod">{{$user->nombre}}</span>
                                 </li>
                             </ul>
                         </div>

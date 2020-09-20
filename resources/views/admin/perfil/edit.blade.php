@@ -23,11 +23,11 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$user->nombre}}"">
+                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$user->nombre}}">
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Apellido</label>
-                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$user->apellido}}"">
+                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$user->apellido}}">
 
                     </div>
                     <div class="form-group col-lg-12">

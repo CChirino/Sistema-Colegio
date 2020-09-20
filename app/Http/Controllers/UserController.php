@@ -113,10 +113,31 @@ class UserController extends Controller
             'fecha_inicio' => 'required',
             'fecha_fin' => 'required',
         ]);
-
-        $user->update($request->all());
-
-        return redirect()->route('user.index')->with('status_success','Usuario actualizado de manera correcta');
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $user->update([
+                // 'dni'               => $request->dni,
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                // 'email'             => $request->email,
+                // 'password'          => Hash::make($request->password),
+                'image'             => $request->image->storeAs('images',$filename,'public'),
+                ]);
+        }
+        else{
+            $user->update([
+                // 'dni'               => $request->dni,
+                'nombre'            => $request->nombre,
+                'apellido'          => $request->apellido,
+                'direccion'         => $request->direccion,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                // 'email'             => $request->email,
+                // 'password'          => Hash::make($request->password),
+                ]);
+        }
+        return redirect()->route('usuarios.index')->with('status_success','Usuario actualizado de manera correcta');
     }
 
     /**
@@ -128,8 +149,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         Gate::authorize('haveaccess','periodos.destroy');
-        $periodo = User::find($id);
-        $periodo ->delete();
-        return redirect()->route('user.index')->with('status_success','Usuario eliminado de manera correcta');
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('usuarios.index')->with('status_success','Usuario eliminado de manera correcta');
     }
 }

@@ -21,7 +21,7 @@ class HorarioController extends Controller
         Gate::authorize('haveaccess','horarios.index');
         $horarios = DB::table('horarios')
                 ->join('materias','horarios.horario_id', '=','materias.id')
-                ->select('horarios.*','materias.*')
+                ->select('horarios.*','materias.nombre_materia')
                 ->paginate(7);
         return view('admin.horario.index', compact('horarios'));
     }
@@ -106,15 +106,17 @@ class HorarioController extends Controller
             'horario'=>'required',
             'cupos'=>'required',
         ]);
-        $horarios->update([
-            'dia'                               => $request->get('dia'),
-            'horario'                           => $request->get('horario'),
-            'aula'                              => $request->get('aula'),
-            'cupos'                             => $request->get('cupos'),
-            'seccion'                           => $request->get('seccion'),
-            'horario_id'                        => $request->get('horario_id')
-        ]);    
-        $horarios->save();
+        $horarios->update($request->all());
+
+        // $horarios->update([
+        //     'dia'                               => $request->get('dia'),
+        //     'horario'                           => $request->get('horario'),
+        //     'aula'                              => $request->get('aula'),
+        //     'cupos'                             => $request->get('cupos'),
+        //     'seccion'                           => $request->get('seccion'),
+        //     'horario_id'                        => $request->get('horario_id')
+        // ]);    
+        // $horarios->save();
         return redirect()->route('horarios.index')->with('status_success','Horario actualizado de manera correcta');
 
     }

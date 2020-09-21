@@ -23,8 +23,8 @@
                                 </li>
                                 <li><a href="#">@yield('titulo')</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">{{$horarios->nombre}}</span>
-                                </li>
+                                {{-- <li><span class="bread-blod">{{$horarios->nombre}}</span>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>

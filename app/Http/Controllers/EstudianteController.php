@@ -122,7 +122,7 @@ class EstudianteController extends Controller
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
-                // 'email'             => $request->email,
+                'email'             => $request->email,
                 // 'password'          => Hash::make($request->password),
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
@@ -133,8 +133,8 @@ class EstudianteController extends Controller
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
-                // 'email'             => $request->email,
-                // 'password'          => Hash::make($request->password),
+                'email'             => $request->email,
+                //'password'          => Hash::make($request->password),
                 ]);
         }
         return redirect()->route('estudiante.index')->with('status_success','Usuario actualizado de manera correcta');

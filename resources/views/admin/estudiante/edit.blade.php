@@ -71,8 +71,26 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Correo Electronico</label>
-                        <input id="email" type="email" class="form-control" name="email" value="{{$estudiantes->email}}" disabled>
+                        <input id="email" type="email" class="form-control" name="email" value="{{$estudiantes->email}}" >
                     </div>
+                    {{-- <div class="form-group col-lg-6">
+                        <label>Contrasena</label>
+                        <input id="password" type="password" class="form-control" name="password" value="{{$estudiantes->password}}">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Repita Contrasena</label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{$estudiantes->password}}" >
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div> --}}
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>

@@ -48,7 +48,7 @@ class PermissionController extends Controller
             'description'                           => $request->get('description'),
         ]);
         $permisos->save();
-        return redirect()->route('permisos.index')->with('status_success','Periodo creado de manera correcta');  
+        return redirect()->route('permisos.index')->with('status_success','Permiso creado de manera correcta');  
     }
 
     /**
@@ -88,7 +88,7 @@ class PermissionController extends Controller
     {
         $permisos = Permission::find($id);
         $permisos->update($request->all());
-        return redirect()->route('permisos.index')->with('status_success','Periodo actualizado de manera correcta');
+        return redirect()->route('permisos.index')->with('status_success','Permiso actualizado de manera correcta');
 
     }
 
@@ -102,6 +102,6 @@ class PermissionController extends Controller
     {
         $permisos = Permission::find($id);
         $permisos ->delete();
-        return redirect()->route('permisos.index')->with('status_success','Periodo eliminado de manera correcta');
+        return redirect()->route('permisos.index')->with('status_success','Permiso eliminado de manera correcta');
     }
 }

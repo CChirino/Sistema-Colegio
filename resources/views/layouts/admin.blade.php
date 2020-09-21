@@ -123,6 +123,26 @@
                         </ul>
                     </li>    
                     @endcan
+                    @can('haveaccess', 'horario-estudiante.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('horario-estudiante.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-clock"></i></span> <span class="mini-click-non">Horarios Est</span></a>
+                        @endcan
+                    @can('haveaccess', 'horario-estudiante.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Todos los horarios" href="{{ route('horario-estudiante.index')}}"><span class="mini-sub-pro">Listado de horarios</span></a></li>\
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('haveaccess', 'horario-profesor.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('horario-profesor.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-clock"></i></span> <span class="mini-click-non">Horarios Prof</span></a>
+                        @endcan
+                        @can('haveaccess', 'horario-profesor.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Todos los horarios" href="{{ route('horario-profesor.index')}}"><span class="mini-sub-pro">Listado de horarios</span></a></li>\
+                        </ul>
+                    </li>
+                    @endcan
                     @can('haveaccess', 'estudiante.index')
                     <li>
                         <a class="has-arrow" href="{{ route('estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Usuarios</span></a>
@@ -193,22 +213,6 @@
                     @endcan
                     @can('haveaccess', 'horarios.create')
                             <li><a title="Crear Horario" href="{{ route('horarios.create')}}"><span class="mini-sub-pro">Crear Horario</span></a></li>
-                        </ul>
-                    </li>
-                    @endcan
-                    @can('haveaccess', 'horario-profesor.index')
-                    <li>
-                        <a class="has-arrow" href="{{ route('horario-profesor.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-clock"></i></span> <span class="mini-click-non">Horarios Prof</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Todos los horarios" href="{{ route('horario-profesor.index')}}"><span class="mini-sub-pro">Listado de horarios</span></a></li>\
-                        </ul>
-                    </li>
-                    @endcan
-                    @can('haveaccess', 'horario-estudiante.index')
-                    <li>
-                        <a class="has-arrow" href="{{ route('horario-estudiante.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-clock"></i></span> <span class="mini-click-non">Horarios Est</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Todos los horarios" href="{{ route('horario-estudiante.index')}}"><span class="mini-sub-pro">Listado de horarios</span></a></li>\
                         </ul>
                     </li>
                     @endcan

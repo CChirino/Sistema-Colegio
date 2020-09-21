@@ -196,6 +196,22 @@
                         </ul>
                     </li>
                     @endcan
+                    @can('haveaccess', 'horario-profesor.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('horario-profesor.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-clock"></i></span> <span class="mini-click-non">Horarios Prof</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Todos los horarios" href="{{ route('horario-profesor.index')}}"><span class="mini-sub-pro">Listado de horarios</span></a></li>\
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('haveaccess', 'horario-estudiante.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('horario-estudiante.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-clock"></i></span> <span class="mini-click-non">Horarios Est</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Todos los horarios" href="{{ route('horario-estudiante.index')}}"><span class="mini-sub-pro">Listado de horarios</span></a></li>\
+                        </ul>
+                    </li>
+                    @endcan
                     @can('haveaccess', 'periodos.index')
                     <li>
                         <a class="has-arrow" href="{{ route('periodos.index')}}" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Periodo</span></a>

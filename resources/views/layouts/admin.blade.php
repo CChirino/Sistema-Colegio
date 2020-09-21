@@ -62,6 +62,15 @@
                         </ul>
                         @endcan
                     </li>
+                    <li>
+                        @can('haveaccess', 'listado-estudiantes.index')
+                        <a class="has-arrow" href="{{ route('listado-estudiantes.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-clipboard-list"></i></span> <span class="mini-click-non">Listado Est.</span></a>                        
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Listado de estudiantes" href="{{ route('listado-estudiantes.index')}}"><span class="mini-sub-pro">Listado Estudiantes </span></a></li>
+                            {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
+                        </ul>
+                        @endcan
+                    </li>
                     @can('haveaccess', 'evaluaciones.create')
                     <li>
                         <a class="has-arrow" href="{{ route('evaluaciones.create')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-file"></i></span> <span class="mini-click-non">Evaluaciones Prf</span></a>                        
@@ -154,6 +163,16 @@
                             {{-- <li><a title="Students Profile" href="student-profile.html"><span class="mini-sub-pro">Student Profile</span></a></li> --}}
                         </ul>
                     </li>
+                    @endcan
+                    @can('haveaccess', 'permisos.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('permisos.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="fas fa-lock"></i></span> <span class="mini-click-non"> Permisos</span></a>                        
+                        @endcan
+                        @can('haveaccess', 'permisos.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Permisos" href="{{ route('permisos.index')}}"><span class="mini-sub-pro">Listado de Permisos </span></a></li>
+                        </ul>
+                    </li>    
                     @endcan
                     @can('haveaccess', 'materias.index')
                     <li>

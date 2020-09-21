@@ -25,6 +25,7 @@ class ListarEvaluacionesController extends Controller
                         ->join('users', 'role_user.user_id', '=', 'users.id')
                         ->select('evaluaciones.id','evaluaciones.nombre_evaluacion','evaluaciones.fecha_inicio','evaluaciones.fecha_fin','evaluaciones.archivo_evaluacion','evaluaciones.materia_id','materias.nombre_materia')
                         ->where('users.id', '=', $profesor )
+                        ->orderBy('evaluaciones.id', 'asc')
                         ->paginate(7);
         return view('admin.listar-evaluacion.index', compact('evaluaciones'));
     }

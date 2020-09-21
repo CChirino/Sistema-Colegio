@@ -38,7 +38,6 @@
                 <th>Dia</th>
                 <th>Horario</th>
                 <th>Aula</th>
-                <th>Cupos</th>
                 <th>Seccion</th>
                 <th>Materia</th>
 
@@ -50,7 +49,6 @@
                 <td>{{$h->dia}}</td>
                 <td>{{$h->horario}}</td>
                 <td>{{$h->aula}}</td>
-                <td>{{$h->cupos}}</td>
                 <td>{{$h->seccion}}</td>
                 <td>{{$h->nombre_materia}}</td>
                 @endforeach

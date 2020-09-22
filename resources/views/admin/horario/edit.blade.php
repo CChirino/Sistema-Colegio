@@ -56,9 +56,28 @@
                         <label for="">Seleccione un Horario </label>
                         <select class="form-control" id="horario" name="horario" >
                             <option>{{$horarios->horario}}</option>  
-                            <option>8:30 AM A 10:00 AM</option>  
-                            <option>11:00 AM A 12:00 AM</option>  
-                            <option>12:00 AM A 1:30 PM</option>  
+                            <option>6:50 AM A 7:30 AM</option>  
+                            <option>07:30 AM A 08:15 AM</option>  
+                            <option>08:30 AM A 09:10 AM</option>  
+                            <option>09:10 AM A 09:55 AM</option>  
+                            <option>10:05 AM A 10:50 AM</option>  
+                            <option>10:50 AM A 11:30 AM</option>  
+                            <option>11:30 AM A 12:10 AM</option>  
+                            <option>12:10 AM A 12:50 AM</option>  
+                            <option>Preescolar - No presionar</option>  
+                            <option>08:00 AM A 08:30 AM</option>  
+                            <option>08:30 AM A 09:00 AM</option>  
+                            <option>09:00 AM A 09:45 AM</option>  
+                            <option>09:45 AM A 10:00 AM</option>  
+                            <option>10:00 AM A 10:45 AM</option>  
+                            <option>10:45 AM A 11:00 AM</option>  
+                            <option>11:15 AM A 11:45 AM</option>  
+                            <option>Primaria - No presionar</option>  
+                            <option>08:00 AM A 08:45 AM</option>  
+                            <option>08:45 AM A 09:00 AM</option>  
+                            <option>09:00 AM A 10:00 AM</option>  
+                            <option>10:00 AM A 10:30 AM</option>  
+                            <option>10:30 AM A 11:30 AM</option>    
                         </select>
                     </div>
                     <div class="form-group col-lg-12">

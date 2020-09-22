@@ -66,7 +66,7 @@ class EvaluacionesController extends Controller
             'nombre_evaluacion'                 => ['required', 'string', 'max:255'],
             'fecha_inicio'                      => ['required', 'date'],
             'fecha_fin'                         => ['required', 'date'],
-            'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:1048576' ]
+            'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:7000000' ]
         ]);
         if($request->hasFile('archivo_evaluacion')){
             $filename = $request->archivo_evaluacion->getClientOriginalName();

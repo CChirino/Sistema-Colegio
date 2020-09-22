@@ -24,7 +24,8 @@ class ClasesController extends Controller
                 ->join('role_user','materias.role_user_id', '=','role_user.id')
                 ->join('users','role_user.user_id', '=','users.id')
                 ->where('users.id','=',$profesor)
-                ->select('clases.id','clases.nombre_clase','clases.link_clase')
+                ->select('clases.id','clases.nombre_clase','clases.link_clase','materias.nombre_materia')
+                ->orderBy('clases.id', 'asc')
                 ->paginate(7);
         return view('admin.clase.index',compact('clase'));    
 

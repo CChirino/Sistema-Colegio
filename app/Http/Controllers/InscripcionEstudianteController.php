@@ -61,7 +61,7 @@ class InscripcionEstudianteController extends Controller
         $inscripcion->save();
         // if(Inscripcion::where('role_user_id','=',Auth::user()->id ) ){
         // }
-        return redirect()->route('home')->with('status_success','Usuario creado de manera correcta');    
+        return redirect()->route('home')->with('status_success','Inscripcion creada de manera correcta');    
     }
 
     /**

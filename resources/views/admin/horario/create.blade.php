@@ -131,7 +131,7 @@
                             @foreach ($materias as $mat)
 
                             <option value="{{ $mat->id }}"> 
-                                {{ $mat ->nombre_materia}}                        
+                                {{ $mat ->nombre_materia}}  - {{$mat->pensum_nombre}}                      
                             </option>
                         
                           @endforeach    

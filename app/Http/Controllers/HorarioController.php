@@ -34,7 +34,12 @@ class HorarioController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','horarios.create');
-        $materias = Materia::get();
+        $materias = DB::table('horarios')
+                    ->join('materias','horarios.horario_id', '=','materias.id')
+                    ->join('pensums','materias.pensum_id', '=','pensums.id')
+                    ->select('materias.id','materias.nombre_materia','pensums.pensum_nombre')
+                    ->orderBy('materias.id', 'asc')
+                    ->get();
         return view('admin.horario.create',compact('materias'));
     }
 

@@ -143,6 +143,12 @@
                         </ul>
                     </li>
                     @endcan
+                    <li>
+                        <a class="has-arrow" href="{{ route('chat')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-comments"></i></span> <span class="mini-click-non">Chat</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Todos los horarios" href="{{ route('chat')}}"><span class="mini-sub-pro">Chat</span></a></li>
+                        </ul>
+                    </li>
                     @can('haveaccess', 'estudiante.index')
                     <li>
                         <a class="has-arrow" href="{{ route('estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Usuarios</span></a>

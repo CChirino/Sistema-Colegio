@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Http\Controllers\Auth;
 namespace Chatify\Http\Controllers;
 
 use Illuminate\Http\Request;

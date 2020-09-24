@@ -43,7 +43,7 @@
            {{-- ---------------- [ Group Tab ] ---------------- --}}
            <div class="@if($route == 'group') show @endif messenger-tab app-scroll" data-view="groups">
                 {{-- items --}}
-                <p style="text-align: center;color:grey;">Soon will be available</p>
+                <p style="text-align: center;color:grey;">Proximamente</p>
              </div>
 
              {{-- ---------------- [ Search Tab ] ---------------- --}}

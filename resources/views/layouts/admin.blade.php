@@ -1074,6 +1074,11 @@
                                         </ul>
                                     </li>
                                     @endcan
+                                    <li><a data-toggle="collapse" data-target="#chat" href="{{ route('chat')}}">Chat<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <ul id="chat" class="collapse dropdown-header-top">
+                                            <li><a title="Chat" href="{{ route('chat')}}"><span class="mini-sub-pro">Chat</span></a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

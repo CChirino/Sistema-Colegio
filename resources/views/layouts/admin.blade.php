@@ -1079,6 +1079,24 @@
                                             <li><a title="Chat" href="{{ route('chat')}}"><span class="mini-sub-pro">Chat</span></a></li>
                                         </ul>
                                     </li>
+                                    @can('haveaccess', 'horario-estudiante.index')
+                                    <li><a data-toggle="collapse" data-target="#horario1" href="{{ route('horario-estudiante.index')}}">Horario Estudiante<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                        <ul id="horario1" class="collapse dropdown-header-top">
+                                            @can('haveaccess', 'horario-estudiante.index')
+                                            <li><a title="Horario Estudiante" href="{{ route('horario-estudiante.index')}}"><span class="mini-sub-pro">Horario Estudiante </span></a></li>
+                                        </ul>
+                                    </li>
+                                    @endcan
+                                    @can('haveaccess', 'horario-profesor.index')
+                                    <li><a data-toggle="collapse" data-target="#horario2" href="{{ route('horario-profesor.index')}}">Horario Profesor <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                    @endcan
+                                        <ul id="horario2" class="collapse dropdown-header-top">
+                                            @can('haveaccess', 'horario-profesor.index')
+                                            <li><a title="Horario Profesor" href="{{ route('horario-profesor.index')}}"><span class="mini-sub-pro">Horario Profesor </span></a></li>
+                                        </ul>
+                                    </li>
+                                    @endcan
                                 </ul>
                             </nav>
                         </div>

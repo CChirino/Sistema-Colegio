@@ -62,6 +62,16 @@
                     @foreach($subirevaluaciones as $se)
                     <tr>
                         <td style="padding:5px;"><a class="btn btn-info" href="{{ route('subir-evaluacion-estudiante.show',$se->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
+                        <td>
+                            <form action="{{ route('subir-evaluacion-estudiante.destroy',$se->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
+                                    <i class="fas fa-trash"></i> 
+                                    Eliminar
+                                </button>
+                            </form>
+                            </td>
                     </tr>
                     @endforeach 
                 </tbody>

@@ -140,6 +140,8 @@ class SubirEvaluacionEstudianteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subirevaluaciones = SubirEvaluacione::find($id);
+        $subirevaluaciones->delete();
+        return redirect()->route('subir-evaluacion-estudiante.index')->with('status_success','Evaluacion del estudiante, eliminado de manera correcta');
     }
 }

@@ -119,15 +119,15 @@
                             <input style="display:none;" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"  >
                             {{ $est->nombre}} {{ $est->apellido}}            
                         </td> --}}
-                        <td><input type="number" id="IL_I"                  name="IL_I" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IL_G"                  name="IL_G" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IL_F"                  name="IL_F" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIL_I"                 name="IIL_I" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIL_G"                 name="IIL_G" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIL_F"                 name="IIL_F" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIIL_I"                name="IIIL_I" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIIL_G"                name="IIIL_G" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIIL_F"                name="IIIL_F" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IL_I"                  name="IL_I" size="1" value="{{$notas->IL_I}}" ></td>
+                        <td><input type="number" id="IL_G"                  name="IL_G" size="1" value="{{$notas->IL_G}}" ></td>
+                        <td><input type="number" id="IL_F"                  name="IL_F" size="1" value="{{$notas->IL_F}}" ></td>
+                        <td><input type="number" id="IIL_I"                 name="IIL_I" size="1" value="{{$notas->IIL_I}}" ></td>
+                        <td><input type="number" id="IIL_G"                 name="IIL_G" size="1" value="{{$notas->IIL_G}}" ></td>
+                        <td><input type="number" id="IIL_F"                 name="IIL_F" size="1" value="{{$notas->IIL_F}}" ></td>
+                        <td><input type="number" id="IIIL_I"                name="IIIL_I" size="1" value="{{$notas->IIIL_I}}" ></td>
+                        <td><input type="number" id="IIIL_G"                name="IIIL_G" size="1" value="{{$notas->IIIL_G}}" ></td>
+                        <td><input type="number" id="IIIL_F"                name="IIIL_F" size="1" value="{{$notas->IIIL_F}}" ></td>
                         {{-- <tr>
                             @endforeach      
                         </tr> --}}

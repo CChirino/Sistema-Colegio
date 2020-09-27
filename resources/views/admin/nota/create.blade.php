@@ -134,7 +134,7 @@
                 </table>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Guardar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                <button class="btn btn-default"> <a href="{{route('notas.index')}}">Cancelar</a></button>
                 </div> 
             </form>
         </div>

@@ -37,13 +37,15 @@
             <table id="example" class="table table-striped table-bordered " style="width:100%">
                 <thead>
                     <tr>
-                        <th>Materias</th>        
+                        <th>Estudiantes</th>        
+                        <th>Materia</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($estudiante as $est)
                     <tr>
-                        <td style="padding: 19px;">{{$est->nombre}} {{$est->apellido}} - {{$est->nombre_materia}}</td>
+                        <td style="padding: 19px;">{{$est->nombre}} {{$est->apellido}}</td>
+                        <td>{{$est->nombre_materia}}</td>
                         @endforeach
                     </tr>
                 </tbody>
@@ -69,7 +71,7 @@
     </div>
 
     <div>
-        {{-- {{$materias->links()}}  --}}
+        {{$estudiante->links()}}
     </div>
 </div>
 @endsection

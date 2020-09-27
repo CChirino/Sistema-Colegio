@@ -55,10 +55,37 @@
         <div class="col-sm-12">
             <form>
                 @csrf
-                <table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Materia</label>
+                        <select class="form-control" name="materias_id" id="materias_id" >        
+                            @foreach ($materias as $mat)
+    
+                            <option value="{{ $mat->id }}"> 
+                                {{ $mat ->nombre_materia}}                        
+                            </option>
+                        
+                          @endforeach    
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Estudiante</label>
+                        <select class="form-control" name="estudiante_id" id="estudiante_id" >        
+                            @foreach ($estudiante as $est)
+    
+                            <option value="{{ $est->id }}"> 
+                                {{ $est->nombre}} {{ $est->apellido}}                                    
+                            </option>
+                        
+                          @endforeach    
+                        </select>
+                    </div>
+                </div>
+                <table id="example" class="table table-striped table-bordered table-responsive"  style="width:100%">
                     <thead>
                         <tr>
-                            <th> Estudiantes</th>
                             <th> IL-I </th>
                             <th> IL-G </th>
                             <th> IL-F </th>
@@ -71,7 +98,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <div class="pb-4">
+                        {{-- <div class="pb-4">
                             <div class="form-group col-lg-6">
                                 <label for="">Materia</label>
                                 <select class="form-control" name="notas_id" id="notas_id" >        
@@ -84,24 +111,24 @@
                                   @endforeach    
                                 </select>
                             </div>
-                        </div>
-                        @foreach ($estudiante as $est)
-                        <td  value="{{ $est->id }}" id="estudiante_id" name="estudiante_id" >
+                        </div> --}}
+                        {{-- @foreach ($estudiante as $est) --}}
+                        {{-- <td  >
                             <input style="display:none;" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"  >
-                            {{ $est->nombre}}                        
-                        </td>
-                        <td><input type="number" id="IL_I"                      name="IL_I" size="1" value="{{$notas->IL_I}}"></td>
-                        <td><input type="number" id="IL_G"                  name="IL_G" size="1" value="{{$notas->IL_G}}" ></td>
-                        <td><input type="number" id="IL_F"                  name="IL_F" size="1" value="{{$notas->IL_F}}" ></td>
-                        <td><input type="number" id="IIL_I"                 name="IIL_I" size="1" value="{{$notas->IIL_I}}" ></td>
-                        <td><input type="number" id="IIL_G"                 name="IIL_G" size="1" value="{{$notas->IIL_G}}" ></td>
-                        <td><input type="number" id="IIL_F"                 name="IIL_F" size="1" value="{{$notas->IIL_F}}" ></td>
-                        <td><input type="number" id="IIIL_I"                name="IIIL_I" size="1" value="{{$notas->IIIL_I}}" ></td>
-                        <td><input type="number" id="IIIL_G"                name="IIIL_G" size="1" value="{{$notas->IIIL_G}}" ></td>
-                        <td><input type="number" id="IIIL_F"                name="IIIL_F" size="1" value="{{$notas->IIIL_F}}" ></td>
-                        <tr>
+                            {{ $est->nombre}} {{ $est->apellido}}            
+                        </td> --}}
+                        <td><input type="number" id="IL_I"                  name="IL_I" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IL_G"                  name="IL_G" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IL_F"                  name="IL_F" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IIL_I"                 name="IIL_I" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IIL_G"                 name="IIL_G" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IIL_F"                 name="IIL_F" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IIIL_I"                name="IIIL_I" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IIIL_G"                name="IIIL_G" size="1" value="0.0" ></td>
+                        <td><input type="number" id="IIIL_F"                name="IIIL_F" size="1" value="0.0" ></td>
+                        {{-- <tr>
                             @endforeach      
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
                 <div class="text-center">

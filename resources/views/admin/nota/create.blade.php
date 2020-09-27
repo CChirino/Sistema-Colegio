@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label for="">Materia</label>
                         <select class="form-control" name="materias_id" id="materias_id" >        
-                            @foreach ($materia as $mat)
+                            @foreach ($materias as $mat)
     
                             <option value="{{ $mat->id }}"> 
                                 {{ $mat ->nombre_materia}}                        

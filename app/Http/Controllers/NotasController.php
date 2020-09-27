@@ -31,14 +31,16 @@ class NotasController extends Controller
                     ->join('users as u', 'ru.user_id', '=', 'u.id')
                     ->select('users.*','inscripcion_materia.*','materias.*')
                     ->where('u.id', '=', $profesor ) 
-                    ->paginate(10);
+                    ->orderBy('materias.id', 'asc')
+                    ->paginate(15);
         $nota = DB::table('notas')
                     ->join('materias', 'notas.materias_id', '=', 'materias.id')
                     ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
                     ->join('users', 'role_user.user_id', '=', 'users.id')
                     ->select('notas.id')
                     ->where('users.id', '=', $profesor ) 
-                    ->paginate(10);
+                    ->orderBy('materias.id', 'asc')
+                    ->paginate(15);
         return view('admin.nota.index', compact('estudiante','nota'));
 
     }
@@ -50,7 +52,7 @@ class NotasController extends Controller
      */
     public function create()
     {
-        $materia = Materia::all();
+        // $materia = Materia::all();
         $profesor = Auth::user()->id;
         Gate::authorize('haveaccess','notas.create');
         $estudiante =DB::table('inscripcions')
@@ -70,7 +72,7 @@ class NotasController extends Controller
             ->where('users.id', '=', $profesor )
             ->get();
         // dd($materias);
-        return view('admin.nota.create',compact('estudiante','materias','materia'));
+        return view('admin.nota.create',compact('estudiante','materias'));
     }
 
     /**

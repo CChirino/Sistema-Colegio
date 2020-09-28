@@ -37,7 +37,7 @@
             <div class="panel-body">
                     <form >
                         @csrf
-                        <div>
+                        {{-- <div>
                             <div class="form-group col-lg-6">
                                 <label for="">Evaluacion</label>
                                 <select class="form-control" name="evaluaciones_id" id="evaluaciones_id" disabled >        
@@ -50,7 +50,7 @@
                                   @endforeach    
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="form-group col-lg-12">
                                 <label>Archivo de evaluacion</label> <br>

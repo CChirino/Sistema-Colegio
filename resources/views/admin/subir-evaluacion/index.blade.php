@@ -38,7 +38,8 @@
                 <thead>
                     <tr>
                         <th>Nombre de estudiante</th>
-                        <th>Materia</th>        
+                        <th>Materia</th>     
+                        <th>Evaluación</th>           
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +47,7 @@
                     <tr>
                         <td style="padding:19px;">{{$le->nombre}} {{$le->apellido}}</td>
                         <td>{{$le->nombre_materia}}</td>
+                        <td>{{$le->nombre_evaluacion}}</td>
                     @endforeach
                     </tr>
                 </tbody>

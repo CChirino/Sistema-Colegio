@@ -27,7 +27,7 @@ class SubirEvaluacionEstudianteController extends Controller
                             ->join('evaluaciones', 'subir_evaluaciones.evaluaciones_id', '=', 'evaluaciones.id')
                             ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
                             ->join('role_user as ru', 'materias.role_user_id', '=', 'ru.id')
-                            ->select('users.*','materias.*')
+                            ->select('users.*','materias.*','evaluaciones.*')
                             ->where('ru.user_id', '=', $profesor )
                             ->get();
         $subirevaluaciones =  DB::table('subir_evaluaciones')

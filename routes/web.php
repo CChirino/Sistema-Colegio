@@ -61,7 +61,7 @@ Route::resource('evaluacion-estudiante', 'EvaluacionesEstudianteController')->on
     'index', 'show', 'update','edit','destroy'
 ]);
 Route::resource('subir-evaluacion-estudiante', 'SubirEvaluacionEstudianteController')->only([
-    'index', 'show', 'create','store'
+    'index', 'show', 'create','store','destroy'
 ]);
 Route::resource('inscripciones-estudiante', 'InscripcionEstudianteController')->only([
     'store', 'create'

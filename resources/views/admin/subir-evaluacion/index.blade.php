@@ -44,7 +44,7 @@
                 <tbody>
                     @foreach($listarevaluaciones as $le)
                     <tr>
-                        <td>{{$le->nombre}} {{$le->apellido}}</td>
+                        <td style="padding:19px;">{{$le->nombre}} {{$le->apellido}}</td>
                         <td>{{$le->nombre_materia}}</td>
                     @endforeach
                     </tr>

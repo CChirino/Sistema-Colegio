@@ -19,22 +19,24 @@ class MateriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         Gate::authorize('haveaccess','materias.index');
+        $nombre = $request->get('search'); 
         $lista_materias = DB::table('materias')
                     ->join('periodos','materias.periodo_id', '=','periodos.id')
                     ->join('pensums','materias.pensum_id', '=','pensums.id')
                     ->join('role_user','materias.role_user_id', '=','role_user.id')
                     ->join('users','role_user.user_id', '=','users.id')
-                    ->select('materias.*','pensums.*','periodos.*','users.*')
+                    ->select('materias.id','materias.nombre_materia','pensums.pensum_nombre','periodos.nombre_periodo','users.nombre','users.apellido')
+                    ->where('materias.nombre_materia','LIKE','%'.$nombre.'%')
                     ->orderBy('materias.id', 'asc')
                     ->paginate(7);
         $materias = DB::table('materias')
                     ->select('materias.id')
                     ->orderBy('materias.id', 'asc')
                     ->paginate(7);
-        return view('admin.materias.index', compact('materias','lista_materias'));
+        return view('admin.materias.index', compact('materias','lista_materias','nombre'));
     }
 
     /**

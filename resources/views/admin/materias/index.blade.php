@@ -9,12 +9,20 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcome-list single-page-breadcome">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="breadcome-heading">
                                 <td><a class="btn btn-success" href="{{ route('materias.create') }}"> <i class="fas fa-plus-circle"></i> Crear Materia</a></td>    
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="breadcome-heading">
+                                <form role="search" class="sr-input-func">
+                                <input type="text" placeholder="Buscar..." class="search-int form-control" name="search" value="{{$nombre}}">
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </form>                            
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="#">Materias</a> <span class="bread-slash">/</span>
                                 </li>
@@ -32,8 +40,15 @@
 <!-- Static Table Start -->
 <div class="container">
     @include('custom.message')
+    <h6>
+        @if ($nombre)
+        <div class="alert alert-primary" role="alert">
+        Los resultados para la busqueda '{{$nombre}}' son:
+        </div>
+        @endif
+    </h6>
     <div class="row">
-        <div class="col-sm-8"  style="width:100%;padding-right: 0px;padding-left: 0px;">
+        <div class="col-sm-12">
             <table id="example" class="table table-striped table-bordered ">
                 <thead>
                     <tr>
@@ -41,34 +56,20 @@
                         <th>Año</th>
                         <th>Periodo</th>
                         <th>Profesor</th>
+                        <th colspan="3">Transacciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($lista_materias as $lm)
                     <tr>
-                        <td style="padding: 19px;">{{$lm->nombre_materia}}</td>
+                        <td>{{$lm->nombre_materia}}</td>
                         <td>{{$lm->pensum_nombre}}</td>
                         <td>{{$lm->nombre_periodo}}</td> 
                         <td>{{$lm->nombre}} {{$lm->apellido}}</td> 
-                        {{-- <td><a class="btn btn-info" href="{{ route('materias.show',$mat->id) }}" > <i class="far fa-eye"></i> Ver</a></td> --}}
-                        @endforeach
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-4" style="width:100%;padding-right: 0px;padding-left: 0px;">
-            <table id="example" class="table table-striped table-bordered ">
-                <thead>
-                    <tr>
-                        <th colspan="3">Transacciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($materias as $mat)
-                    <tr>
-                        <td><a class="btn btn-warning" href="{{ route('materias.edit',$mat->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
+                        <td><a class="btn btn-warning" href="{{ route('materias.edit',$lm->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                         <td>
-                        <form action="{{route('materias.destroy',$mat->id)}}" method="post">
+                        <form action="{{route('materias.destroy',$lm->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
@@ -77,9 +78,9 @@
                             </button>
                         </form>
                         </td>
-                        {{-- <td style="padding:5px;"><a class="btn btn-info" href="{{ route('subir-evaluacion-estudiante.show',$se->id) }}"> <i class="far fa-eye"></i> Ver</a></td> --}}
+                        {{-- <td><a class="btn btn-info" href="{{ route('materias.show',$mat->id) }}" > <i class="far fa-eye"></i> Ver</a></td> --}}
+                        @endforeach
                     </tr>
-                    @endforeach 
                 </tbody>
             </table>
         </div>

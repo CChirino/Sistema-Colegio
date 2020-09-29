@@ -101,7 +101,7 @@
                             <div class="form-group col-lg-6">
                                 <label>Subida de Archivo</label>
                                 <input id="archivo_evaluacion" type="file" class="form-control @error('archivo_evaluacion') is-invalid @enderror" name="archivo_evaluacion">
-                                <small class="form-text text-muted">Puede Subir un Maximo de 2Mb</small>
+                                <small class="form-text text-muted">Puede Subir un Maximo de 5Mb</small>
                                 @error('archivo_evaluacion')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -27,20 +27,12 @@ class SubirEvaluacionEstudianteController extends Controller
                             ->join('evaluaciones', 'subir_evaluaciones.evaluaciones_id', '=', 'evaluaciones.id')
                             ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
                             ->join('role_user as ru', 'materias.role_user_id', '=', 'ru.id')
-                            ->select('users.*','materias.*','evaluaciones.*')
+                            ->select('users.nombre','users.apellido','materias.nombre_materia','evaluaciones.nombre_evaluacion','subir_evaluaciones.id')
                             ->where('ru.user_id', '=', $profesor )
-                            ->get();
-        $subirevaluaciones =  DB::table('subir_evaluaciones')
-                            ->join('evaluaciones', 'subir_evaluaciones.evaluaciones_id', '=', 'evaluaciones.id')
-                            ->join('materias', 'evaluaciones.materia_id', '=', 'materias.id')
-                            ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
-                            ->join('users', 'role_user.user_id', '=', 'users.id')
-                            ->select('subir_evaluaciones.id')
-                            ->where('users.id', '=', $profesor )
-                            ->get();
+                            ->paginate(7);
         // dd($subirevaluaciones);
         // $subirevaluaciones = SubirEvaluacione::paginate(2);
-        return view('admin.subir-evaluacion.index', compact('listarevaluaciones','profesor','subirevaluaciones'));
+        return view('admin.subir-evaluacion.index', compact('listarevaluaciones','profesor'));
 
     }
 

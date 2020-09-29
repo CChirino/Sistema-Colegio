@@ -33,39 +33,25 @@
 <div class="container">
     <div class="row">
         @include('custom.message')
-        <div class="col-sm-8"  style="width:100%;padding-right: 0px;padding-left: 0px;">
+        <div class="col-sm-12" >
             <table id="example" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Nombre de estudiante</th>
                         <th>Materia</th>     
-                        <th>Evaluación</th>           
+                        <th>Evaluación</th>     
+                        <th colspan="3">Transacciones</th>      
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($listarevaluaciones as $le)
                     <tr>
-                        <td style="padding:19px;">{{$le->nombre}} {{$le->apellido}}</td>
+                        <td>{{$le->nombre}} {{$le->apellido}}</td>
                         <td>{{$le->nombre_materia}}</td>
                         <td>{{$le->nombre_evaluacion}}</td>
-                    @endforeach
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-4"  style="width:100%;padding-right: 0px;padding-left: 0px;">
-            <table class="table table-striped table-bordered"  >
-                <thead>
-                    <tr>
-                        <th colspan="3">Transacciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($subirevaluaciones as $se)
-                    <tr>
-                        <td style="padding:5px;"><a class="btn btn-info" href="{{ route('subir-evaluacion-estudiante.show',$se->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
+                        <td><a class="btn btn-info" href="{{ route('subir-evaluacion-estudiante.show',$le->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
                         <td>
-                            <form action="{{ route('subir-evaluacion-estudiante.destroy',$se->id) }}" method="post">
+                            <form action="{{ route('subir-evaluacion-estudiante.destroy',$le->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
@@ -73,15 +59,15 @@
                                     Eliminar
                                 </button>
                             </form>
-                            </td>
+                        </td>
+                    @endforeach
                     </tr>
-                    @endforeach 
                 </tbody>
             </table>
         </div>
     </div>
     <div>
-    {{-- {{$subirevaluaciones->links()}}  --}}
+    {{$listarevaluaciones->links()}} 
     </div>
 </div>
 @endsection

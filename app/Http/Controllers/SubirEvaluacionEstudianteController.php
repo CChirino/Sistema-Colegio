@@ -72,7 +72,7 @@ class SubirEvaluacionEstudianteController extends Controller
          $request->validate([
              'nombre_archivo'                    => ['required', 'string', 'max:255'],
             'comentario'                        => ['required', 'string', 'max:255'],
-           'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:1048576' ]
+           'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:20000' ]
         ]);
         if($request->hasFile('archivo_evaluacion')){
             $filename = $request->archivo_evaluacion->getClientOriginalName();

@@ -42,7 +42,7 @@
                             <p class="help-block small">(Si es una computadora segura)</p>
                         </div>
                         <button type="submit" class="btn btn-warning btn-block loginbtn">Ingresar</button>
-                        <a class="btn btn-warning btn-block" href="{{route('register')}}">Registrar</a>
+                        {{-- <a class="btn btn-warning btn-block" href="{{route('register')}}">Registrar</a> --}}
                     </form>
                     
                 </div>

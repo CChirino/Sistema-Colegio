@@ -33,12 +33,13 @@
 <div class="container">
     @include('custom.message')
     <div class="row">
-        <div class="col-sm-8" style="width:100%;padding-right: 0px;padding-left: 0px;">
-            <table id="example" class="table table-striped table-bordered " style="width:100%">
+        <div class="col-sm-12">
+            <table id="example" class="table table-striped table-bordered ">
                 <thead>
                     <tr>
                         <th>Nombre del video</th>
                         <th>Materia</th>    
+                        <th colspan="3">Transacciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,28 +47,13 @@
                     <tr>
                         <td style="padding: 19px;">{{$vclass->nombre_clase}}</td>
                         <td>{{$vclass->nombre_materia}}</td>
+                        <td><a class="btn btn-info" href="{{ route('ver-clase-en-linea.show',$vclass->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
                         @endforeach
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-4" style="width:100%;padding-right: 0px;padding-left: 0px;">
-                <table class="table table-striped table-bordered"  >
-                    <thead>
-                        <tr>
-                            <th colspan="3">Transacciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($clase as $clas)
-                        <tr>
-                            <td><a class="btn btn-info" href="{{ route('ver-clase-en-linea.show',$clas->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
-                        </tr>
-                        @endforeach 
-                    </tbody>
-                </table>
-        </div>
     </div>
-        {{-- {{$materias->links()}}  --}}
+    {{$verclases->links()}}
 </div>
 @endsection

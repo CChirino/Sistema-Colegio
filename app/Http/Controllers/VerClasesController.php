@@ -23,19 +23,11 @@ class VerClasesController extends Controller
             ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
             ->join('clases', 'inscripcion_materia.materia_id', '=', 'clases.materia_id')
             ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-            ->select('clases.*','materias.*')
+            ->select('clases.id','clases.nombre_clase','materias.nombre_materia')
             ->where('inscripcions.role_user_id', '=', $estudiante )
             ->orderBy('clases.id', 'asc')
-            ->get();  
-        $clase = DB::table('inscripcions')
-                ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
-                ->join('clases', 'inscripcion_materia.materia_id', '=', 'clases.materia_id')
-                ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
-                ->select('clases.id')
-                ->where('inscripcions.role_user_id', '=', $estudiante )
-                ->orderBy('clases.id', 'asc')
-                ->get();
-        return view('admin.ver-clase.index', compact('verclases','estudiante','clase'));
+            ->paginate(7);  
+        return view('admin.ver-clase.index', compact('verclases','estudiante'));
 
     }
 

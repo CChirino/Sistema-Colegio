@@ -73,7 +73,7 @@
                         <label>Correo Electronico</label>
                         <input id="email" type="email" class="form-control" name="email" value="{{$estudiantes->email}}" >
                     </div>
-                    {{-- <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6">
                         <label>Contrasena</label>
                         <input id="password" type="password" class="form-control" name="password" value="{{$estudiantes->password}}">
                         @error('password')
@@ -90,7 +90,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success loginbtn">Actualizar</button>

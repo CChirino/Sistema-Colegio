@@ -89,7 +89,7 @@ class PerfilController extends Controller
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
                 // 'email'             => $request->email,
-                // 'password'          => Hash::make($request->password),
+                'password'          => Hash::make($request->password),
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
@@ -101,7 +101,7 @@ class PerfilController extends Controller
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
                 // 'email'             => $request->email,
-                // 'password'          => Hash::make($request->password),
+                'password'          => Hash::make($request->password),
                 // 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }

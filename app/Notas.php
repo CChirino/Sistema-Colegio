@@ -11,19 +11,7 @@ class Notas extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'IL_I', 
-        'IL_G',
-        'IL_F',
-        'IIL_I',
-        'IIL_G',
-        'IIL_F',
-        'IIIL_I',
-        'IIIL_G',
-        'IIIL_F',
-        'estudiante_id',
-        'materias_id',
-    ];
+    protected $guarded = [];
     public function materias()
     {
         return $this->belongsTo('App\Materia');

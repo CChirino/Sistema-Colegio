@@ -60,10 +60,12 @@ class NotasController extends Controller
                     ->join('users', 'role_user.user_id', '=', 'users.id')
                     ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
+                    ->join('pensums', 'materias.pensum_id', '=', 'pensums.id')
                     ->join('role_user as ru', 'materias.role_user_id', '=', 'ru.id')
                     ->join('users as u', 'ru.user_id', '=', 'u.id')
-                    ->select('users.*','inscripcion_materia.*')
+                    ->select('users.id','users.nombre','users.apellido','inscripcion_materia.*','materias.nombre_materia','pensums.pensum_nombre')
                     ->where('u.id', '=', $profesor ) 
+                    ->orderBy('materias.id', 'asc')
                     ->get();
         $materias = DB::table('materias')
             ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')

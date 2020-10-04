@@ -77,7 +77,7 @@
                             @foreach ($estudiante as $est)
     
                             <option value="{{ $est->id }}"> 
-                                {{ $est->nombre}} {{ $est->apellido}}                                    
+                                {{ $est->nombre}} {{ $est->apellido}} - {{$est->nombre_materia}} - {{$est->pensum_nombre}}                       
                             </option>
                         
                           @endforeach    

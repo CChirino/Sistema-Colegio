@@ -59,15 +59,21 @@
                     <thead>
                         <tr>
                             <th scope="col-sm-1"> Materias</th>
-                            <th scope="col-sm-1"> IL-I </th>
-                            <th scope="col-sm-1"> IL-G </th>
-                            <th scope="col-sm-1"> IL-F </th>
-                            <th scope="col-sm-1"> IIL-I </th>
-                            <th scope="col-sm-1"> IIL-G </th>
-                            <th scope="col-sm-1"> IIL-F </th>
-                            <th scope="col-sm-1"> IIIL-I </th>
-                            <th scope="col-sm-1"> IIIL-G </th>
-                            <th scope="col-sm-1"> IIIL-F </th>
+                            <th scope="col-sm-1"> E1-1 </th>
+                            <th scope="col-sm-1"> E2-1 </th>
+                            <th scope="col-sm-1"> E3-1 </th>
+                            <th scope="col-sm-1"> E4-1 </th>
+                            <th scope="col-sm-1"> EF-1 </th>
+                            <th scope="col-sm-1"> E1-2 </th>
+                            <th scope="col-sm-1"> E2-2 </th>
+                            <th scope="col-sm-1"> E3-2 </th>
+                            <th scope="col-sm-1"> E4-2 </th>
+                            <th scope="col-sm-1"> EF-2 </th>
+                            <th scope="col-sm-1"> E1-3 </th>
+                            <th scope="col-sm-1"> E2-3 </th>
+                            <th scope="col-sm-1"> E3-3 </th>
+                            <th scope="col-sm-1"> E4-3 </th>
+                            <th scope="col-sm-1"> EF-3 </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,15 +82,21 @@
                             <input style="display:none;" value="{{ $materias->id }}" id="estudiante_id" name="estudiante_id"  >
                             {{ $materias->nombre_materia}}                        
                         </td>
-                        <td scope="row"><input type="number" id="IL_I"                  name="IL_I" size="1" value="{{$materias->IL_I}}"></td>
-                        <td scope="row"><input type="number" id="IL_G"                  name="IL_G" size="1" value="{{$materias->IL_G}}" ></td>
-                        <td scope="row"><input type="number" id="IL_F"                  name="IL_F" size="1" value="{{$materias->IL_F}}" ></td>
-                        <td scope="row"><input type="number" id="IIL_I"                 name="IIL_I" size="1" value="{{$materias->IIL_I}}" ></td>
-                        <td scope="row"><input type="number" id="IIL_G"                 name="IIL_G" size="1" value="{{$materias->IIL_G}}" ></td>
-                        <td scope="row"><input type="number" id="IIL_F"                 name="IIL_F" size="1" value="{{$materias->IIL_F}}" ></td>
-                        <td scope="row"><input type="number" id="IIIL_I"                name="IIIL_I" size="1" value="{{$materias->IIIL_I}}" ></td>
-                        <td scope="row"><input type="number" id="IIIL_G"                name="IIIL_G" size="1" value="{{$materias->IIIL_G}}" ></td>
-                        <td scope="row"><input type="number" id="IIIL_F"                name="IIIL_F" size="1" value="{{$materias->IIIL_F}}" ></td>
+                        <td><input type="number" id="E1_1"                  name="E1_1" size="1" value="{{$materias->E1_1}}" ></td>
+                        <td><input type="number" id="E2_1"                  name="E2_1" size="1" value="{{$materias->E2_1}}" ></td>
+                        <td><input type="number" id="E3_1"                  name="E3_1" size="1" value="{{$materias->E3_1}}" ></td>
+                        <td><input type="number" id="E4_1"                 name="E4_1" size="1" value="{{$materias->E4_1}}" ></td>
+                        <td><input type="number" id="EF_1"                 name="EF_1" size="1" value="{{$materias->EF_1}}" ></td>
+                        <td><input type="number" id="E1_2"                  name="E1_2" size="1" value="{{$materias->E1_2}}" ></td>
+                        <td><input type="number" id="E2_2"                  name="E2_2" size="1" value="{{$materias->E2_2}}" ></td>
+                        <td><input type="number" id="E3_2"                  name="E3_2" size="1" value="{{$materias->E3_2}}" ></td>
+                        <td><input type="number" id="E4_2"                 name="E4_2" size="1" value="{{$materias->E4_2}}" ></td>
+                        <td><input type="number" id="EF_2"                 name="EF_2" size="1" value="{{$materias->EF_2}}" ></td>
+                        <td><input type="number" id="E1_3"                  name="E1_3" size="1" value="{{$materias->E1_3}}" ></td>
+                        <td><input type="number" id="E2_3"                  name="E2_3" size="1" value="{{$materias->E2_3}}" ></td>
+                        <td><input type="number" id="E3_3"                  name="E3_3" size="1" value="{{$materias->E3_3}}" ></td>
+                        <td><input type="number" id="E4_3"                 name="E4_3" size="1" value="{{$materias->E4_3}}" ></td>
+                        <td><input type="number" id="EF_3"                 name="EF_3" size="1" value="{{$materias->EF_3}}" ></td>
                         <tr>
                             @endforeach      
                         </tr>

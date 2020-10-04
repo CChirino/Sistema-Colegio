@@ -55,7 +55,7 @@
         <div class="col-sm-12">
             <form method="POST">
                 @csrf
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col-sm-1"> Materias</th>

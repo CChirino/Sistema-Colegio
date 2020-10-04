@@ -87,15 +87,21 @@
                 <table id="example" class="table table-striped table-bordered table-responsive"  style="width:100%">
                     <thead>
                         <tr>
-                            <th> IL-I </th>
-                            <th> IL-G </th>
-                            <th> IL-F </th>
-                            <th> IIL-I </th>
-                            <th> IIL-G </th>
-                            <th> IIL-F </th>
-                            <th> IIIL-I </th>
-                            <th> IIIL-G </th>
-                            <th> IIIL-F </th>
+                            <th> E1-1 </th>
+                            <th> E2-1 </th>
+                            <th> E3-1 </th>
+                            <th> E4-1 </th>
+                            <th> EF-1 </th>
+                            <th> E1-2 </th>
+                            <th> E2-2 </th>
+                            <th> E3-2 </th>
+                            <th> E4-2 </th>
+                            <th> EF-2 </th>
+                            <th> E1-3 </th>
+                            <th> E2-3 </th>
+                            <th> E3-3 </th>
+                            <th> E4-3 </th>
+                            <th> EF-3 </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -118,15 +124,21 @@
                             <input style="display:none;" value="{{ $est->id }}" id="estudiante_id" name="estudiante_id"  >
                             {{ $est->nombre}} {{ $est->apellido}}            
                         </td> --}}
-                        <td><input type="number" id="IL_I"                  name="IL_I" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IL_G"                  name="IL_G" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IL_F"                  name="IL_F" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIL_I"                 name="IIL_I" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIL_G"                 name="IIL_G" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIL_F"                 name="IIL_F" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIIL_I"                name="IIIL_I" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIIL_G"                name="IIIL_G" size="1" value="0.0" ></td>
-                        <td><input type="number" id="IIIL_F"                name="IIIL_F" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E1_1"                  name="E1_1" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E2_1"                  name="E2_1" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E3_1"                  name="E3_1" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E4_1"                 name="E4_1" size="1" value="0.0" ></td>
+                        <td><input type="number" id="EF_1"                 name="EF_1" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E1_2"                  name="E1_2" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E2_2"                  name="E2_2" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E3_2"                  name="E3_2" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E4_2"                 name="E4_2" size="1" value="0.0" ></td>
+                        <td><input type="number" id="EF_2"                 name="EF_2" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E1_3"                  name="E1_3" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E2_3"                  name="E2_3" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E3_3"                  name="E3_3" size="1" value="0.0" ></td>
+                        <td><input type="number" id="E4_3"                 name="E4_3" size="1" value="0.0" ></td>
+                        <td><input type="number" id="EF_3"                 name="EF_3" size="1" value="0.0" ></td>
                         {{-- <tr>
                             @endforeach      
                         </tr> --}}

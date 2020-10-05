@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label>Contrasena</label>
-                        <input id="password" type="password" class="form-control" name="password" value="{{$estudiantes->password}}">
+                        <input id="password" type="password" class="form-control" name="password" value="{{$user->password}}">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label>Repita Contrasena</label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{$estudiantes->password}}" >
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{$user->password}}" >
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

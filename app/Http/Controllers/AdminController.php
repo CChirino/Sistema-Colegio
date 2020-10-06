@@ -122,6 +122,7 @@ class AdminController extends Controller
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
+                'password'          => Hash::make($request->password),
                 'image'             => $request->image->storeAs('images',$filename,'public')
                 ]);
         }
@@ -130,6 +131,7 @@ class AdminController extends Controller
                 'nombre'            => $request->nombre,
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
+                'password'          => Hash::make($request->password),
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
                 ]);
         }

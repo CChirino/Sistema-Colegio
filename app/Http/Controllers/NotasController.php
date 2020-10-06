@@ -22,26 +22,27 @@ class NotasController extends Controller
     {   
         Gate::authorize('haveaccess','notas.index');
         $profesor = Auth::user()->id;
-        $estudiante =DB::table('inscripcions')
+        $estudiante =DB::table('notas')
+                    ->join('inscripcion_materia', 'notas.estudiante_id', '=', 'inscripcion_materia.id')
+                    ->join('inscripcions', 'inscripcion_materia.inscripcion_id', '=', 'inscripcions.id')
                     ->join('role_user', 'inscripcions.role_user_id', '=', 'role_user.user_id')
                     ->join('users', 'role_user.user_id', '=', 'users.id')
-                    ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
                     ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
                     ->join('role_user as ru', 'materias.role_user_id', '=', 'ru.id')
                     ->join('users as u', 'ru.user_id', '=', 'u.id')
-                    ->select('users.*','inscripcion_materia.*','materias.*')
+                    ->select('users.nombre','users.apellido','materias.nombre_materia','notas.*')
                     ->where('u.id', '=', $profesor ) 
-                    ->orderBy('materias.id', 'asc')
+                    // ->orderBy('materias.id', 'asc')
                     ->paginate(15);
-        $nota = DB::table('notas')
-                    ->join('materias', 'notas.materias_id', '=', 'materias.id')
-                    ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
-                    ->join('users', 'role_user.user_id', '=', 'users.id')
-                    ->select('notas.id')
-                    ->where('users.id', '=', $profesor ) 
-                    ->orderBy('materias.id', 'asc')
-                    ->paginate(15);
-        return view('admin.nota.index', compact('estudiante','nota'));
+        // $nota = DB::table('notas')
+        //             ->join('materias', 'notas.materias_id', '=', 'materias.id')
+        //             ->join('role_user', 'materias.role_user_id', '=', 'role_user.id')
+        //             ->join('users', 'role_user.user_id', '=', 'users.id')
+        //             ->select('notas.id')
+        //             ->where('users.id', '=', $profesor ) 
+        //             ->orderBy('notas.id', 'asc')
+        //             ->paginate(15);
+        return view('admin.nota.index', compact('estudiante'));
 
     }
 

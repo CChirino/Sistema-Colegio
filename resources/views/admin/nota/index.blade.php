@@ -33,12 +33,13 @@
 <div class="container">
     @include('custom.message')
     <div class="row">
-        <div class="col-sm-6" style="width:100%;padding-right: 0px;padding-left: 0px;">
+        <div class="col-sm-12" >
             <table id="example" class="table table-striped table-bordered " style="width:100%">
                 <thead>
                     <tr>
                         <th>Estudiantes</th>        
                         <th>Materia</th>
+                        <th colspan="3">Transacciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,12 +47,14 @@
                     <tr>
                         <td style="padding: 19px;">{{$est->nombre}} {{$est->apellido}}</td>
                         <td>{{$est->nombre_materia}}</td>
+                        <td><a class="btn btn-info" href="{{ route('notas.show',$est->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
+                        <td><a class="btn btn-warning" href="{{ route('notas.edit',$est->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
                         @endforeach
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-6" style="width:100%;padding-right: 0px;padding-left: 0px;">
+        {{-- <div class="col-sm-4" style="width:100%;padding-right: 0px;padding-left: 0px;">
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -67,7 +70,7 @@
                     @endforeach 
                 </tbody>
             </table>
-        </div>
+        </div> --}}
     </div>
 
     <div>

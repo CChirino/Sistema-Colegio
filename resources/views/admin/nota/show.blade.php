@@ -55,7 +55,7 @@
         <div class="col-sm-12">
             <form>
                 @csrf
-                <div class="col-6">
+                {{-- <div class="col-6">
                     <div class="form-group">
                         <label for="">Estudiante</label>
                         <select class="form-control" name="estudiante_id" id="estudiante_id" >        
@@ -79,7 +79,7 @@
                           @endforeach    
                         </select>
                     </div>
-                </div>
+                </div> --}}
                 <table id="example" class="table table-striped table-bordered table-responsive"  style="width:100%">
                     <thead>
                         <tr>

@@ -48,7 +48,7 @@
                     <li>
                         <a class="has-arrow" href="{{ route('notas.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones Prf</span></a>                        
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Materias</span></a></li>
+                            <li><a title="Materias" href="{{ route('notas.index')}}"><span class="mini-sub-pro">Estudiantes</span></a></li>
                             {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
                         </ul>
                     </li>
@@ -972,6 +972,9 @@
                                             @endcan
                                             @can('haveaccess', 'subir-evaluacion-estudiante.create')
                                             <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-estudiante.create')}}"><span class="mini-sub-pro"> Subir Evaluaciones</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'ver-evaluacion.index')
+                                            <li><a title="Evaluaciones Subidas" href="{{ route('ver-evaluacion.index')}}"><span class="mini-sub-pro"> Evaluaciones Subidas</span></a></li>
                                         </ul>
                                     </li>
                                     @endcan

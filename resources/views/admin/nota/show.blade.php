@@ -66,20 +66,20 @@
                           @endforeach    
                         </select>
                     </div>
-                </div>
-                <div class="col-6">
+                </div> --}}
+                {{-- <div class="col-6">
                     <div class="form-group">
                         <label for="">Materia</label>
-                        <select class="form-control" name="materias_id" id="materias_id" >        
-                            <option value="{{ $notas->materias_id }}"> 
+                        <select class="form-control">        
+                            <option> 
                             @foreach ($materias as $mat)
                                 {{ $mat ->nombre_materia}}                        
                             </option>
+                            @endforeach    
                         
-                          @endforeach    
                         </select>
                     </div>
-                </div> --}}
+                </div>  --}}
                 <table id="example" class="table table-striped table-bordered table-responsive"  style="width:100%">
                     <thead>
                         <tr>

@@ -37,7 +37,6 @@
             <table id="example" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Nombre de estudiante</th>
                         <th>Materia</th>     
                         <th>Evaluación</th>     
                         <th colspan="3">Transacciones</th>      

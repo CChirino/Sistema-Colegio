@@ -30,9 +30,8 @@ class SubirEvaluacionEstudianteController extends Controller
                             ->select('users.nombre','users.apellido','materias.nombre_materia','evaluaciones.nombre_evaluacion','subir_evaluaciones.id')
                             ->orderBy('materias.id', 'asc')
                             ->where('ru.user_id', '=', $profesor )
-                            ->paginate(7);
-        // dd($subirevaluaciones);
-        // $subirevaluaciones = SubirEvaluacione::paginate(2);
+                            ->simplePaginate(7);
+
         return view('admin.subir-evaluacion.index', compact('listarevaluaciones','profesor'));
 
     }

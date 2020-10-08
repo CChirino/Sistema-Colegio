@@ -37,9 +37,9 @@
                     </li>
                     @can('haveaccess', 'notas-estudiante.index')
                     <li>
-                        <a class="has-arrow" href="{{ route('notas-estudiante.index')}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones Est</span></a>                        
+                        <a class="has-arrow" href="{{ route('notas-estudiante.show',auth()->user()->id)}}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Calificaciones Est</span></a>                        
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Materias" href="{{ route('notas-estudiante.index')}}"><span class="mini-sub-pro">Calificaciones</span></a></li>
+                            <li><a title="Materias" href="{{ route('notas-estudiante.show',auth()->user()->id) }}"><span class="mini-sub-pro">Calificaciones</span></a></li>
                             {{-- <li><a title="Notas" href="{{ route('notas.create')}}"><span class="mini-sub-pro">Agregar Notas</span></a></li> --}}
                         </ul>
                     </li>

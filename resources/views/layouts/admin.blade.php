@@ -97,6 +97,10 @@
                         @endcan
                         @can('haveaccess', 'subir-evaluacion-estudiante.create')
                             <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-estudiante.create')}}"><span class="mini-sub-pro"> Subir Evaluaciones</span></a></li>
+                        @endcan
+                        @can('haveaccess', 'ver-evaluacion.index')
+                        <li><a title="Evaluaciones Subidas" href="{{ route('ver-evaluacion.index')}}"><span class="mini-sub-pro"> Evaluaciones Subidas</span></a></li>
+                        @endcan
                         </ul>
                     </li>
                     @endcan

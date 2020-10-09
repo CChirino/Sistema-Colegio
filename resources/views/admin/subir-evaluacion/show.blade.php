@@ -80,7 +80,7 @@
                             <div class="col-lg-12">
                                 <div class="text-center">
                                     {{-- <button type="submit" class="btn btn-success loginbtn">Registrar</button> --}}
-                                    <button class="btn btn-success loginbtn"><a href="{{ route('subir-evaluacion-estudiante.index') }}"> Atras</a></button>
+                                    {{-- <button class="btn btn-success loginbtn"><a href="{{ route('subir-evaluacion-estudiante.index') }}"> Atras</a></button> --}}
                                 </div>
                             </div>
                         </div>

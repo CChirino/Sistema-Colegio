@@ -29,7 +29,8 @@ class SubirEvaluacionEstudianteController extends Controller
                             ->join('role_user as ru', 'materias.role_user_id', '=', 'ru.id')
                             ->join('users as u', 'ru.user_id', '=', 'u.id')
                             ->select('users.nombre','users.apellido','materias.nombre_materia','evaluaciones.nombre_evaluacion','subir_evaluaciones.id')
-                            ->orderBy('materias.id', 'asc')
+                            ->orderBy('materias.nombre_materia', 'asc')
+                            ->orderBy('subir_evaluaciones.user_id', 'asc')
                             ->where('u.id', '=', $profesor )
                             ->get();
 

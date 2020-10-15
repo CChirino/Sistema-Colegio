@@ -67,7 +67,7 @@
         </div>
     </div>
     <div>
-    {{$listarevaluaciones->links()}}
+    {{-- {{$listarevaluaciones->links()}} --}}
     </div>
 </div>
 @endsection

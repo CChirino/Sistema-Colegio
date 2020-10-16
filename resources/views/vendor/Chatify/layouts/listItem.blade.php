@@ -74,8 +74,8 @@
         {{-- center side --}}
         <td>
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ $user->nombre  }} 
-            {{ $user->apellido  }} 
+            {{$user->nombre}} 
+            {{$user->apellido}} 
         </td>
     </tr>
 </table>

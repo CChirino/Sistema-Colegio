@@ -62,9 +62,8 @@
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <div class="pt-2 pb-2">
+                                        <label for="">Selecciona un año</label>
                                         <select class="form-control" id="pensum_id" name="pensum_id">
-                                            <option>Selecciona un año</option>
-                    
                                                 @foreach ($pensum as $pen)
                     
                                             <option value="{{ $pen->id }}"> 
@@ -75,9 +74,8 @@
                                         </select>
                                     </div>
                                     <div class="pt-2 pb-2">
-                                        <select class="form-control" id="periodo_id" name="periodo_id">
-                                            <option>Selecciona un periodo</option>
-                                            
+                                        <label for="">Selecciona un periodo</label>
+                                        <select class="form-control" id="periodo_id" name="periodo_id">                                            
                                             @foreach ($periodo as $per)
                 
                                             <option value="{{ $per->id }}"> 

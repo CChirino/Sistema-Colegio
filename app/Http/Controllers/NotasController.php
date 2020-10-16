@@ -185,6 +185,8 @@ class NotasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $notas = Notas::find($id);
+        $notas ->delete();
+        return redirect()->route('notas.index')->with('status_success','A el usuario se eliminado las notas de manera correcta');
     }
 }

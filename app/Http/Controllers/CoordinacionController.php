@@ -25,7 +25,7 @@ class CoordinacionController extends Controller
                 ->where('role_id','=',5)
                 ->where('users.nombre','LIKE','%'.$nombre.'%')
                 ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
-                ->paginate(7);
+                ->paginate(30);
         return view('admin.coordinador.index', compact('coordinador','nombre'));
     }
 

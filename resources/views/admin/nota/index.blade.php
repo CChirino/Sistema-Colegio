@@ -49,28 +49,21 @@
                         <td>{{$est->nombre_materia}}</td>
                         <td><a class="btn btn-info" href="{{ route('notas.show',$est->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
                         <td><a class="btn btn-warning" href="{{ route('notas.edit',$est->id) }}"> <i class="far fa-edit"></i> Editar</a></td>
+                        <td>
+                            <form action="{{ route('notas.destroy',$est->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button  class="btn btn-danger" type="submit" onclick="return confirm('Desea Borrar?');" >
+                                    <i class="fas fa-trash"></i> 
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
                         @endforeach
                     </tr>
                 </tbody>
             </table>
         </div>
-        {{-- <div class="col-sm-4" style="width:100%;padding-right: 0px;padding-left: 0px;">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th colspan="3">Transacciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($nota as $not)
-                    <tr>
-                        <td><a class="btn btn-info" href="{{ route('notas.show',$not->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
-                        <td><a class="btn btn-warning" href="{{ route('notas.edit',$not->id) }}"> <i class="far fa-edit"></i> Editar</a></td> 
-                    </tr>
-                    @endforeach 
-                </tbody>
-            </table>
-        </div> --}}
     </div>
 
     <div>

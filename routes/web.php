@@ -77,6 +77,9 @@ Route::resource('listado-estudiantes', 'ListadoestudianteController');
 Route::resource('permisos', 'PermissionController');
 Route::resource('horario-estudiante', 'HorarioestudianteController');
 Route::resource('ver-evaluacion', 'VerEvaluacionController');
+Route::resource('opinion-evaluaciones', 'OpinionEvaluacionesController');
+Route::resource('opinion-evaluaciones-estudiantes', 'OpinionEvaluacionesEstudiantesController');
+
 
 
 

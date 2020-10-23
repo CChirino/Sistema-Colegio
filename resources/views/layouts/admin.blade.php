@@ -966,6 +966,9 @@
                                             @endcan
                                             @can('haveaccess', 'listar-evaluaciones.index')
                                             <li><a title="Listado de Evaluaciones" href="{{ route('listar-evaluaciones.index')}}"><span class="mini-sub-pro">Listar Evaluaciones</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'opinion-evaluaciones.index')
+                                            <li><a title="Listado de Opinion Evaluaciones" href="{{ route('opinion-evaluaciones.index')}}"><span class="mini-sub-pro"> Listado de Opinion Evaluaciones</span></a></li>
                                         </ul>
                                     </li>
                                     @endcan
@@ -981,6 +984,9 @@
                                             @endcan
                                             @can('haveaccess', 'ver-evaluacion.index')
                                             <li><a title="Evaluaciones Subidas" href="{{ route('ver-evaluacion.index')}}"><span class="mini-sub-pro"> Evaluaciones Subidas</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'opinion-evaluaciones-estudiantes.index')
+                                            <li><a title="Opinion Evaluaciones" href="{{ route('opinion-evaluaciones-estudiantes.index')}}"><span class="mini-sub-pro"> Opinion Evaluaciones</span></a></li>
                                         </ul>
                                     </li>
                                     @endcan

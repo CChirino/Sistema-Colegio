@@ -969,6 +969,9 @@
                                             @endcan
                                             @can('haveaccess', 'opinion-evaluaciones.index')
                                             <li><a title="Listado de Opinion Evaluaciones" href="{{ route('opinion-evaluaciones.index')}}"><span class="mini-sub-pro"> Listado de Opinion Evaluaciones</span></a></li>
+                                            @endcan
+                                            @can('haveaccess', 'subir-evaluacion-admin.index')
+                                            <li><a title="Listado Evaluaciones Admin" href="{{ route('subir-evaluacion-admin.index')}}"><span class="mini-sub-pro"> Evaluaciones de Estudiantes Admin</span></a></li>
                                         </ul>
                                     </li>
                                     @endcan

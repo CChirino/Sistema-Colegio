@@ -103,9 +103,6 @@
                         @endcan
                         @can('haveaccess', 'ver-evaluacion.index')
                         <li><a title="Evaluaciones Subidas" href="{{ route('ver-evaluacion.index')}}"><span class="mini-sub-pro"> Evaluaciones Subidas</span></a></li>
-                        @endcan
-                        @can('haveaccess', 'opinion-evaluaciones-estudiantes.index')
-                        <li><a title="Opinion Evaluaciones" href="{{ route('opinion-evaluaciones-estudiantes.index')}}"><span class="mini-sub-pro"> Opinion Evaluaciones</span></a></li>
                     </ul>
                     </li>
                     @endcan
@@ -255,7 +252,16 @@
                         </ul>
                     </li>
                     @endcan
-
+                    @can('haveaccess', 'subir-evaluacion-admin.index')
+                    <li>
+                        <a class="has-arrow" href="{{ route('subir-evaluacion-admin.index')}}" aria-expanded="false"><span class="icon-wrap"><i class="far fa-list-alt"></i></span> <span class="mini-click-non">Evaluaciones Admin</span></a>                        
+                        @endcan
+                        @can('haveaccess', 'subir-evaluacion-admin.index')
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Listado de Evaluaciones" href="{{ route('subir-evaluacion-admin.index')}}"><span class="mini-sub-pro">Listado Evaluaciones</span></a></li>
+                        </ul>
+                    </li>
+                    @endcan
                     {{-- @can('haveaccess', 'inscripciones.create')
                     <li>
                         <a class="has-arrow" href="{{ route('inscripciones.create')}}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Inscripcion Adm. </span></a>

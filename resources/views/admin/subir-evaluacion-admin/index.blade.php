@@ -55,8 +55,6 @@
                         <th>Archivo de Evaluacion</th>
                         <th>Nombre de Archivo</th>     
                         <th>Comentario</th>     
-                        <th>evaluaciones_id</th>
-                        <th>user_id</th>
                         <th colspan="3">Transacciones</th>      
                     </tr>
                 </thead>
@@ -66,8 +64,6 @@
                         <td>{{$e->archivo_evaluacion}}</td>
                         <td>{{$e->nombre_archivo}}</td>
                         <td>{{$e->comentario}}</td>
-                        <td>{{$e->evaluaciones_id}}</td>
-                        <td>{{$e->user_id}}</td>
                         <td><a class="btn btn-info" href="{{ route('subir-evaluacion-admin.show',$e->id) }}"> <i class="far fa-eye"></i> Ver</a></td>
                         {{-- <td>
                             <form action="{{ route('subir-evaluacion-estudiante.destroy',$le->id) }}" method="post">

@@ -58,16 +58,16 @@
                         <div>
                             <input id="user_id" name="user_id" value="{{Auth::user()->id }}" style="display:none;">
                             <div class="form-group col-lg-6">
-                                <label for="">Evaluacion</label>
-                                <select class="form-control" name="subir_evaluaciones_id" id="subir_evaluaciones_id" disabled>        
+                                {{-- <label for="">Evaluacion</label> --}}
+                                {{-- <select class="form-control" name="subir_evaluaciones_id" id="subir_evaluaciones_id" disabled>        
                                     
                                     <option value="{{$opiniones->subir_evaluaciones_id}}"> 
                                         @foreach ($listarevaluaciones as $le)
                                         {{ $le ->nombre}} {{ $le ->apellido}} {{ $le ->nombre_materia}} {{ $le ->nombre_evaluacion}}                        
+                                        @endforeach    
                                     </option>
                                 
-                                  @endforeach    
-                                </select>
+                                </select> --}}
                             </div>
                         </div>
                         <div class="row">

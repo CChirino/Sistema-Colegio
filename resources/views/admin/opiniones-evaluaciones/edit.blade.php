@@ -61,9 +61,9 @@
                             <div class="form-group col-lg-6">
                                 <label for="">Evaluacion</label>
                                 <select class="form-control" name="subir_evaluaciones_id" id="subir_evaluaciones_id" >        
-                                    
-                                    <option value="{{$opiniones->subir_evaluaciones_id}}"> 
-                                        @foreach ($listarevaluaciones as $le)
+                                    @foreach ($listarevaluaciones as $le)
+        
+                                    <option value="{{$le->id}}"> 
                                         {{ $le ->nombre}} {{ $le ->apellido}} {{ $le ->nombre_materia}} {{ $le ->nombre_evaluacion}}                        
                                     </option>
                                 

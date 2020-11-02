@@ -975,7 +975,6 @@
                                             @endcan
                                             @can('haveaccess', 'opinion-evaluaciones.index')
                                             <li><a title="Listado de Opinion Evaluaciones" href="{{ route('opinion-evaluaciones.index')}}"><span class="mini-sub-pro"> Listado de Opinion Evaluaciones</span></a></li>
-                                            @endcan
                                         </ul>
                                     </li>
                                     @endcan

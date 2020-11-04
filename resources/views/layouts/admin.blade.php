@@ -962,7 +962,7 @@
                                     @can('haveaccess', 'evaluaciones.create')
                                     <li><a data-toggle="collapse" data-target="#democrou" href="{{ route('evaluaciones.create')}}">Evaluaciones Profesor <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                         <ul id="democrou" class="collapse dropdown-header-top">
-                                            @endcan
+                                    @endcan
                                             @can('haveaccess', 'evaluaciones.create')
                                             <li><a title="Listado de Evaluaciones" href="{{ route('evaluaciones.create')}}"><span class="mini-sub-pro">Crear Evaluacion</span></a></li>
                                             @endcan
@@ -981,8 +981,8 @@
                                     @can('haveaccess', 'evaluacion-estudiante.index')
                                     <li><a data-toggle="collapse" data-target="#demolibra" href="{{ route('evaluacion-estudiante.index')}}">Evaluaciones Estudiantes <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                     @endcan    
+                                    @can('haveaccess', 'evaluacion-estudiante.index')
                                         <ul id="demolibra" class="collapse dropdown-header-top">
-                                            @can('haveaccess', 'evaluacion-estudiante.index')
                                             <li><a title="Listado de Evaluaciones" href="{{ route('evaluacion-estudiante.index')}}"><span class="mini-sub-pro">Evaluaciones</span></a></li>
                                             @endcan
                                             @can('haveaccess', 'subir-evaluacion-estudiante.create')
@@ -1011,8 +1011,8 @@
                                     @can('haveaccess', 'ver-clase-en-linea.index')
                                     <li><a data-toggle="collapse" data-target="#demo" href="{{ route('ver-clase-en-linea.index')}}">Ver Video Clases <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                     @endcan
+                                    @can('haveaccess', 'ver-clase-en-linea.index')
                                         <ul id="demo" class="collapse dropdown-header-top">
-                                            @can('haveaccess', 'ver-clase-en-linea.index')
                                             <li><a title="Ver Clases en Linea" href="{{ route('ver-clase-en-linea.index')}}"><span class="mini-sub-pro">Listado de Video Clases </span></a></li>
                                         </ul>
                                     </li>
@@ -1106,8 +1106,8 @@
                                     @can('haveaccess', 'horario-estudiante.index')
                                     <li><a data-toggle="collapse" data-target="#horario1" href="{{ route('horario-estudiante.index')}}">Horario Estudiante<span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                     @endcan
+                                    @can('haveaccess', 'horario-estudiante.index')
                                         <ul id="horario1" class="collapse dropdown-header-top">
-                                            @can('haveaccess', 'horario-estudiante.index')
                                             <li><a title="Horario Estudiante" href="{{ route('horario-estudiante.index')}}"><span class="mini-sub-pro">Horario Estudiante </span></a></li>
                                         </ul>
                                     </li>

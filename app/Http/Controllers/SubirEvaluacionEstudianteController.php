@@ -72,9 +72,9 @@ class SubirEvaluacionEstudianteController extends Controller
         Gate::authorize('haveaccess','subir-evaluacion-estudiante.store');
         // $evaluaciones = SubirEvaluacione::create($request->except('_method', '_token'));
          $request->validate([
-             'nombre_archivo'                    => ['required', 'string', 'max:255'],
+            'nombre_archivo'                    => ['required', 'string', 'max:255'],
             'comentario'                        => ['required', 'string', 'max:255'],
-           'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:20000' ]
+            'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:20000' ]
         ]);
         if($request->hasFile('archivo_evaluacion')){
             $filename = $request->archivo_evaluacion->getClientOriginalName();

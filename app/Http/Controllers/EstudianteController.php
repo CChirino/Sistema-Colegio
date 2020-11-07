@@ -24,8 +24,8 @@ class EstudianteController extends Controller
         $estudiantes = DB::table('users')
                     ->join('role_user','users.id', '=','role_user.user_id')
                     ->where('role_id','=',3)
-                    ->where('users.nombre','LIKE','%'.$nombre.'%')
-                    ->orWhere('users.dni','LIKE','%'.$nombre.'%')
+                    // ->where('users.nombre','LIKE','%'.$nombre.'%')
+                    ->Where('users.dni','LIKE','%'.$nombre.'%')
                     ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(30);
         return view('admin.estudiante.index', compact('estudiantes','nombre'));

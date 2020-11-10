@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 
+
 class SubirEvaluacionEstudianteController extends Controller
 {
     /**
@@ -74,17 +75,19 @@ class SubirEvaluacionEstudianteController extends Controller
          $request->validate([
             'nombre_archivo'                    => ['required', 'string', 'max:255'],
             'comentario'                        => ['required', 'string', 'max:255'],
-            'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:20000' ]
+            'archivo_evaluacion'                => ['required', 'mimes:pdf', 'max:20000']
         ]);
         if($request->hasFile('archivo_evaluacion')){
+            $estudiante = Auth::user()->dni;
             $filename = $request->archivo_evaluacion->getClientOriginalName();
             $evaluaciones = SubirEvaluacione::create([
-                'archivo_evaluacion'                    => $request->archivo_evaluacion->storeAs('evaluaciones',$filename,'public'),
+                'archivo_evaluacion'                    => $request->archivo_evaluacion->storeAs('evaluaciones', $estudiante . $filename ,'public'),
                 'nombre_archivo'                        => $request->nombre_archivo,
                 'comentario'                            => $request->comentario,
                 'evaluaciones_id'                       => $request->evaluaciones_id,
                 'user_id'                               => $request->user_id,
             ]);
+            
         }
         return redirect()->route('evaluacion-estudiante.index',compact('evaluaciones'))->with('status_success','Evaluacion subida de manera correcta');
     }

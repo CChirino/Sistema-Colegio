@@ -43,6 +43,7 @@
                         </div>
                         <button type="submit" class="btn btn-warning btn-block loginbtn">Ingresar</button>
                         {{-- <a class="btn btn-warning btn-block" href="{{route('register')}}">Registrar</a> --}}
+                        <a class="btn btn-warning btn-block" href="https://eskuelavirtual.com/soporte/">Soporte</a>
                     </form>
                     
                 </div>

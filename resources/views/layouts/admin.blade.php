@@ -316,7 +316,7 @@
                                                     <a href="#" class="dropdown-item">Contact Support</a>
                                                 </div>
                                             </li> --}}
-                                            <li class="nav-item"><a href="https://eskuelavirtual.com/soporte/" class="nav-link">Soporte</a>
+                                            <li class="nav-item"><a target="_blank" href="https://eskuelavirtual.com/soporte/" class="nav-link">Soporte</a>
                                             </li>
                                         </ul>
                                     </div>

@@ -26,7 +26,7 @@ jobs:
          path: vendor
          key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
  
-    - name: Setup PHP
+     - name: Setup PHP
        uses: shivammathur/setup-php@v2
        with:
          php-version: ${{ matrix.php }}

@@ -85,7 +85,8 @@ jobs:
      - name: Deploy to production
        uses: appleboy/ssh-action@master
        with:
-        username: cchirino
-        host: 198.12.228.86
+        username: evdemo
+        host: 107.180.95.236
         password: ${{ secrets.SSH_PASSWORD }}
-        script: 'cd /var/www/html && ./server_deploy.sh'
+        FOLDER: "./"
+        SERVER_DESTINATION: "cd /var/www/html"

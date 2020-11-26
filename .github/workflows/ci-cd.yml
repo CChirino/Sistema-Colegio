@@ -82,7 +82,7 @@ jobs:
      - name: Copy dotenv file
        run: php -r "file_put_contents(__DIR__ . '/.env', '${{ secrets.DOT_ENV }}');"
  
-     - name: Deploy to production
+     - name: Deploy demo to production
        uses: appleboy/ssh-action@master
        with:
         username: evdemo
@@ -90,3 +90,11 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         FOLDER: "./"
         SERVER_DESTINATION: "cd /var/www/html"
+     - name: Deploy to production
+       uses: appleboy/ssh-action@master
+       with:
+        username: cchirino
+        host: 198.12.228.86
+        password: ${{ secrets.SSH_PASSWORD }}
+        FOLDER: "./"
+        SERVER_DESTINATION: "cd /var/www/"

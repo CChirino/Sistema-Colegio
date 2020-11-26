@@ -61,7 +61,8 @@ jobs:
    steps:
      - name: Checkout code
        uses: actions/checkout@v2
- 
+       with:
+        token: ${{ secrets.PUSH_TOKEN }}
      - name: Cache PHP dependencies
        uses: actions/cache@v1
        with:

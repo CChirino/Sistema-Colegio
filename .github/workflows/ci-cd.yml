@@ -88,13 +88,11 @@ jobs:
         username: evdemo
         host: 107.180.95.236
         password: ${{ secrets.SSH_PASSWORD }}
-        FOLDER: "./"
-        SERVER_DESTINATION: "cd /var/www/ && ./server_deploy.sh"
+        SERVER_DESTINATION: "cd /var/www/Sistema-Colegio && ./server_deploy.sh"
      - name: Deploy to production
        uses: appleboy/ssh-action@master
        with:
         username: cchirino
         host: 198.12.228.86
         password: ${{ secrets.SSH_PASSWORD }}
-        FOLDER: "./"
-        SERVER_DESTINATION: "cd /var/www/ && ./server_deploy.sh"
+        SERVER_DESTINATION: "cd /var/www/Sistema-Colegio && ./server_deploy.sh"

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Pensum;
 use App\Periodo;
-use App\Role;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 
 use Illuminate\Http\Request;
@@ -21,8 +23,15 @@ class PerfilController extends Controller
     {   
         $pensum = Pensum::get();
         $periodo = Periodo::get();
-        $role = Role::get();
-        return view('admin.perfil.index', compact('pensum','periodo','role'));
+        $perfil = Auth::user()->id;
+        $roles = DB::table('role_user')
+                ->join('users','role_user.user_id', '=','users.id')
+                ->join('roles','role_user.role_id', '=','roles.id')
+                ->where('users.id','=',$perfil )
+                ->select('roles.*')
+                ->get();
+        return view('admin.perfil.index', compact('pensum','periodo','roles','perfil'));
+
     }
 
     /**

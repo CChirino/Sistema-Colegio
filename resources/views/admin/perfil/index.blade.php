@@ -14,6 +14,10 @@
                         <p class="card-text">{{ auth()->user()->email }}</p>
                         <p class="card-text">{{ auth()->user()->direccion }}</p>
                         <p class="card-text">{{ auth()->user()->fecha_nacimiento }}</p>
+                        @foreach($roles as $role)
+                        <p class="card-text">{{ $role->name }}</p>
+                        @endforeach
+
                     </div>
                   </div>
                   <div class="pt-3">

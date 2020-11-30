@@ -49,16 +49,16 @@
     
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>DNI</label>
-                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$user->dni}}" disabled >
+                        <label>Cedula o DNI</label>
+                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$user->dni}}" >
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$user->nombre}}"">
+                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{$user->nombre}}">
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Apellido</label>
-                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$user->apellido}}"">
+                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{$user->apellido}}">
 
                     </div>
                     <div class="form-group col-lg-12">
@@ -71,7 +71,25 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Correo Electronico</label>
-                        <input id="email" type="email" class="form-control" name="email" value="{{$user->email}}" disabled>
+                        <input id="email" type="email" class="form-control" name="email" value="{{$user->email}}">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Contrasena</label>
+                        <input id="password" type="password" class="form-control" name="password" value="{{$user->password}}">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Repita Contrasena</label>
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{$user->password}}" >
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="text-center">

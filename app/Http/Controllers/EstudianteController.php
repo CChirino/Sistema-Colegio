@@ -118,7 +118,7 @@ class EstudianteController extends Controller
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
             $estudiantes->update([
-                // 'dni'               => $request->dni,
+                'dni'               => $request->dni,
                 'nombre'            => $request->nombre,
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
@@ -129,7 +129,7 @@ class EstudianteController extends Controller
                 ]);
         }else{
             $estudiantes->update([
-                // 'dni'               => $request->dni,
+                'dni'               => $request->dni,
                 'nombre'            => $request->nombre,
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,

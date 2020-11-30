@@ -57,9 +57,10 @@ class ListadoestudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         Gate::authorize('haveaccess','listado-estudiantes.show');
+        $year = $request->get('year');
         $profesor = Auth::user()->id;
         $lista = DB::table('inscripcions')
                  ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')

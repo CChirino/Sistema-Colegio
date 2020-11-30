@@ -15,12 +15,20 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="breadcome-heading">
-                                {{-- <form role="buscar" class="sr-input-func">
+                                {{-- <form role="search" name="search" method="GET" class="sr-input-func">
+                                    <select class="form-control">        
+                                        @foreach ($pensum as $pen)
 
-                                    <select name="buscar" id="buscar">
-
+                                            <option value="{{$pen->id}}"> 
+                                                {{ $pen->pensum_nombre}}                        
+                                            </option>
+                                
+                                        @endforeach    
                                     </select>
-                                </form>                             --}}
+                                    <button type="submit">
+                                        <p>buscar</p>
+                                    </button>
+                                </form>   --}}
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -39,9 +47,13 @@
 <!-- Static Table Start -->
 <div class="container">
     @include('custom.message')
-    <div>
-        <form action=""></form>
-    </div>
+    <h6>
+        @if ($year)
+        <div class="alert alert-primary" role="alert">
+        Los resultados para la busqueda '{{$year}}' son:
+        </div>
+        @endif
+    </h6>
     <table id="example" class="table table-striped table-bordered "  style="width:100%">
         <thead>
             <tr>

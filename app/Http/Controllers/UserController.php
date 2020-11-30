@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -108,33 +109,28 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->validate([
-            'nombre_periodo' => 'required',
-            'fecha_inicio' => 'required',
-            'fecha_fin' => 'required',
-        ]);
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();
             $user->update([
-                // 'dni'               => $request->dni,
+                'dni'               => $request->dni,
                 'nombre'            => $request->nombre,
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
-                // 'email'             => $request->email,
-                // 'password'          => Hash::make($request->password),
+                'email'             => $request->email,
+                'password'          => Hash::make($request->password),
                 'image'             => $request->image->storeAs('images',$filename,'public'),
                 ]);
         }
         else{
             $user->update([
-                // 'dni'               => $request->dni,
+                'dni'               => $request->dni,
                 'nombre'            => $request->nombre,
                 'apellido'          => $request->apellido,
                 'direccion'         => $request->direccion,
                 'fecha_nacimiento'  => $request->fecha_nacimiento,
-                // 'email'             => $request->email,
-                // 'password'          => Hash::make($request->password),
+                'email'             => $request->email,
+                'password'          => Hash::make($request->password),
                 ]);
         }
         return redirect()->route('usuarios.index')->with('status_success','Usuario actualizado de manera correcta');

@@ -49,8 +49,8 @@
     
                     </div>
                     <div class="form-group col-lg-12">
-                        <label>DNI</label>
-                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$estudiantes->dni}}" disabled >
+                        <label>Cedula o DNI</label>
+                        <input type="number" id="dni"  class="form-control" name="dni" value="{{$estudiantes->dni}}"  >
                     </div>
                     <div class="form-group col-lg-12">
                         <label>Nombre</label>

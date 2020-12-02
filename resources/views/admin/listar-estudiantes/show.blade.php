@@ -19,7 +19,7 @@
                                     <select class="form-control">        
                                         @foreach ($pensum as $pen)
 
-                                            <option value="{{$pen->id}}"> 
+                                            <option value="{{ $pen->pensum_nombre}}"> 
                                                 {{ $pen->pensum_nombre}}                        
                                             </option>
                                 
@@ -45,16 +45,16 @@
 </div>
 </div>
 <!-- Static Table Start -->
+<h6>
+    @if ($year)
+    <div class="alert alert-primary" role="alert">
+    Los resultados para la busqueda '{{$year}}' son:
+    </div>
+    @endif
+</h6>
 <div class="container">
     @include('custom.message')
-    <h6>
-        @if ($year)
-        <div class="alert alert-primary" role="alert">
-        Los resultados para la busqueda '{{$year}}' son:
-        </div>
-        @endif
-    </h6>
-    <table id="example" class="table table-striped table-bordered "  style="width:100%">
+    <table class="table table-striped table-bordered "  style="width:100%">
         <thead>
             <tr>
                 <th>Materia</th>
@@ -63,6 +63,7 @@
                 <th>Direccion</th>
                 <th>Fecha de Ingreso</th>
                 <th>Email</th>
+                <th>Año</th>
             </tr>
         </thead>
         <tbody>
@@ -74,6 +75,7 @@
                 <td>{{$list->direccion}}</td>
                 <td>{{$list->fecha_nacimiento}}</td>
                 <td>{{$list->email}}</td>
+                <td>{{$list->pensum_nombre}}</td>
             @endforeach
             </tr>
         </tbody>

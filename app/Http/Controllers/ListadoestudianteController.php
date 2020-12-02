@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Pensum;
+use App\User;
 
 
 class ListadoestudianteController extends Controller
@@ -60,7 +62,8 @@ class ListadoestudianteController extends Controller
     public function show($id, Request $request)
     {
         Gate::authorize('haveaccess','listado-estudiantes.show');
-        $year = $request->get('year');
+        // $pensum = Pensum::get();
+        // $year = $request->get('search');
         $profesor = Auth::user()->id;
         $lista = DB::table('inscripcions')
                  ->join('inscripcion_materia', 'inscripcions.id', '=', 'inscripcion_materia.inscripcion_id')
@@ -69,11 +72,13 @@ class ListadoestudianteController extends Controller
                  ->join('materias', 'inscripcion_materia.materia_id', '=', 'materias.id')
                  ->join('role_user as ru', 'materias.role_user_id', '=', 'ru.id')
                  ->join('users as u', 'ru.user_id', '=', 'u.id')
+                 ->join('pensums','inscripcions.pensum_id','=','pensums.id')
                  ->where('u.id', '=', $profesor )
                  ->where('materias.id', '=', $id)
-                 ->select('users.*')
+                //  ->where('pensums.pensum_nombre', 'LIKE',$year)
+                 ->select('users.*','pensums.pensum_nombre')
                  ->paginate(7);
-        return view('admin.listar-estudiantes.show', compact('lista'));
+        return view('admin.listar-estudiantes.show', compact('lista',));
 
     }
 

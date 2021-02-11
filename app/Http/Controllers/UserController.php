@@ -22,6 +22,7 @@ class UserController extends Controller
         $user = DB::table('users')
                 ->where('users.nombre','LIKE','%'.$nombre.'%')
                 ->select('users.*')
+                ->whereNull('deleted_at')
                 ->paginate(30);
         return view('admin.user.index', compact('user','nombre'));
 

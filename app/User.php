@@ -33,6 +33,7 @@ class User extends Authenticatable
         'image', 
     ];
 
+    protected $dates = ['deleted_at']; //Registramos la nueva columna
     /**
      * The attributes that should be hidden for arrays.
      *

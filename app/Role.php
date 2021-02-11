@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    use SoftDeletes; 
+
     //Desde aqui
     protected $fillable = [
         'name', 

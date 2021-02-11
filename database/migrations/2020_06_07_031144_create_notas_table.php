@@ -26,6 +26,7 @@ class CreateNotasTable extends Migration
             $table->decimal('IIIL_F')->nullable();
             $table->foreignId('estudiante_id')->references('id')->on('inscripcion_materia')->onDelete('cascade')->unsigned()->nullable();
             $table->foreignId('materias_id')->references('id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

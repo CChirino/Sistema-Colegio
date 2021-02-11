@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notas extends Model
 {
+    use SoftDeletes; 
     /**
      * The attributes that are mass assignable.
      *

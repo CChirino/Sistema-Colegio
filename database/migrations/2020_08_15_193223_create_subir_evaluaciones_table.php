@@ -20,6 +20,7 @@ class CreateSubirEvaluacionesTable extends Migration
             $table->string('comentario');
             $table->foreignId('user_id')->references('user_id')->on('role_user')->onDelete('cascade')->unsigned()->nullable();
             $table->foreignId('evaluaciones_id')->references('id')->on('evaluaciones')->onDelete('cascade')->unsigned()->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

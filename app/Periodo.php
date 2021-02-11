@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Periodo extends Model
 {
+    use SoftDeletes; 
+
+
     protected $fillable = [
         'nombre_periodo', 
         'fecha_inicio',

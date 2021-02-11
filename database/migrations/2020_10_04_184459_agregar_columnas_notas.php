@@ -29,6 +29,7 @@ class AgregarColumnasNotas extends Migration
             $table->decimal('E3_3')->nullable();
             $table->decimal('E4_3')->nullable();
             $table->decimal('EF_3')->nullable();
+            $table->softDeletes();
         });
     }
 

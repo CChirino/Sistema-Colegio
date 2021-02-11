@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Materia extends Model
 {
-        /**
+    use SoftDeletes; 
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

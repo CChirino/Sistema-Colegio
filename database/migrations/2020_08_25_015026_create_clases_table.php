@@ -18,6 +18,7 @@ class CreateClasesTable extends Migration
             $table->string('nombre_clase');
             $table->string('link_clase');
             $table->foreignId('materia_id')->references('id')->on('materias')->onDelete('cascade')->unsigned()->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

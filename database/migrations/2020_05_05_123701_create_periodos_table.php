@@ -18,6 +18,7 @@ class CreatePeriodosTable extends Migration
             $table->string('nombre_periodo');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

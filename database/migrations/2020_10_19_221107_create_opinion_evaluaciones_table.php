@@ -17,6 +17,7 @@ class CreateOpinionEvaluacionesTable extends Migration
             $table->id();
             $table->text('opinion');
             $table->foreignId('subir_evaluaciones_id')->references('id')->on('subir_evaluaciones')->onDelete('cascade')->unsigned()->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

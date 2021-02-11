@@ -16,6 +16,7 @@ class CreatePensumsTable extends Migration
         Schema::create('pensums', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('pensum_nombre');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

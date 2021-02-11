@@ -17,13 +17,10 @@ class CreateMateriasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre_materia');
             $table->text('descripcion_materia');
-
             $table->foreignId('pensum_id')->references('id')->on('pensums')->onDelete('cascade')->unsigned()->nullable();
             $table->foreignId('periodo_id')->references('id')->on('periodos')->onDelete('cascade')->unsigned()->nullable();
             $table->foreignId('role_user_id')->references('id')->on('role_user')->onDelete('cascade')->unsigned()->nullable();
-
-        
-
+            $table->softDeletes();
             $table->timestamps();
 
         });

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inscripcion extends Model
 {
-            /**
+    use SoftDeletes; 
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

@@ -15,7 +15,7 @@ class User extends Authenticatable
 {   
     // use hasMedia;
     // use HasMediaTrait;
-    use Notifiable, UserTrait;
+    use Notifiable, UserTrait,SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *

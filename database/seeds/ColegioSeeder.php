@@ -54,20 +54,20 @@ class ColegioSeeder extends Seeder
 
      ]);
 
-    //  $admin2= User::where('email','christopherchirinosj@gmail.com');
-    //  if ($admin2) {
-    //      $admin2->delete();
-    //  }
-    //  $admin2= User::create([
-    //     'dni'               => 271593822,
-    //     'nombre'            => 'Jose',
-    //     'apellido'          => 'Suarez',
-    //     'direccion'         => 'Caracas',
-    //     'fecha_nacimiento'  => '1997-03-14',
-    //     'email'             => 'christopherchirinosj@gmail.com',
-    //     'password'          => Hash::make('Eskuela-141173*+Xyz'),
-    //     'image'             => 'images/default.png'
-    //  ]);
+     $admin2= User::where('email','christopherchirinosj@gmail.com');
+     if ($admin2) {
+         $admin2->delete();
+     }
+     $admin2= User::create([
+        'dni'               => 271593822,
+        'nombre'            => 'Jose',
+        'apellido'          => 'Suarez',
+        'direccion'         => 'Caracas',
+        'fecha_nacimiento'  => '1997-03-14',
+        'email'             => 'christopherchirinosj@gmail.com',
+        'password'          => Hash::make('Eskuela-141173*+Xyz'),
+        'image'             => 'images/default.png'
+     ]);
 
      //rol admin
      $roladmin=Role::create([
@@ -131,7 +131,7 @@ class ColegioSeeder extends Seeder
 
     //User Profesor
          
-         $userprf= User::where('email','christopherchirinosj@gmail.com');
+         $userprf= User::where('email','critijo@hotmai.com');
          if ($userprf) {
              $userprf->delete();
          }
@@ -141,7 +141,7 @@ class ColegioSeeder extends Seeder
             'apellido'          => 'Chirino',
             'direccion'         => 'Chacao',
             'fecha_nacimiento'  => '1997-03-14',
-            'email'             => 'christopherchirinosj@gmail.com',
+            'email'             => 'critijo@hotmail.com',
             'password'          => Hash::make('chacao14397'),
             'image'             => 'images/default.png'
 

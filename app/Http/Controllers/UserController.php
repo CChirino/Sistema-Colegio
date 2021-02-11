@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        Gate::authorize('haveaccess','periodos.index');
+        Gate::authorize('haveaccess','usuarios.index');
         $nombre = $request->get('search'); 
         $user = DB::table('users')
                 ->where('users.nombre','LIKE','%'.$nombre.'%')
@@ -34,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        Gate::authorize('haveaccess','periodos.create');
+        Gate::authorize('haveaccess','usuarios.create');
         return view('admin.user.create');
     }
 
@@ -81,7 +81,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        Gate::authorize('haveaccess','periodos.show');
+        Gate::authorize('haveaccess','usuarios.show');
         $user = User::find($id);
         return view('admin.user.show', compact('user'));
     }
@@ -94,7 +94,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        Gate::authorize('haveaccess','periodos.edit');
+        Gate::authorize('haveaccess','usuarios.edit');
         $user = User::find($id);
         return view('admin.user.edit',compact('user'));
     }
@@ -144,9 +144,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        Gate::authorize('haveaccess','periodos.destroy');
+        Gate::authorize('haveaccess','usuarios.destroy');
         $user = User::find($id);
         $user->delete();
         return redirect()->route('usuarios.index')->with('status_success','Usuario eliminado de manera correcta');
+        if($user !=null){
+            $user->delete();
+            return redirect()->route('usuarios.index')->with('status_success','Usuario eliminado de manera correcta');
+        }
+
     }
+
 }

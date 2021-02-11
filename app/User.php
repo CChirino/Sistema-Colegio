@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPassword;
 use App\Traits\UserTrait;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 

@@ -24,6 +24,7 @@ class AdminController extends Controller
                     ->join('role_user','users.id', '=','role_user.user_id')
                     ->where('role_id','=',1)
                     ->where('users.nombre','LIKE','%'.$nombre.'%')
+                    ->whereNull('deleted_at')
                     ->select('users.id','users.dni','users.nombre','users.apellido','users.direccion','users.fecha_nacimiento','users.email','users.image')
                     ->paginate(30);
         return view('admin.admin.index', compact('admin','nombre'));

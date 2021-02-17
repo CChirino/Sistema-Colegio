@@ -39,6 +39,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('roles', 'RoleController');
+Route::get('usuarios/registros-eliminados', 'UserController@restore_index');
+Route::post('usuarios/restaurar/{id}', 'UserController@restore_record')->name('usuarios.restaurar');
 Route::resource('usuarios', 'UserController');
 Route::resource('admin', 'AdminController');
 Route::resource('profesor', 'ProfesorController');

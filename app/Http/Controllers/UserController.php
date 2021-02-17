@@ -156,4 +156,16 @@ class UserController extends Controller
 
     }
 
+    public function restore_index()
+    {
+        $user = User::onlyTrashed()->get();
+        return view('admin.user.restaurar', compact('user'));
+
+    }
+    public function restore_record($id)
+    {
+        $user = User::onlyTrashed()->find($id)->restore();
+        return redirect()->route('usuarios.index');
+    }
+
 }
